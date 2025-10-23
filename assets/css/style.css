@@ -1,0 +1,24 @@
+/* assets/css/style.css */
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #0d6efd !important;
+}
+
+.jumbotron {
+    background: linear-gradient(135deg, #0d6efd88, #66b2ff66);
+    color: #fff;
+    border-radius: .5rem;
+}
+
+.card {
+    border-radius: .75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.bg-primary {
+    background-color: #0d6efd !important;
+}
