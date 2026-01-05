@@ -3,14 +3,17 @@
 
 <div class="site-container">
 
+    <!-- Section pour l'affichage de l'image de présentation du club -->
     <section class="hero-banner">
         <img src="<?= base_url('uploads/general/groupe.jpg') ?>" alt="Photo de fin d'année du club de nage avec palmes"
             class="img-full-width img-rounded" />
         <div class="hero-overlay">
-            <h1 class="hero-title">Palmes en Cornouailles</h1>
+            <h1 class="hero-title"><?= esc($general['nomClub']); ?></h1>
         </div>
     </section>
+    <!-- Fin de section -->
 
+    <!-- Section pour l'affichage des informations du club -->
     <section class="block-club">
         <div class="grid-2">
             <div class="info">
@@ -36,7 +39,9 @@
             </div>
         </div>
     </section>
+    <!-- Fin de section -->
 
+    <!-- Section pour l'affichage des disciplines -->
     <h3 class="title-section">Nos Disciplines</h3>
     <div class="grid-3">
         <?php foreach ($disciplines as $discipline): ?>
@@ -49,7 +54,9 @@
         </div>
         <?php endforeach; ?>
     </div>
+    <!-- Fin de section -->
 
+    <!-- Section pour l'affichage de l'équipe -->
     <h3 class="title-section">L'Équipe</h3>
     <div class="grid-2">
         <?php foreach ($coaches as $coach): ?>
@@ -63,6 +70,8 @@
         </div>
         <?php endforeach; ?>
     </div>
+    <!-- Fin de section -->
+
 
     <div class="banner-info">
         <div class="banner-content">
@@ -71,6 +80,7 @@
         </div>
     </div>
 
+    <!-- Section pour les lieux d'entraînement -->
     <h3 class="title-section">Lieux d'entraînement</h3>
     <div class="grid-2">
         <?php foreach ($piscines as $p) : ?>
@@ -85,6 +95,7 @@
         </div>
         <?php endforeach; ?>
     </div>
+    <!-- Fin de section -->
 
 </div>
 

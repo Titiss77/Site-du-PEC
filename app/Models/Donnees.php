@@ -30,6 +30,11 @@ class Donnees extends Model {
 		return $general;
 	}
 
+	/**
+	 * Retourne la liste des coachs
+	 *
+	 * @return nom, description, photo, numTel, mail sous la forme d'un tableau associatif
+	 */
 	function getCoachs() {
 		$req = 'SELECT nom, description, photo, numTel, mail FROM `coaches`';
 		$rs = $this->db->query($req);
@@ -37,6 +42,11 @@ class Donnees extends Model {
 		return $general;
 	}
 	
+	/**
+	 * Retourne la liste des disciplines
+	 *
+	 * @return nom, description, image sous la forme d'un tableau associatif
+	 */
 	function getDisciplines() {
 		$req = 'SELECT nom, description, image FROM `disciplines`';
 		$rs = $this->db->query($req);
@@ -44,6 +54,11 @@ class Donnees extends Model {
 		return $disciplines;
 	}
 
+	/**
+	 * Retourne la liste des piscines
+	 *
+	 * @return nom, adresse, type_bassin, photo sous la forme d'un tableau associatif
+	 */
 	function getPiscines() {
 		$req = 'SELECT nom, adresse, type_bassin, photo FROM `piscines`';
 		$rs = $this->db->query($req);
@@ -51,6 +66,11 @@ class Donnees extends Model {
 		return $piscines;
 	}
 
+	/**
+	 * Retourne la liste des plannings (scolaire et vacances)
+	 *
+	 * @return categorie, date, image sous la forme d'un tableau associatif
+	 */
 	function getPlannings() {
 		$req = 'SELECT categorie, date, image FROM `plannings` WHERE categorie != "competitions" ORDER BY categorie DESC';	
 
@@ -59,6 +79,11 @@ class Donnees extends Model {
 		return $plannings;
 	}
 
+	/**
+	 * Retourne le calendrier des compétitions
+	 *
+	 * @return categorie, date, image sous la forme d'un tableau associatif
+	 */
 	function getCalendrier() {
 		$req = 'SELECT categorie, date, image FROM `plannings` WHERE categorie = "competitions"';	
 

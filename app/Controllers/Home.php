@@ -6,6 +6,10 @@ use Config\Database;
 use App\Models\Donnees;
 
 class Home extends BaseController {
+    /*  Retourne la page d'accueil avec les données nécessaires
+     *
+     * @return vue de la page d'accueil avec les données
+     */
     public function index() {
         $donneesModel = new Donnees();
 
@@ -21,6 +25,10 @@ class Home extends BaseController {
         return view('v_accueil', $data);
     }
 
+    /*  Retourne la page des calendriers avec les données nécessaires
+     *
+     * @return vue de la page des calendriers avec les données
+     */
     public function calendriers() {
         $donneesModel = new Donnees();
         $data = [
