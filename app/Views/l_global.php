@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titrePage; ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/root.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/global.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/' . $cssPage); ?>">
 </head>
 

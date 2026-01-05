@@ -1,4 +1,4 @@
-<?= $this->extend('l_accueil') ?>
+<?= $this->extend('l_global') ?>
 <?= $this->section('contenu') ?>
 
 <div class="site-container">

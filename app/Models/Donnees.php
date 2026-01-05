@@ -51,5 +51,21 @@ class Donnees extends Model {
 		return $piscines;
 	}
 
+	function getPlannings() {
+		$req = 'SELECT categorie, image FROM `plannings` WHERE categorie != "competitions"';	
+
+		$rs = $this->db->query($req);
+		$plannings = $rs->getResultArray();
+		return $plannings;
+	}
+
+	function getCalendrier() {
+		$req = 'SELECT categorie, image FROM `plannings` WHERE categorie = "competitions"';	
+
+		$rs = $this->db->query($req);
+		$calendrier = $rs->getRowArray();
+		return $calendrier;
+	}
+
 	
 }

@@ -20,4 +20,17 @@ class Home extends BaseController {
 
         return view('v_accueil', $data);
     }
+
+    public function calendriers() {
+        $donneesModel = new Donnees();
+        $data = [
+            'cssPage'     => 'calendrier.css',
+            'titrePage'   => 'Calendriers',
+            'general'     => $donneesModel->getGeneral(),
+            'plannings'   => $donneesModel->getPlannings(),
+            'calendrierCompet'   => $donneesModel->getCalendrier(),
+        ];
+        
+        return view('v_calendriers', $data);
+    }
 }
