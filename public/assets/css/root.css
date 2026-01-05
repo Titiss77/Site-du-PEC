@@ -1,0 +1,10 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #357ABD;
+    --background-color: #f5f7fa;
+    --nav-bg-color: #2c3e50;
+    --text-color: #333;
+    --border-color: #ddd;
+    --border-radius: 8px;
+    --header-height: 80px;
+}
