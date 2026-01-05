@@ -39,10 +39,10 @@
                     <li><?= anchor('/actualites', 'Actualités'); ?></li>
             </nav>
             <div class="social-links">
-                <a href="https://www.facebook.com/palmesencornouaille" target="_blank" aria-label="Facebook">
+                <a href="<?= $general['lienFacebook']; ?>" target="_blank" aria-label="Facebook">
                     <i class="bi bi-facebook"></i>
                 </a>
-                <a href="https://www.instagram.com/palmesencornouaille/" target="_blank" aria-label="Instagram">
+                <a href="<?= $general['lienInstagram']; ?>" target="_blank" aria-label="Instagram">
                     <i class="bi bi-instagram"></i>
                 </a>
             </div>

@@ -16,8 +16,9 @@ class CreateGeneral extends Migration
             'philosophie'   => ['type' => 'TEXT'],
             'nombreNageurs' => ['type' => 'INT', 'constraint' => 11],
             'nombreHommes'  => ['type' => 'INT', 'constraint' => 11],
-            'nombreFemmes'  => ['type' => 'INT', 'constraint' => 11],
             'projetSportif' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'lienFacebook'  => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'lienInstagram' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('general');
