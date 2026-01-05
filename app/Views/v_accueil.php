@@ -8,7 +8,6 @@
             class="img-full-width img-rounded" />
         <div class="hero-overlay">
             <h1 class="hero-title">Palmes en Cornouailles</h1>
-            <p class="hero-subtitle">La glisse à l'état pur à Quimper</p>
         </div>
     </section>
 
@@ -24,8 +23,10 @@
                     <h4 class="color-blue"><?= esc($general['nombreNageurs']); ?> Nageurs</h4>
                     <p>Mixité : <?= esc($general['nombreHommes']); ?>H / <?= esc($general['nombreFemmes']); ?>F</p>
                     <hr>
-                    <p class="txt-small">
-                        <strong>Projet :</strong> <?= esc($general['projetSportif'] ?? 'Compétitions 2026'); ?>
+                    <p class="small">
+                        <strong>Projet Sportif :</strong>
+                        <?= esc($general['projetSportif'] ?? 'Compétitions régionales et nationales'); ?>
+                        (Saison <?= date('Y'); ?>)
                     </p>
                 </div>
             </div>
@@ -34,26 +35,15 @@
 
     <h3 class="title-section">Nos Disciplines</h3>
     <div class="grid-3">
+        <?php foreach ($disciplines as $discipline): ?>
         <div class="card-item">
-            <img src="<?= base_url('uploads/disciplines/monopalme.jpg') ?>" alt="Nageur en monopalme"
+            <img src="<?= base_url('uploads/disciplines/' . $discipline['image']); ?>" alt="<?= $discipline['nom'] ?>"
                 class="img-card" />
             <i class="bi bi-water icon-main"></i>
-            <h5>Monopalme</h5>
-            <p>Vitesse et ondulations.</p>
+            <h5><?= esc($discipline['nom']); ?></h5>
+            <p><?= esc($discipline['description']); ?></p>
         </div>
-        <div class="card-item">
-            <img src="<?= base_url('uploads/disciplines/bipalmes.jpg') ?>" alt="Nageur en bi-palmes" class="img-card" />
-            <i class="bi bi-person-arms-up icon-main"></i>
-            <h5>Bi-palmes</h5>
-            <p>Technique et cardio.</p>
-        </div>
-        <div class="card-item">
-            <img src="<?= base_url('uploads/disciplines/monopalme.jpg') ?>" alt="Apnéiste sous l'eau"
-                class="img-card" />
-            <i class="bi bi-wind icon-main"></i>
-            <h5>Apnée</h5>
-            <p>Maîtrise et relaxation.</p>
-        </div>
+        <?php endforeach; ?>
     </div>
 
     <h3 class="title-section">L'Équipe</h3>

@@ -33,7 +33,7 @@ class Donnees extends Model {
 	}
 	
 	function getDisciplines() {
-		$req = 'SELECT nom, description, icone FROM `disciplines`';
+		$req = 'SELECT nom, description, image FROM `disciplines`';
 		$rs = $this->db->query($req);
 		$disciplines = $rs->getResultArray();
 		return $disciplines;
