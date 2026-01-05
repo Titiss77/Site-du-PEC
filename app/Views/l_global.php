@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Section pour les styles CSS -->
     <title><?= $titrePage; ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/css/root.css'); ?>">
@@ -31,7 +32,21 @@
 
         <!-- Section pour le pied de page -->
         <footer id="piedBlog">
-            Blog réalisé avec PHP, HTML5 et CSS.
+            <nav>
+                <ul>
+                    <li><?= anchor('/boutique', 'Boutique'); ?></li>
+                    <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
+                    <li><?= anchor('/actualites', 'Actualités'); ?></li>
+            </nav>
+            <div class="social-links">
+                <a href="https://www.facebook.com/palmesencornouaille" target="_blank" aria-label="Facebook">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/palmesencornouaille/" target="_blank" aria-label="Instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+            </div>
+            <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>
         </footer>
         <!-- Fin de section -->
     </div>

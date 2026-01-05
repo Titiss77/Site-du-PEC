@@ -11,7 +11,7 @@ class PiscineSeeder extends Seeder
         $data = [
             [
                 'nom'         => 'Kerlan vian',
-                'adresse'     => '61 Av. des Oiseaux, 29000 Quimper, France',
+                'adresse'     => '47 Av. des Oiseaux, 29000 Quimper, France',
                 'type_bassin' => '25m',
                 'photo'       => 'kerlan_vian.jpg'
             ],
