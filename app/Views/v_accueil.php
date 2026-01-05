@@ -21,7 +21,11 @@
             <div class="stats-card">
                 <div class="stats-box">
                     <h4 class="color-blue"><?= esc($general['nombreNageurs']); ?> Nageurs</h4>
-                    <p>Mixité : <?= esc($general['nombreHommes']); ?>H / <?= esc($general['nombreFemmes']); ?>F</p>
+                    <p>Mixité : <br><?= esc($general['pourcentH']); ?>% d'Hommes,
+                        <br><?= esc($general['pourcentF']); ?>%
+                        de Femmes, <br>
+                        de 7 à 77 ans.
+                    </p>
                     <hr>
                     <p class="small">
                         <strong>Projet Sportif :</strong>
@@ -63,7 +67,7 @@
     <div class="banner-info">
         <div class="banner-content">
             <h4>Initiation : Tritons & Sirènes</h4>
-            <p>Accueil dès 8 ans pour découvrir l'aisance aquatique avec palmes.</p>
+            <p>Accueil dès 7 ans pour découvrir l'aisance aquatique avec palmes.</p>
         </div>
     </div>
 

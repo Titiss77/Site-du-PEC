@@ -19,7 +19,12 @@ class Donnees extends Model {
 	 * @return nom du club, description, nombre de nageurs, nombre d'hommes, nombre de femmes sous la forme d'un tableau associatif
 	 */
 	function getGeneral() {
-		$req = 'SELECT image, nomClub, description, philosophie, nombreNageurs, nombreHommes, nombreFemmes, projetSportif FROM `general` LIMIT 1';
+		$req = 'SELECT image, nomClub, description, philosophie, 
+		nombreNageurs, 
+		ROUND(nombreHommes / nombreNageurs * 100, 1) as pourcentH, 
+		ROUND((nombreNageurs-nombreHommes) / nombreNageurs * 100, 1) as pourcentF,
+		projetSportif 
+		FROM `general` LIMIT 1';
 		$rs = $this->db->query($req);
 		$general = $rs->getRowArray();
 		return $general;
