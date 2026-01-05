@@ -10,6 +10,7 @@ class Home extends BaseController {
         $donneesModel = new Donnees();
 
         $data = [
+            'cssPage'     => 'accueil.css',
             'titrePage'   => 'Accueil',
             'general'     => $donneesModel->getGeneral(),
             'disciplines' => $donneesModel->getDisciplines(),
