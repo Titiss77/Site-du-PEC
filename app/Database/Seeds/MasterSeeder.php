@@ -6,9 +6,11 @@ use CodeIgniter\Database\Seeder;
 
 class MasterSeeder extends Seeder
 {
-	public function run()
-	{
-		// Tables de référence
-		$this->call('CoachSeeder');
-	}
+    public function run()
+    {
+        $this->call('GeneralSeeder');
+        $this->call('CoachSeeder');
+        $this->call('DisciplineSeeder');
+        $this->call('PiscineSeeder');
+    }
 }

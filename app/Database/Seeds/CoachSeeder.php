@@ -6,10 +6,20 @@ use CodeIgniter\Database\Seeder;
 
 class CoachSeeder extends Seeder
 {
-	public function run()
-	{
-		$data = ['idCoach' => '1', 'nom' => 'Thierry Henri', 'photo' => 'coach.png', 'description' => 'Thierry est un entraîneur expérimenté avec plus de 10 ans dans le domaine de la natation.'];
-		$this->db->table('coachs')->insert($data);
-		
-	}
+    public function run()
+    {
+        $data = [
+            [
+                'nom'         => 'Thierry Henri',
+                'description' => 'Coach principal pour les jeunes et espoirs.',
+                'photo'       => 'thierry_henri.jpg'
+            ],
+            [
+                'nom'         => "Martin L'espagnol",
+                'description' => 'Coach des jeunes le samedi et section.',
+                'photo'       => 'martin_lespagnol.jpg'
+            ],
+        ];
+        $this->db->table('coaches')->insertBatch($data);
+    }
 }
