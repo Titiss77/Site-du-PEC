@@ -11,14 +11,17 @@ class PlanningSeeder extends Seeder
         $data = [
             [
                 'categorie' => 'scolaire',
+                'date'      =>  '2025 - 2026',    
                 'image'     => 'planning_scolaire.jpg',
             ],
             [
                 'categorie' => 'vacances',
+                'date'      =>  'du 15/12 au 20/12',    
                 'image'     => 'planning_vacances.jpg',
             ],
             [
                 'categorie' => 'competitions',
+                'date'      =>  '2025 - 2026',    
                 'image'     => 'calendrier_competitions.jpg',
             ],
         ];

@@ -13,12 +13,9 @@
 
             <?php foreach ($plannings as $planning): ?>
             <div class="calendar-img-box">
-                <p class="label-cal">Planning <?= $planning['categorie'] ?></p>
+                <p class="label-cal"><?= $planning['categorie'] ?> <?= $planning['date'] ?></p>
                 <img src="<?= base_url('uploads/calendriers/' . $planning['image']) ?>"
                     alt="Planning <?= $planning['categorie'] ?>" class="img-fluid img-zoom">
-                <a href="<?= base_url('uploads/calendriers/' . $planning['image']) ?>" download class="btn-download">
-                    <i class="bi bi-download"></i> Télécharger
-                </a>
             </div>
             <?php endforeach; ?>
 
@@ -28,14 +25,10 @@
 
     <section class="mb-5">
 
-        <h3><i class="bi bi-trophy"></i> Calendrier des compétitions</h3>
+        <h3><i class="bi bi-trophy"></i> Calendrier des compétitions <?= $calendrierCompet['date'] ?></h3>
         <div class="calendar-img-box single">
             <img src="<?= base_url('uploads/calendriers/' . $calendrierCompet['image']) ?>"
                 alt="Calendrier compétitions" class="img-fluid img-zoom">
-            <a href="<?= base_url('uploads/calendriers/' . $calendrierCompet['image']) ?>" download
-                class="btn-download">
-                <i class="bi bi-download"></i> Télécharger le calendrier complet
-            </a>
         </div>
     </section>
 </div>

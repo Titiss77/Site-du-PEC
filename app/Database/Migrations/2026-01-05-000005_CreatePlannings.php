@@ -20,6 +20,11 @@ class CreatePlannings extends Migration
                 'constraint' => ['scolaire', 'vacances', 'competitions'],
                 'null'       => true,
             ],
+            'date' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+                'null'       => true,
+            ],
             'image' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,

@@ -52,7 +52,7 @@ class Donnees extends Model {
 	}
 
 	function getPlannings() {
-		$req = 'SELECT categorie, image FROM `plannings` WHERE categorie != "competitions"';	
+		$req = 'SELECT categorie, date, image FROM `plannings` WHERE categorie != "competitions" ORDER BY categorie DESC';	
 
 		$rs = $this->db->query($req);
 		$plannings = $rs->getResultArray();
@@ -60,7 +60,7 @@ class Donnees extends Model {
 	}
 
 	function getCalendrier() {
-		$req = 'SELECT categorie, image FROM `plannings` WHERE categorie = "competitions"';	
+		$req = 'SELECT categorie, date, image FROM `plannings` WHERE categorie = "competitions"';	
 
 		$rs = $this->db->query($req);
 		$calendrier = $rs->getRowArray();
