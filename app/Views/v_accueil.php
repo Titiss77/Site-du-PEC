@@ -48,7 +48,6 @@
         <div class="card-item">
             <img src="<?= base_url('uploads/disciplines/' . $discipline['image']); ?>" alt="<?= $discipline['nom'] ?>"
                 class="img-card" />
-            <i class="bi bi-water icon-main"></i>
             <h5><?= esc($discipline['nom']); ?></h5>
             <p><?= esc($discipline['description']); ?></p>
         </div>
