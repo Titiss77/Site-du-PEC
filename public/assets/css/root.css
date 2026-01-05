@@ -1,0 +1,25 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #357ABD;
+    --background-color: #f5f7fa;
+    --nav-bg-color: #2c3e50;
+    --text-color: #333;
+    --border-color: #ddd;
+    --border-radius: 8px;
+    --header-height: 80px;
+    
+    --bg-body: #222222;
+    --bg-card: #333333;
+    
+    --color-text: #e0e0e0;
+    
+    --color-border: #444444;
+    
+    --border-radius: 8px;
+    
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+
+    --color-anime-btn: rgb(45, 82, 142);
+    
+    --color-icon-btn: #aaaaaa;
+}
