@@ -1,10 +1,18 @@
 :root {
-    --primary-color: #4a90e2;
-    --secondary-color: #357ABD;
-    --background-color: #f5f7fa;
-    --nav-bg-color: #2c3e50;
-    --text-color: #333;
-    --border-color: #ddd;
-    --border-radius: 8px;
-    --header-height: 80px;
+    /* Couleurs Club */
+    --primary: #002d5a;
+    /* Bleu profond */
+    --secondary: #00a8e8;
+    /* Bleu eau */
+    --accent: #ffcc00;
+    /* Jaune sport */
+    --text-dark: #1a1a1a;
+    --text-muted: #666;
+    --bg-light: #f8fbff;
+    --white: #ffffff;
+
+    /* Design system */
+    --shadow: 0 4px 15px rgba(0, 45, 90, 0.1);
+    --radius: 12px;
+    --transition: all 0.3s ease;
 }
