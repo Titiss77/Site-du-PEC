@@ -1,0 +1,77 @@
+<?= $this->extend('l_global') ?>
+<?= $this->section('contenu') ?>
+
+<div class="site-container">
+    <h2 class="title-section">Contact & Inscriptions</h2>
+
+    <div class="grid-2">
+        <section class="card-item">
+            <h3><i class="bi bi-envelope"></i> Posez votre question</h3>
+            <form action="<?= base_url('contact/envoyer') ?>" method="post">
+                <div class="form-group">
+                    <label>Votre demande s'adresse au :</label>
+                    <select name="destinataire" class="form-input">
+                        <option value="president">Président (Général)</option>
+                        <option value="tresorier">Trésorier (Facturation/Tarifs)</option>
+                        <option value="secretaire">Secrétaire (Licences/Dossiers)</option>
+                        <option value="coach">Entraîneur (Sportif)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Votre email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Votre message..." rows="5" class="form-input"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn-home" style="width:100%">Envoyer mon message</button>
+            </form>
+        </section>
+
+        <section>
+            <div class="card-item mb-4 border-blue">
+                <h3><i class="bi bi-info-circle"></i> Conditions d'inscription</h3>
+                <ul class="list-check">
+                    <li>Être âgé de 6 ans minimum.</li>
+                    <li>Savoir nager 25 mètres sans aide.</li>
+                    <li>Certificat médical de non contre-indication à la nage avec palmes (indispensable).</li>
+                </ul>
+            </div>
+
+            <div class="card-item">
+                <h3><i class="bi bi-cash-stack"></i> Tarifs 2026</h3>
+                <table class="custom-table small">
+                    <?php foreach ($tarifs as $t): ?>
+                    <tr>
+                        <td><?= esc($t['categorie']) ?></td>
+                        <td class="text-right"><strong><?= $t['prix'] ?>€</strong></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <h3 class="title-section">Matériel nécessaire</h3>
+    <div class="grid-3">
+        <?php foreach ($materiel as $m): ?>
+        <div class="card-item text-center">
+            <h5><?= esc($m['nom']) ?></h5>
+            <p class="txt-small"><?= esc($m['description']) ?></p>
+            <div class="mt-2">
+                <?php if ($m['pret']): ?>
+                <span class="tag-status is-lent">
+                    <i class="bi bi-check-circle"></i> Prêté dans un 1er temps
+                </span>
+                <?php else: ?>
+                <span class="tag-status is-personal">
+                    <i class="bi bi-cart"></i> À votre charge
+                </span>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<?= $this->endSection() ?>

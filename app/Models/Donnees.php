@@ -38,8 +38,8 @@ class Donnees extends Model {
 	function getCoachs() {
 		$req = 'SELECT nom, description, photo, numTel, mail FROM `coaches`';
 		$rs = $this->db->query($req);
-		$general = $rs->getResultArray();
-		return $general;
+		$coachs = $rs->getResultArray();
+		return $coachs;
 	}
 	
 	/**
