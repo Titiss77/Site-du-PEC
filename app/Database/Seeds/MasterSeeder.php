@@ -9,7 +9,6 @@ class MasterSeeder extends Seeder
 	public function run()
 	{
 		// Tables de référence
-		$this->call('BilletSeeder');
-		$this->call('CommentaireSeeder');
+		$this->call('CoachSeeder');
 	}
 }

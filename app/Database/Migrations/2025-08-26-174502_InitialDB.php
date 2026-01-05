@@ -15,42 +15,26 @@ class InitialDB extends Migration
         ];
 
         /*
-            TABLE : billet 
+            TABLE : coach
         */
         $fields = [
-            'idBillet'      => [ 'type' => 'INT', 'constraint' => 11, 'auto_increment' => true ],
-            'dateBillet'    => [ 'type' => 'DATETIME' ],
-            'titreBillet'   => [ 'type' => 'VARCHAR', 'constraint' => 50 ],
-            'contenuBillet' => [ 'type' => 'TEXT' ],
+            'idCoach'      => [ 'type' => 'INT', 'constraint' => 11, 'auto_increment' => true ],
+            'nom'    => [ 'type' => 'VARCHAR', 'constraint' => 100 ],
+            'photo'   => [ 'type' => 'VARCHAR', 'constraint' => 255 ],
+            'description' => [ 'type' => 'TEXT' ],
         ];
 
         $this->forge->addField($fields);
-        $this->forge->addPrimaryKey('idBillet');
-        $this->forge->createTable('billet', true, $tables_attributes);
+        $this->forge->addPrimaryKey('idCoach');
+        $this->forge->createTable('coachs', true, $tables_attributes);
         
-        /*
-            TABLE : commentaire
-        */
-        $fields = [
-            'idCommentaire'        => [ 'type' => 'INT', 'constraint' => 11, 'auto_increment' => true ],
-            'dateCommentaire'   => [ 'type' => 'DATETIME' ],
-            'auteurCommentaire'   => [ 'type' => 'VARCHAR', 'constraint' => 50 ],
-            'contenuCommentaire'   => [ 'type' => 'TEXT' ],
-            'idBillet'        => [ 'type' => 'INT', 'constraint' => 11 ],
-            'estValide'        => [ 'type' => 'ENUM', 'constraint' => ['0', '1'], 'default' => '0' ],
-        ];
-
-        $this->forge->addField($fields);
-        $this->forge->addPrimaryKey('idCommentaire');
-        $this->forge->addForeignKey('idBillet', 'billet', 'idBillet');
-        $this->forge->createTable('commentaire', true, $tables_attributes);
+        
 
     }
 
     public function down()
     {
-        $this->forge->dropTable('commentaire', true);
-        $this->forge->dropTable('billet', true);
+        $this->forge->dropTable('coachs', true);
         // On ne supprime PAS typeutilisateur ici, il a son propre fichier
     }
 }

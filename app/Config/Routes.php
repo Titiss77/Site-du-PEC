@@ -5,8 +5,11 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-//$routes->get('/', 'Home::index');
-$routes->get('/', 'Blog::index');
-$routes->get('apropos', 'Blog::apropos');
-$routes->get('billet-(:num)', 'Blog::billet/$1');
-$routes->post('ajoutCommentaire', 'Blog::ajoutCommentaire');
+
+// Route principale : affiche la page d'accueil du club
+// On appelle la méthode 'index' du contrôleur 'Club'
+$routes->get('/', 'Club::index');
+
+// Si vous souhaitez des URLs plus explicites pour le SEO
+$routes->get('notre-club', 'Club::index');
+$routes->get('nos-entraineurs', 'Club::index'); // Vous pouvez utiliser des ancres (#) dans la vue
