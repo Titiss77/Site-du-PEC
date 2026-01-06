@@ -13,6 +13,8 @@ class MasterSeeder extends Seeder
         $this->call('DisciplineSeeder');
         $this->call('PiscineSeeder');
 		$this->call('PlanningSeeder');
-		$this->call('InscriptionSeeder');
+        $this->call('MaterielSeeder');
+        $this->call('PostesSeeder');
+        $this->call('TarifsSeeder');
     }
 }
