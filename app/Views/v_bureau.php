@@ -1,3 +1,5 @@
+<?= $this->extend('l_global') ?>
+<?= $this->section('contenu') ?>
 <section class="trombi-container">
     <h1 class="text-center">Le Bureau</h1>
 
@@ -24,47 +26,4 @@
         <?php endif; ?>
     </div>
 </section>
-
-<style>
-.trombi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-    padding: 20px;
-}
-
-.trombi-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.trombi-card:hover {
-    transform: translateY(-10px);
-}
-
-.photo-container img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
-
-.badge-fonction {
-    background-color: #CA258B;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.contact-links a {
-    font-size: 1.5rem;
-    margin: 0 10px;
-    color: #002d5a;
-}
-</style>
+<?= $this->endSection() ?>

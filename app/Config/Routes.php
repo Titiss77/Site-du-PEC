@@ -10,4 +10,4 @@ use CodeIgniter\Router\RouteCollection;
 // On appelle la méthode 'index' du contrôleur 'Club'
 $routes->get('/', 'Home::index');
 $routes->get('calendriers', 'Home::calendriers');   
-$routes->get('bureau', 'Bureau::index');
+$routes->get('bureau', 'Home::bureau'); 
