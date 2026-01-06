@@ -6,7 +6,11 @@ use CodeIgniter\Model;
 
 class InscriptionModel extends Model
 {
-    // Récupère les tarifs classés par catégorie (Adulte, Jeune, etc.)
+    /**
+     * Retourne la liste des tarifs
+     *
+     * @return categorie, description, prix sous la forme d'un tableau associatif
+     */
     public function getTarifs()
     {
         $req = 'SELECT categorie, description, prix FROM `tarifs`';
@@ -15,7 +19,11 @@ class InscriptionModel extends Model
 		return $tarifs;
     }
 
-    // Récupère la liste du matériel (masque, palmes, tuba...) et si le club le prête
+    /**
+     * Retourne la liste du matériel
+     *
+     * @return nom, description, pret sous la forme d'un tableau associatif
+     */
     public function getMateriel()
     {
         $req = 'SELECT nom, description, pret FROM `materiel`';
@@ -23,15 +31,18 @@ class InscriptionModel extends Model
 		$materiel = $rs->getResultArray();
 		return $materiel;
     }
-
+    
+    /**
+     * Retourne l'adresse mail associée à un poste
+     *
+     * @param string $poste
+     * @return string|null
+     */
     public function getMail($poste)
     {
         $req = 'SELECT mail FROM `postes` WHERE libelle = ? LIMIT 1';
         $rs = $this->db->query($req, [$poste]);
         $ligne = $rs->getRowArray();
-
-        // On vérifie si on a trouvé un résultat pour éviter les erreurs
-        // et on retourne uniquement la valeur du mail (string)
         return ($ligne) ? $ligne['mail'] : null;
     }
 }

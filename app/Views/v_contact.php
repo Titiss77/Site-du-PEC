@@ -5,15 +5,20 @@
     <h2 class="title-section">Contact & Inscriptions</h2>
 
     <div class="grid-2">
+        <!-- Section pour le formulaire de contact -->
         <section class="card-item">
             <h3><i class="bi bi-envelope"></i> Posez votre question</h3>
 
+            <!-- Le message de succès -->
             <?php if (session()->getFlashdata('success')): ?>
             <div class="alert-success-popup">
                 <i class="bi bi-check-all"></i> <?= session()->getFlashdata('success') ?>
             </div>
             <?php endif; ?>
+            <!-- Fin de code -->
 
+
+            <!-- Le formulaire de contact -->
             <form action="<?= base_url('contact/envoyer') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="form-group" style="display:none;">
@@ -42,7 +47,9 @@
                     <button type="submit" class="btn-home" style="width:100%">Envoyer mon message</button>
                 </form>
         </section>
+        <!-- Fin de la section pour le formulaire de contact -->
 
+        <!-- Section pour les conditions d'inscription et les tarifs -->
         <section>
             <div class="card-item mb-4 border-blue">
                 <h3><i class="bi bi-info-circle"></i> Conditions d'inscription</h3>
@@ -65,8 +72,10 @@
                 </table>
             </div>
         </section>
+        <!-- Fin de la section pour les conditions d'inscription et les tarifs -->
     </div>
 
+    <!-- Section pour l'affichage du matériel nécessaire -->
     <h3 class="title-section">Matériel nécessaire</h3>
     <div class="grid-3">
         <?php foreach ($materiel as $m): ?>
@@ -87,6 +96,7 @@
         </div>
         <?php endforeach; ?>
     </div>
+    <!-- Fin de la section pour l'affichage du matériel nécessaire -->
 </div>
 
 <?= $this->endSection() ?>

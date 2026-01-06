@@ -9,7 +9,9 @@ use App\Models\InscriptionModel;
 class Contact extends BaseController
 {
     /**
-     * Charge les paramètres SMTP Gmail pour chaque envoi
+     * Initialise la configuration de l'email
+     *
+     * @return \CodeIgniter\Email\Email
      */
     private function _initEmail()
     {
@@ -28,6 +30,11 @@ class Contact extends BaseController
         return $email;
     }
 
+    /**
+     * Affiche la page de contact avec les tarifs et le matériel
+     *
+     * @return \CodeIgniter\HTTP\Response
+     */
     public function index()
     {
         $donneesModel = new Donnees();
@@ -44,6 +51,11 @@ class Contact extends BaseController
         return view('v_contact', $data);
     }
 
+    /**
+     * Traite l'envoi du formulaire de contact
+     *
+     * @return \CodeIgniter\HTTP\RedirectResponse
+     */
     public function envoyer()
     {
         if (!empty($this->request->getPost('honeypot'))) {
@@ -122,6 +134,12 @@ class Contact extends BaseController
         }
     }
 
+    /**
+     * Confirme et envoie le message au destinataire visé
+     *
+     * @param string $token
+     * @return \CodeIgniter\HTTP\RedirectResponse
+     */
     public function confirmer($token)
     {
         $db = \Config\Database::connect();
@@ -133,11 +151,7 @@ class Contact extends BaseController
             return redirect()->to('/contact')->with('error', 'Lien expiré.');
         }
 
-        // IMPORTANT : S'assurer que getMail() renvoie bien une chaîne (le mail seul)
         $destEmail = $inscrModel->getMail($pending['destinataire']);
-
-        // Si ton modèle renvoie un tableau, décommente la ligne suivante :
-        // if(is_array($destEmail)) { $destEmail = $destEmail['mail']; }
 
         $email = $this->_initEmail();
         $email->setTo($destEmail);
