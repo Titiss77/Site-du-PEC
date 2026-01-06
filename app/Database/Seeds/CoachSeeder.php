@@ -11,12 +11,12 @@ class CoachSeeder extends Seeder
         $data = [
             [
                 'nom'         => 'Thierry Henri',
-                'description' => 'Coach principal pour les jeunes et espoirs.',
+                'description' => 'Coach principal.',
                 'photo'       => 'thierry_henri.jpg'
             ],
             [
                 'nom'         => "Martin L'espagnol",
-                'description' => 'Coach des jeunes le samedi et section.',
+                'description' => 'Coach des jeunes le samedi et de la section.',
                 'photo'       => 'martin_lespagnol.jpg'
             ],
         ];

@@ -8,7 +8,7 @@
         <section class="card-item">
             <h3><i class="bi bi-envelope"></i> Posez votre question</h3>
             <form action="<?= base_url('contact/envoyer') ?>" method="post">
-                <div class="form-group">
+                <?= csrf_field() ?> <div class="form-group">
                     <label>Votre demande s'adresse au :</label>
                     <select name="destinataire" class="form-input">
                         <option value="president">Président (Général)</option>
@@ -16,6 +16,9 @@
                         <option value="secretaire">Secrétaire (Licences/Dossiers)</option>
                         <option value="coach">Entraîneur (Sportif)</option>
                     </select>
+                </div>
+                <div class="form-group" style="display:none;">
+                    <input type="text" name="honeypot" value="">
                 </div>
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Votre email" class="form-input" required>

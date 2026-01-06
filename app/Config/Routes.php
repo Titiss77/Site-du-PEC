@@ -11,3 +11,4 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('calendriers', 'Home::calendriers');
 $routes->get('contact', 'Contact::index');
+$routes->post('contact/envoyer', 'Contact::envoyer');

@@ -56,8 +56,28 @@ class InscriptionSeeder extends Seeder
             ],
         ];
 
+        $postes = [
+            [
+                'libelle'   => 'president',
+                'mail'      => 'mathisfrances11@gmail.com'
+            ],
+            [
+                'libelle'   => 'tresorier',
+                'mail'      => 'mathisfrances11@gmail.com'
+            ],
+            [
+                'libelle'   => 'secretaire',
+                'mail'      => 'mathisfrances11@gmail.com'
+            ],
+            [
+                'libelle'   => 'coach',
+                'mail'      => 'mathisfrances11@gmail.com'
+            ],
+        ];
+
         // Insertion dans la base de données
         $this->db->table('tarifs')->insertBatch($tarifs);
         $this->db->table('materiel')->insertBatch($materiel);
+        $this->db->table('postes')->insertBatch($postes);
     }
 }

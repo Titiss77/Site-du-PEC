@@ -27,10 +27,20 @@ class InscriptionsTables extends Migration
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('materiel');
+
+        // Table Postes
+        $this->forge->addField([
+            'id'          => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'libelle'         => ['type' => 'VARCHAR', 'constraint' => 100],
+            'mail' => ['type' => 'VARCHAR', 'constraint' => 255],
+        ]);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('postes');
     }
 
     public function down() {
         $this->forge->dropTable('tarifs');
         $this->forge->dropTable('materiel');
+        $this->forge->dropTable('postes');
     }
 }
