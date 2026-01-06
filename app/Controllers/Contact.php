@@ -15,15 +15,15 @@ class Contact extends BaseController
     {
         $email = \Config\Services::email();
         $email->initialize([
-            'protocol'   => 'smtp',
-            'SMTPHost'   => 'smtp.gmail.com',
-            'SMTPUser'   => 'mathisfrances11@gmail.com',
-            'SMTPPass'   => 'zbsi mshq adqd xvgc',
-            'SMTPPort'   => 465,
+            'protocol' => 'smtp',
+            'SMTPHost' => 'smtp.gmail.com',
+            'SMTPUser' => 'mathisfrances11@gmail.com',
+            'SMTPPass' => 'zbsi mshq adqd xvgc',
+            'SMTPPort' => 465,
             'SMTPCrypto' => 'ssl',
-            'mailType'   => 'html',
-            'newline'    => "\r\n",
-            'CRLF'       => "\r\n"
+            'mailType' => 'html',
+            'newline' => "\r\n",
+            'CRLF' => "\r\n"
         ]);
         return $email;
     }
@@ -35,10 +35,10 @@ class Contact extends BaseController
 
         $data = [
             'titrePage' => 'Inscriptions & Contact',
-            'cssPage'   => 'contact.css',
-            'general'   => $donneesModel->getGeneral(),
-            'tarifs'    => $inscrModel->getTarifs(),
-            'materiel'  => $inscrModel->getMateriel(),
+            'cssPage' => 'contact.css',
+            'general' => $donneesModel->getGeneral(),
+            'tarifs' => $inscrModel->getTarifs(),
+            'materiel' => $inscrModel->getMateriel(),
         ];
 
         return view('v_contact', $data);
@@ -51,23 +51,23 @@ class Contact extends BaseController
         }
 
         if (!$this->validate([
-            'email'        => 'required|valid_email',
-            'message'      => 'required|min_length[10]',
+            'email' => 'required|valid_email',
+            'message' => 'required|min_length[10]',
             'destinataire' => 'required'
         ])) {
             return redirect()->back()->withInput()->with('error', 'Veuillez vérifier vos informations.');
         }
 
         $token = bin2hex(random_bytes(32));
-        $db    = \Config\Database::connect();
+        $db = \Config\Database::connect();
         $emailUser = esc($this->request->getPost('email'));
 
         $db->table('pending_contacts')->insert([
-            'email_user'   => $emailUser,
+            'email_user' => $emailUser,
             'destinataire' => $this->request->getPost('destinataire'),
-            'message'      => $this->request->getPost('message'),
-            'token'        => $token,
-            'created_at'   => date('Y-m-d H:i:s')
+            'message' => $this->request->getPost('message'),
+            'token' => $token,
+            'created_at' => date('Y-m-d H:i:s')
         ]);
 
         $email = $this->_initEmail();
@@ -78,21 +78,47 @@ class Contact extends BaseController
         $domainName = parse_url(base_url(), PHP_URL_HOST);
 
         $messageHtml = "
-        <div style=\"font-family: Arial; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e4; padding: 25px; border-radius: 12px;\">
-            <h2 style=\"color: #002d5a; text-align: center;\">PALMES EN CORNOUAILLES</h2>
-            <p>Bonjour, merci de confirmer l'envoi de votre message en cliquant ici :</p>
-            <div style=\"text-align: center; margin: 30px;\">
-                <a href=\"$lien\" style=\"background-color: #CA258B; color: #fff; padding: 15px 25px; text-decoration: none; border-radius: 50px; font-weight: bold;\">CONFIRMER MON MESSAGE</a>
-            </div>
-            <p style=\"font-size: 11px; text-align: center;\">Site officiel : $domainName</p>
-        </div>";
+            <div style=\"font-family: 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e4; padding: 0; border-radius: 12px; overflow: hidden; background-color: #ffffff;\">
+                
+                <div style=\"background-color: #002d5a; padding: 30px 20px; text-align: center;\">
+                    <h1 style=\"color: #ffffff; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 2px;\">Palmes en Cornouailles</h1>
+                    <p style=\"color: #CA258B; margin: 5px 0 0; font-weight: bold; font-size: 14px; text-transform: uppercase;\">Club de Nage avec Palmes — Quimper</p>
+                </div>
+
+                <div style=\"padding: 30px;\">
+                    <p style=\"font-size: 16px; font-weight: bold; color: #002d5a;\">Bonjour,</p>
+                    
+                    <p>Vous venez d'envoyer un message au secrétariat du club via notre formulaire de contact en ligne.</p>
+                    
+                    <p>Afin de lutter contre les courriers indésirables (spams) et de garantir que votre adresse email est correcte pour recevoir notre réponse, nous vous demandons de **valider votre demande** en cliquant sur le bouton ci-dessous :</p>
+                    
+                    <div style=\"text-align: center; margin: 40px 0;\">
+                        <a href=\"$lien\" style=\"background-color: #CA258B; color: #ffffff; padding: 18px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(202, 37, 139, 0.4); font-size: 14px; text-transform: uppercase;\">
+                            Confirmer l'envoi de mon message
+                        </a>
+                    </div>
+
+                    <div style=\"background-color: #f8fbff; border-left: 4px solid #002d5a; padding: 15px; border-radius: 4px; font-size: 13px; color: #555;\">
+                        <strong>Note de sécurité :</strong> Si vous n'êtes pas à l'origine de cette demande ou si vous avez reçu cet email par erreur, vous pouvez simplement l'ignorer. Sans action de votre part, votre message sera automatiquement supprimé sous 48h.
+                    </div>
+                </div>
+
+                <div style=\"background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888;\">
+                    <p style=\"margin: 0;\"><strong>Association Sportive Palmes en Cornouailles (PEC)</strong></p>
+                    <p style=\"margin: 5px 0;\">Affiliée à la FFESSM — Quimper, Finistère</p>
+                    <p style=\"margin: 10px 0 0;\">
+                        <a href=\"" . base_url() . "\" style=\"color: #002d5a; text-decoration: none; font-weight: bold;\">$domainName</a>
+                    </p>
+                </div>
+            </div>";
 
         $email->setMessage($messageHtml);
 
         if ($email->send()) {
             return redirect()->back()->with('success', 'Mail de confirmation envoyé ! Vérifiez vos spams.');
         } else {
-            echo $email->printDebugger(); die();
+            echo $email->printDebugger();
+            die();
         }
     }
 
@@ -109,7 +135,7 @@ class Contact extends BaseController
 
         // IMPORTANT : S'assurer que getMail() renvoie bien une chaîne (le mail seul)
         $destEmail = $inscrModel->getMail($pending['destinataire']);
-        
+
         // Si ton modèle renvoie un tableau, décommente la ligne suivante :
         // if(is_array($destEmail)) { $destEmail = $destEmail['mail']; }
 
@@ -119,12 +145,43 @@ class Contact extends BaseController
         $email->setSubject('Contact Site : ' . $pending['email_user']);
 
         $messageClub = "
-        <div style=\"font-family: Arial; border: 1px solid #002d5a; padding: 20px; border-radius: 12px;\">
-            <h2 style=\"background: #002d5a; color: #fff; padding: 10px;\">Nouveau message reçu</h2>
-            <p><strong>De :</strong> {$pending['email_user']}</p>
-            <p><strong>Pour :</strong> {$pending['destinataire']}</p>
-            <div style=\"background: #f8fbff; padding: 15px; border-left: 4px solid #CA258B;\">
-                " . nl2br(esc($pending['message'])) . "
+        <div style=\"font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #002d5a; padding: 0; border-radius: 12px; overflow: hidden; background-color: #ffffff;\">
+            
+            <div style=\"background-color: #002d5a; padding: 20px; text-align: center; border-bottom: 4px solid #CA258B;\">
+                <h2 style=\"color: #ffffff; margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;\">Nouveau Message Site Web</h2>
+            </div>
+
+            <div style=\"padding: 30px;\">
+                <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 25px;\">
+                    <tr>
+                        <td style=\"padding: 10px; background-color: #f8fbff; border-radius: 8px;\">
+                            <p style=\"margin: 0; font-size: 13px; color: #666; text-transform: uppercase;\">Expéditeur</p>
+                            <p style=\"margin: 5px 0 0; font-size: 16px; font-weight: bold; color: #002d5a;\">{$pending['email_user']}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style=\"padding: 10px; padding-top: 20px;\">
+                            <p style=\"margin: 0; font-size: 13px; color: #666; text-transform: uppercase;\">Destinataire visé</p>
+                            <p style=\"margin: 5px 0 0; font-size: 16px; font-weight: bold; color: #CA258B;\">" . ucfirst($pending['destinataire']) . " (PEC Quimper)</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <p style=\"margin: 0 0 10px; font-size: 13px; color: #666; text-transform: uppercase;\">Contenu du message :</p>
+                <div style=\"background-color: #fcfcfc; border: 1px solid #eee; border-left: 5px solid #002d5a; padding: 20px; border-radius: 4px; font-size: 15px; color: #1a1a1a; white-space: pre-wrap;\">
+                    " . nl2br(esc($pending['message'])) . "
+                </div>
+
+                <div style=\"margin-top: 30px; padding: 15px; background-color: #fff9e6; border: 1px solid #ffcc00; border-radius: 8px; text-align: center;\">
+                    <p style=\"margin: 0; font-size: 14px; color: #856404;\">
+                        <strong>Conseil :</strong> Pour répondre, cliquez simplement sur le bouton \"Répondre\" de votre messagerie. L'adresse a été vérifiée par le site.
+                    </p>
+                </div>
+            </div>
+
+            <div style=\"background-color: #f4f4f4; padding: 15px; text-align: center; font-size: 11px; color: #999;\">
+                <p style=\"margin: 0;\">Message envoyé le " . date('d/m/Y à H:i') . "</p>
+                <p style=\"margin: 5px 0 0;\">Identifiant de sécurité : {$pending['token']}</p>
             </div>
         </div>";
 
@@ -134,7 +191,8 @@ class Contact extends BaseController
             $db->table('pending_contacts')->where('id', $pending['id'])->delete();
             return redirect()->to('/contact')->with('success', 'Message transmis au club !');
         } else {
-            echo $email->printDebugger(); die();
+            echo $email->printDebugger();
+            die();
         }
     }
 }
