@@ -17,7 +17,7 @@
 /* Grille réutilisant la logique de la grid-3 de l'accueil */
 .trombi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     padding: 10px;
 }
@@ -109,14 +109,27 @@
     transform: scale(1.1);
 }
 
-/* Responsive */
+@media (max-width: 1200px) {
+    .trombi-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 par ligne sur tablettes */
+    }
+}
+
 @media (max-width: 768px) {
     .trombi-title {
         font-size: 2rem;
     }
 
     .trombi-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 par ligne sur gros smartphones */
+    }
+}
+
+@media (max-width: 480px) {
+    .trombi-grid {
+        grid-template-columns: 1fr;
+        /* 1 seul par ligne sur petits mobiles */
     }
 }

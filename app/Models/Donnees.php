@@ -36,7 +36,7 @@ class Donnees extends Model {
 	 * @return nom, description, photo, numTel, mail sous la forme d'un tableau associatif
 	 */
 	function getCoachs() {
-		$req = 'SELECT nom, description, photo, numTel, mail FROM `coaches`';
+		$req = 'SELECT m.nom, m.photo FROM `membres` m JOIN membre_fonction mf ON m.id=mf.membre_id JOIN fonctions f ON mf.fonction_id=f.id WHERE f.titre = "Coach"';
 		$rs = $this->db->query($req);
 		$general = $rs->getResultArray();
 		return $general;
@@ -94,13 +94,10 @@ class Donnees extends Model {
 
 	public function getBureau()
     {
-        return $this->db->table('membres m')
-            ->select('m.*, GROUP_CONCAT(f.titre SEPARATOR ", ") as fonctions')
-            ->join('membre_fonction mf', 'mf.membre_id = m.id', 'left')
-            ->join('fonctions f', 'f.id = mf.fonction_id', 'left')
-            ->groupBy('m.id')
-            ->get()
-            ->getResultArray();
+        $req = 'SELECT m.*, GROUP_CONCAT(f.titre SEPARATOR ", ") as fonctions FROM membres m JOIN membre_fonction mf ON mf.membre_id = m.id JOIN fonctions f ON f.id = mf.fonction_id GROUP BY m.id HAVING fonctions NOT LIKE "Coach"';
+		$rs = $this->db->query($req);
+		$general = $rs->getResultArray();
+		return $general;
     }
 
 	

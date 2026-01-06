@@ -8,7 +8,7 @@
         <?php foreach ($membres as $m): ?>
         <div class="trombi-card">
             <div class="photo-container">
-                <img src="<?= base_url('uploads/bureau/' . esc($m['photo'])); ?>" alt="<?= esc($m['nom']); ?>">
+                <img src="<?= base_url('uploads/personnel/' . esc($m['photo'])); ?>" alt="<?= esc($m['nom']); ?>">
             </div>
             <div class="info">
                 <h3><?= esc($m['nom']); ?></h3>

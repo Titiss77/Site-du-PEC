@@ -54,6 +54,7 @@
     box-shadow: var(--shadow);
     transition: var(--transition);
     border: 1px solid rgba(0, 0, 0, 0.03);
+    text-align: center;
 }
 
 .card-item:hover,

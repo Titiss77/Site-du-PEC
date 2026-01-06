@@ -4,7 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class BureauSeeder extends Seeder
+class PersonnelSeeder extends Seeder
 {
     public function run()
     {
@@ -21,6 +21,8 @@ class BureauSeeder extends Seeder
             ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 12 34 56 78', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'exemple@exemple.com'],
             ['nom' => 'Valérie THOMAS', 'numTel' => '06 12 34 56 78', 'photo' => 'Valérie_THOMAS.jpg', 'mail' => 'exemple@exemple.com'],
             ['nom' => 'Mathis FRANCES', 'numTel' => '06 12 34 56 78', 'photo' => 'Mathis_FRANCES.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Thierry HENRI', 'numTel' => '06 12 34 56 78', 'photo' => 'Thierry_HENRI.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Martin LESPAGNOL', 'numTel' => '06 12 34 56 78', 'photo' => 'Martin_LESPAGNOL.jpg', 'mail' => 'exemple@exemple.com'],
             
         ];
         $db->table('membres')->insertBatch($membres);
@@ -33,6 +35,7 @@ class BureauSeeder extends Seeder
             ['titre' => 'Secrétaire'],//4
             ['titre' => 'Partenariat / sponsoring'],//5
             ['titre' => 'Informatique'],//6
+            ['titre' => 'Coach'],//7
             
         ];
         $db->table('fonctions')->insertBatch($fonctions);
@@ -55,6 +58,11 @@ class BureauSeeder extends Seeder
             ['membre_id' => 8, 'fonction_id' => 5],
 
             ['membre_id' => 9, 'fonction_id' => 6],
+
+            ['membre_id' => 10, 'fonction_id' => 7],
+
+            ['membre_id' => 11, 'fonction_id' => 7],
+            ['membre_id' => 2, 'fonction_id' => 7],
             
         ];
         $db->table('membre_fonction')->insertBatch($liaisons);

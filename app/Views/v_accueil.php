@@ -43,7 +43,12 @@
 
     <!-- Section pour l'affichage des disciplines -->
     <h3 class="title-section">Nos Disciplines</h3>
-    <div class="grid-3">
+    <?php
+    $nbDisciplines = count($disciplines);
+    ?>
+
+    <div class="grid-dynamic"
+        style="display: grid; grid-template-columns: repeat(<?= $nbDisciplines ?>, 1fr); gap: 30px;">
         <?php foreach ($disciplines as $discipline): ?>
         <div class="card-item">
             <img src="<?= base_url('uploads/disciplines/' . $discipline['image']); ?>" alt="<?= $discipline['nom'] ?>"
@@ -56,15 +61,19 @@
     <!-- Fin de section -->
 
     <!-- Section pour l'affichage de l'équipe -->
-    <h3 class="title-section">L'Équipe</h3>
-    <div class="grid-2">
+    <h3 class="title-section">Nos Coachs</h3>
+
+    <?php
+    $nbCoachs = count($coaches);
+    ?>
+
+    <div class="grid-dynamic" style="display: grid; grid-template-columns: repeat(<?= $nbCoachs ?>, 1fr); gap: 30px;">
         <?php foreach ($coaches as $coach): ?>
         <div class="coach-item">
-            <img src="<?= base_url('uploads/coaches/' . $coach['photo']); ?>" alt="Coach <?= esc($coach['nom']); ?>"
+            <img src="<?= base_url('uploads/personnel/' . $coach['photo']); ?>" alt="Coach <?= esc($coach['nom']); ?>"
                 class="img-circle" />
             <div class="coach-info">
                 <h4><?= esc($coach['nom']); ?></h4>
-                <p><?= esc($coach['description']); ?></p>
             </div>
         </div>
         <?php endforeach; ?>
@@ -81,7 +90,11 @@
 
     <!-- Section pour les lieux d'entraînement -->
     <h3 class="title-section">Lieux d'entraînement</h3>
-    <div class="grid-2">
+    <?php
+    $nbLieux = count($piscines);
+    ?>
+
+    <div class="grid-dynamic" style="display: grid; grid-template-columns: repeat(<?= $nbLieux ?>, 1fr); gap: 30px;">
         <?php foreach ($piscines as $p): ?>
         <div class="piscine-card">
             <img src="<?= base_url('uploads/piscines/' . ($p['photo'] ?? 'default_piscine.jpg')) ?>"
