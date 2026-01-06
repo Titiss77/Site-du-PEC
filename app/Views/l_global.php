@@ -36,6 +36,7 @@
             <nav>
                 <ul>
                     <li><?= anchor('/boutique', 'Boutique'); ?></li>
+                    <li><?= anchor('/bureau', 'Bureau'); ?></li>
                     <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
                     <li><?= anchor('/actualites', 'Actualités'); ?></li>
             </nav>
