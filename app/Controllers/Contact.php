@@ -130,11 +130,17 @@ class Contact extends BaseController
 
         $email->setMessage($messageHtml);
 
-        if ($email->send()) {
-            return redirect()->back()->with('success', 'Mail de confirmation envoyé ! Vérifiez vos spams.');
-        } else {
-            echo $email->printDebugger();
-            die();
+        try {
+            if ($email->send()) {
+                return redirect()->back()->with('success', 'Mail de confirmation envoyé ! Vérifiez vos spams.');
+            } else {
+                echo $email->printDebugger();
+                die();
+            }
+        } catch (\Exception $e) {
+            // Si le serveur SMTP est totalement inaccessible (timeout)
+            log_message('error', 'Erreur SMTP : ' . $e->getMessage());
+            return redirect()->back()->with('error', "Le service d'envoi est temporairement indisponible.");
         }
     }
 
@@ -210,12 +216,18 @@ class Contact extends BaseController
 
         $email->setMessage($messageClub);
 
-        if ($email->send()) {
-            $db->table('pending_contacts')->where('id', $pending['id'])->delete();
-            return redirect()->to('/contact')->with('success', 'Message transmis au club !');
-        } else {
-            echo $email->printDebugger();
-            die();
+        try {
+            if ($email->send()) {
+                $db->table('pending_contacts')->where('id', $pending['id'])->delete();
+                return redirect()->to('/contact')->with('success', 'Message transmis au club !');
+            } else {
+                echo $email->printDebugger();
+                die();
+            }
+        } catch (\Exception $e) {
+            // Si le serveur SMTP est totalement inaccessible (timeout)
+            log_message('error', 'Erreur SMTP : ' . $e->getMessage());
+            return redirect()->back()->with('error', "Le service d'envoi est temporairement indisponible.");
         }
     }
 }
