@@ -82,13 +82,18 @@
     <!-- Section pour les lieux d'entraînement -->
     <h3 class="title-section">Lieux d'entraînement</h3>
     <div class="grid-2">
-        <?php foreach ($piscines as $p) : ?>
+        <?php foreach ($piscines as $p): ?>
         <div class="piscine-card">
             <img src="<?= base_url('uploads/piscines/' . ($p['photo'] ?? 'default_piscine.jpg')) ?>"
                 alt="Piscine <?= esc($p['nom']); ?>" class="img-card" />
             <div class="piscine-info">
                 <h5><?= esc($p['nom']); ?></h5>
-                <p><i class="bi bi-geo-alt"></i> <?= esc($p['adresse']); ?></p>
+                <p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=<?= urlencode($p['adresse']); ?>"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-geo-alt"></i><?= esc($p['adresse']); ?>
+                    </a>
+                </p>
                 <span class="tag-bassin">Bassin <?= esc($p['type_bassin'] ?? '25m'); ?></span>
             </div>
         </div>

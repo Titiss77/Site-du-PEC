@@ -57,7 +57,8 @@
 }
 
 .card-item:hover,
-.coach-item:hover {
+.coach-item:hover,
+.piscine-card:hover {
     transform: translateY(-5px);
 }
 
@@ -127,4 +128,16 @@
     font-size: 0.8rem;
     font-weight: bold;
     margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #002d5a;
+    /* Ton bleu PEC */
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #CA258B;
+    /* Ton rose PEC au survol */
 }
