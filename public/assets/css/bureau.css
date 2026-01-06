@@ -86,7 +86,7 @@
     display: flex;
     gap: 15px;
     margin-top: auto;
-    /* Pousse les liens vers le bas */
+    justify-content: center;
 }
 
 .contact-links a {

@@ -13,9 +13,9 @@ class BureauSeeder extends Seeder
         // 1. Insertion des membres uniques
         $membres = [
             ['nom' => 'Yves PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'Yves_PRIGENT.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 12 34 56 78', 'photo' => 'Marie_LANDOLSI.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 12 34 56 78', 'photo' => 'vide.jpg', 'mail' => 'exemple@exemple.com'],
             ['nom' => 'Tifenn GAUDIN', 'numTel' => '06 12 34 56 78', 'photo' => 'Tifenn_GAUDIN.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Sandra PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'Sandra_PRIGENT.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Sandra PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'vide.jpg', 'mail' => 'exemple@exemple.com'],
             ['nom' => 'Anne Catherine CAPITAINE', 'numTel' => '06 12 34 56 78', 'photo' => 'Anne_Catherine_CAPITAINE.jpg', 'mail' => 'exemple@exemple.com'],
             ['nom' => 'Sandra KERGOURLAY', 'numTel' => '06 12 34 56 78', 'photo' => 'Sandra_KERGOURLAY.jpg', 'mail' => 'exemple@exemple.com'],
             ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 12 34 56 78', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'exemple@exemple.com'],
