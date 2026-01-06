@@ -12,20 +12,20 @@ class BureauSeeder extends Seeder
 
         // 1. Insertion des membres uniques
         $membres = [
-            ['nom' => 'Yves PRIGENT', 'numTel' => '06 12 34 56 78', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 12 34 56 78', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Tifenn GAUDIN', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Sandra PRIGENT', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Anne Catherine CAPITAINE', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Sandra KERGOURLAY', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Isabelle LECLERC', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Lorette LE MOIGNE', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Christophe KERJEAN', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Valérie THOMAS', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Mathis FRANCES', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Corrinne LE MEUR', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
-            ['nom' => 'Anne FRINAULT', 'numTel' => '06 12 34 56 78', 'mail' => 'exemplefenn@exemple.com'],
+            ['nom' => 'Yves PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'Yves_PRIGENT.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 12 34 56 78', 'photo' => 'Marie_LANDOLSI.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Tifenn GAUDIN', 'numTel' => '06 12 34 56 78', 'photo' => 'Tifenn_GAUDIN.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Sandra PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'Sandra_PRIGENT.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Anne Catherine CAPITAINE', 'numTel' => '06 12 34 56 78', 'photo' => 'Anne_Catherine_CAPITAINE.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Sandra KERGOURLAY', 'numTel' => '06 12 34 56 78', 'photo' => 'Sandra_KERGOURLAY.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Isabelle LECLERC', 'numTel' => '06 12 34 56 78', 'photo' => 'Isabelle_LECLERC.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Lorette LE MOIGNE', 'numTel' => '06 12 34 56 78', 'photo' => 'Lorette_LE_MOIGNE.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Christophe KERJEAN', 'numTel' => '06 12 34 56 78', 'photo' => 'Christophe_KERJEAN.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Valérie THOMAS', 'numTel' => '06 12 34 56 78', 'photo' => 'Valérie_THOMAS.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 12 34 56 78', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Mathis FRANCES', 'numTel' => '06 12 34 56 78', 'photo' => 'Mathis_FRANCES.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Corrinne LE MEUR', 'numTel' => '06 12 34 56 78', 'photo' => 'Corrinne_LE_MEUR.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Anne FRINAULT', 'numTel' => '06 12 34 56 78', 'photo' => 'Anne_FRINAULT.jpg', 'mail' => 'exemple@exemple.com'],
             
             
         ];

@@ -15,7 +15,7 @@ class CoachSeeder extends Seeder
                 'photo'       => 'thierry_henri.jpg'
             ],
             [
-                'nom'         => "Martin L'espagnol",
+                'nom'         => "Martin Lespagnol",
                 'description' => 'Coach des jeunes le samedi et section.',
                 'photo'       => 'martin_lespagnol.jpg'
             ],
