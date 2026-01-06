@@ -13,22 +13,11 @@ class Contact extends BaseController
      *
      * @return \CodeIgniter\Email\Email
      */
-    private function _initEmail()
-    {
-        $email = \Config\Services::email();
-        $email->initialize([
-            'protocol' => 'smtp',
-            'SMTPHost' => 'smtp.gmail.com',
-            'SMTPUser' => 'pec.jetable@gmail.com',
-            'SMTPPass' => 'etdn grvt ecbq zwfo',
-            'SMTPPort' => 465,
-            'SMTPCrypto' => 'ssl',
-            'mailType' => 'html',
-            'newline' => "\r\n",
-            'CRLF' => "\r\n"
-        ]);
-        return $email;
-    }
+private function _initEmail()
+{
+    // Charge automatiquement les paramètres de app/Config/Email.php
+    return \Config\Services::email();
+}
 
     /**
      * Affiche la page de contact avec les tarifs et le matériel
