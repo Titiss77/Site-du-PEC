@@ -89,40 +89,44 @@ class Contact extends BaseController
         $lien = base_url("contact/confirmer/$token");
         $domainName = parse_url(base_url(), PHP_URL_HOST);
 
-        $messageHtml = "
-            <div style=\"font-family: 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e4; padding: 0; border-radius: 12px; overflow: hidden; background-color: #ffffff;\">
+        $urlAccueil = base_url();
+        $nomClub = $infosGeneral['nomClub'] ?? 'Palmes en Cornouailles';
+
+        $messageHtml = <<<HTML
+            <div style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #e4e4e4; padding: 0; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
                 
-                <div style=\"background-color: #002d5a; padding: 30px 20px; text-align: center;\">
-                    <h1 style=\"color: #ffffff; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 2px;\">Palmes en Cornouailles</h1>
-                    <p style=\"color: #CA258B; margin: 5px 0 0; font-weight: bold; font-size: 14px; text-transform: uppercase;\">Club de Nage avec Palmes — Quimper</p>
+                <div style="background-color: #002d5a; padding: 30px 20px; text-align: center;">
+                    <h1 style="color: #ffffff; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 2px;">{$nomClub}</h1>
+                    <p style="color: #CA258B; margin: 5px 0 0; font-weight: bold; font-size: 14px; text-transform: uppercase;">Club de Nage avec Palmes — Quimper</p>
                 </div>
 
-                <div style=\"padding: 30px;\">
-                    <p style=\"font-size: 16px; font-weight: bold; color: #002d5a;\">Bonjour,</p>
+                <div style="padding: 30px;">
+                    <p style="font-size: 16px; font-weight: bold; color: #002d5a;">Bonjour,</p>
                     
                     <p>Vous venez d'envoyer un message au secrétariat du club via notre formulaire de contact en ligne.</p>
                     
-                    <p>Afin de lutter contre les courriers indésirables (spams) et de garantir que votre adresse email est correcte pour recevoir notre réponse, nous vous demandons de **valider votre demande** en cliquant sur le bouton ci-dessous :</p>
+                    <p>Afin de lutter contre les courriers indésirables (spams) et de garantir que votre adresse email est correcte pour recevoir notre réponse, nous vous demandons de <strong>valider votre demande</strong> en cliquant sur le bouton ci-dessous :</p>
                     
-                    <div style=\"text-align: center; margin: 40px 0;\">
-                        <a href=\"$lien\" style=\"background-color: #CA258B; color: #ffffff; padding: 18px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(202, 37, 139, 0.4); font-size: 14px; text-transform: uppercase;\">
+                    <div style="text-align: center; margin: 40px 0;">
+                        <a href="{$lien}" style="background-color: #CA258B; color: #ffffff; padding: 18px 35px; text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; box-shadow: 0 4px 15px rgba(202, 37, 139, 0.4); font-size: 14px; text-transform: uppercase;">
                             Confirmer l'envoi de mon message
                         </a>
                     </div>
 
-                    <div style=\"background-color: #f8fbff; border-left: 4px solid #002d5a; padding: 15px; border-radius: 4px; font-size: 13px; color: #555;\">
+                    <div style="background-color: #f8fbff; border-left: 4px solid #002d5a; padding: 15px; border-radius: 4px; font-size: 13px; color: #555;">
                         <strong>Note de sécurité :</strong> Si vous n'êtes pas à l'origine de cette demande ou si vous avez reçu cet email par erreur, vous pouvez simplement l'ignorer. Sans action de votre part, votre message sera automatiquement supprimé sous 48h.
                     </div>
                 </div>
 
-                <div style=\"background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888;\">
-                    <p style=\"margin: 0;\"><strong>Association Sportive Palmes en Cornouailles (PEC)</strong></p>
-                    <p style=\"margin: 5px 0;\">Affiliée à la FFESSM — Quimper, Finistère</p>
-                    <p style=\"margin: 10px 0 0;\">
-                        <a href=\"" . base_url() . "\" style=\"color: #002d5a; text-decoration: none; font-weight: bold;\">$domainName</a>
+                <div style="background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888;">
+                    <p style="margin: 0;"><strong>Association Sportive {$nomClub}</strong></p>
+                    <p style="margin: 5px 0;">Affiliée à la FFESSM — Quimper, Finistère</p>
+                    <p style="margin: 10px 0 0;">
+                        <a href="{$urlAccueil}" style="color: #002d5a; text-decoration: none; font-weight: bold;">{$domainName}</a>
                     </p>
                 </div>
-            </div>";
+            </div>
+            HTML;
 
         $email->setMessage($messageHtml);
 
@@ -158,46 +162,51 @@ class Contact extends BaseController
         $email->setReplyTo($pending['email_user']);
         $email->setSubject('Contact Site : ' . $pending['email_user']);
 
-        $messageClub = "
-        <div style=\"font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #002d5a; padding: 0; border-radius: 12px; overflow: hidden; background-color: #ffffff;\">
-            
-            <div style=\"background-color: #002d5a; padding: 20px; text-align: center; border-bottom: 4px solid #CA258B;\">
-                <h2 style=\"color: #ffffff; margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;\">Nouveau Message Site Web</h2>
-            </div>
+        $dateEnvoi = date('d/m/Y à H:i');
+        $messageContenu = nl2br(esc($pending['message']));
+        $destinataireNom = ucfirst($pending['destinataire']);
 
-            <div style=\"padding: 30px;\">
-                <table style=\"width: 100%; border-collapse: collapse; margin-bottom: 25px;\">
-                    <tr>
-                        <td style=\"padding: 10px; background-color: #f8fbff; border-radius: 8px;\">
-                            <p style=\"margin: 0; font-size: 13px; color: #666; text-transform: uppercase;\">Expéditeur</p>
-                            <p style=\"margin: 5px 0 0; font-size: 16px; font-weight: bold; color: #002d5a;\">{$pending['email_user']}</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style=\"padding: 10px; padding-top: 20px;\">
-                            <p style=\"margin: 0; font-size: 13px; color: #666; text-transform: uppercase;\">Destinataire visé</p>
-                            <p style=\"margin: 5px 0 0; font-size: 16px; font-weight: bold; color: #CA258B;\">" . ucfirst($pending['destinataire']) . " (PEC Quimper)</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <p style=\"margin: 0 0 10px; font-size: 13px; color: #666; text-transform: uppercase;\">Contenu du message :</p>
-                <div style=\"background-color: #fcfcfc; border: 1px solid #eee; border-left: 5px solid #002d5a; padding: 20px; border-radius: 4px; font-size: 15px; color: #1a1a1a; white-space: pre-wrap;\">
-                    " . nl2br(esc($pending['message'])) . "
+        $messageClub = <<<HTML
+            <div style="font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 600px; margin: 0 auto; border: 1px solid #002d5a; padding: 0; border-radius: 12px; overflow: hidden; background-color: #ffffff;">
+                
+                <div style="background-color: #002d5a; padding: 20px; text-align: center; border-bottom: 4px solid #CA258B;">
+                    <h2 style="color: #ffffff; margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px;">Nouveau Message Site Web</h2>
                 </div>
 
-                <div style=\"margin-top: 30px; padding: 15px; background-color: #fff9e6; border: 1px solid #ffcc00; border-radius: 8px; text-align: center;\">
-                    <p style=\"margin: 0; font-size: 14px; color: #856404;\">
-                        <strong>Conseil :</strong> Pour répondre, cliquez simplement sur le bouton \"Répondre\" de votre messagerie. L'adresse a été vérifiée par le site.
-                    </p>
+                <div style="padding: 30px;">
+                    <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
+                        <tr>
+                            <td style="padding: 10px; background-color: #f8fbff; border-radius: 8px;">
+                                <p style="margin: 0; font-size: 13px; color: #666; text-transform: uppercase;">Expéditeur</p>
+                                <p style="margin: 5px 0 0; font-size: 16px; font-weight: bold; color: #002d5a;">{$pending['email_user']}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; padding-top: 20px;">
+                                <p style="margin: 0; font-size: 13px; color: #666; text-transform: uppercase;">Destinataire visé</p>
+                                <p style="margin: 5px 0 0; font-size: 16px; font-weight: bold; color: #CA258B;">{$destinataireNom} (PEC Quimper)</p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p style="margin: 0 0 10px; font-size: 13px; color: #666; text-transform: uppercase;">Contenu du message :</p>
+                    <div style="background-color: #fcfcfc; border: 1px solid #eee; border-left: 5px solid #002d5a; padding: 20px; border-radius: 4px; font-size: 15px; color: #1a1a1a; white-space: pre-wrap;">
+                        {$messageContenu}
+                    </div>
+
+                    <div style="margin-top: 30px; padding: 15px; background-color: #fff9e6; border: 1px solid #ffcc00; border-radius: 8px; text-align: center;">
+                        <p style="margin: 0; font-size: 14px; color: #856404;">
+                            <strong>Conseil :</strong> Pour répondre, cliquez simplement sur le bouton "Répondre" de votre messagerie. L'adresse a été vérifiée par le site.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background-color: #f4f4f4; padding: 15px; text-align: center; font-size: 11px; color: #999;">
+                    <p style="margin: 0;">Message envoyé le {$dateEnvoi}</p>
+                    <p style="margin: 5px 0 0;">Identifiant de sécurité : {$pending['token']}</p>
                 </div>
             </div>
-
-            <div style=\"background-color: #f4f4f4; padding: 15px; text-align: center; font-size: 11px; color: #999;\">
-                <p style=\"margin: 0;\">Message envoyé le " . date('d/m/Y à H:i') . "</p>
-                <p style=\"margin: 5px 0 0;\">Identifiant de sécurité : {$pending['token']}</p>
-            </div>
-        </div>";
+            HTML;
 
         $email->setMessage($messageClub);
 
