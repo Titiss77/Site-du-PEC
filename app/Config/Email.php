@@ -6,6 +6,9 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
+    // adresse mail de tests
+    // mail :
+    // mot de passe : 
     public string $fromEmail  = 'mathisfrances11@gmail.com'; // Ton adresse Gmail
     public string $fromName   = 'Palmes en Cornouailles';
     public string $protocol   = 'smtp';
