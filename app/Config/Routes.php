@@ -12,3 +12,4 @@ $routes->get('/', 'Home::index');
 $routes->get('calendriers', 'Home::calendriers');
 $routes->get('contact', 'Contact::index');
 $routes->post('contact/envoyer', 'Contact::envoyer');
+$routes->get('contact/confirmer/(:any)', 'Contact::confirmer/$1');

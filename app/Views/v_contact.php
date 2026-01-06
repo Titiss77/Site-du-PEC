@@ -7,28 +7,40 @@
     <div class="grid-2">
         <section class="card-item">
             <h3><i class="bi bi-envelope"></i> Posez votre question</h3>
+
+            <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert-success-popup">
+                <i class="bi bi-check-all"></i> <?= session()->getFlashdata('success') ?>
+            </div>
+            <?php endif; ?>
+
             <form action="<?= base_url('contact/envoyer') ?>" method="post">
-                <?= csrf_field() ?> <div class="form-group">
-                    <label>Votre demande s'adresse au :</label>
-                    <select name="destinataire" class="form-input">
-                        <option value="president">Président (Général)</option>
-                        <option value="tresorier">Trésorier (Facturation/Tarifs)</option>
-                        <option value="secretaire">Secrétaire (Licences/Dossiers)</option>
-                        <option value="coach">Entraîneur (Sportif)</option>
-                    </select>
-                </div>
+                <?= csrf_field() ?>
                 <div class="form-group" style="display:none;">
                     <input type="text" name="honeypot" value="">
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Votre email" class="form-input" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="Votre message..." rows="5" class="form-input"
-                        required></textarea>
-                </div>
-                <button type="submit" class="btn-home" style="width:100%">Envoyer mon message</button>
-            </form>
+                <form action="<?= base_url('contact/envoyer') ?>" method="post">
+                    <?= csrf_field() ?> <div class="form-group">
+                        <label>Votre demande s'adresse au :</label>
+                        <select name="destinataire" class="form-input">
+                            <option value="president">Président (Général)</option>
+                            <option value="tresorier">Trésorier (Facturation/Tarifs)</option>
+                            <option value="secretaire">Secrétaire (Licences/Dossiers)</option>
+                            <option value="coach">Entraîneur (Sportif)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="display:none;">
+                        <input type="text" name="honeypot" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Votre email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Votre message..." rows="5" class="form-input"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-home" style="width:100%">Envoyer mon message</button>
+                </form>
         </section>
 
         <section>
