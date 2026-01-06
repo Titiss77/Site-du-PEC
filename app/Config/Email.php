@@ -9,14 +9,14 @@ class Email extends BaseConfig
     // adresse mail de tests
     // mail :
     // mot de passe : 
-    public string $fromEmail  = 'mathisfrances11@gmail.com'; // Ton adresse Gmail
+    public string $fromEmail  = 'pec.jetable@gmail.com'; // Ton adresse Gmail
     public string $fromName   = 'Palmes en Cornouailles';
     public string $protocol   = 'smtp';
     
     // Paramètres Gmail
     public string $SMTPHost   = 'smtp.gmail.com';
-    public string $SMTPUser   = 'mathisfrances11@gmail.com';
-    public string $SMTPPass   = 'zbsi mshq adqd xvgc'; // Le code de 16 caractères de Google
+    public string $SMTPUser   = 'pec.jetable@gmail.com';
+    public string $SMTPPass   = 'etdn grvt ecbq zwfo'; // Le code de 16 caractères de Google
     // On laisse la déclaration en string pour éviter l'erreur de type
     public string $SMTPPort   = '465'; 
     public string $SMTPCrypto = 'ssl';

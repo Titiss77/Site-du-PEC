@@ -19,8 +19,8 @@ class Contact extends BaseController
         $email->initialize([
             'protocol' => 'smtp',
             'SMTPHost' => 'smtp.gmail.com',
-            'SMTPUser' => 'mathisfrances11@gmail.com',
-            'SMTPPass' => 'zbsi mshq adqd xvgc',
+            'SMTPUser' => 'pec.jetable@gmail.com',
+            'SMTPPass' => 'etdn grvt ecbq zwfo',
             'SMTPPort' => 465,
             'SMTPCrypto' => 'ssl',
             'mailType' => 'html',
