@@ -38,8 +38,8 @@ class Donnees extends Model {
 	function getCoachs() {
 		$req = 'SELECT m.nom, m.photo FROM `membres` m JOIN membre_fonction mf ON m.id=mf.membre_id JOIN fonctions f ON mf.fonction_id=f.id WHERE f.titre = "Coach"';
 		$rs = $this->db->query($req);
-		$general = $rs->getResultArray();
-		return $general;
+		$coachs = $rs->getResultArray();
+		return $coachs;
 	}
 	
 	/**

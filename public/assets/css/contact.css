@@ -1,0 +1,97 @@
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    font-family: inherit;
+}
+
+.list-check {
+    list-style: none;
+    padding: 0;
+}
+
+.list-check li::before {
+    content: "✓ ";
+    color: var(--secondary);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.bg-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.bg-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Style de base des badges de matériel */
+.tag-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Badge Succès (Prêt) */
+.is-lent {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Badge Warning (À charge) */
+.is-personal {
+    background-color: #f6e398;
+    color: #4a5715;
+    border: 1px solid #eed67e;
+}
+
+/* Animation discrète au survol de la carte matériel */
+.card-item:hover .tag-status {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.alert-success-popup {
+    background-color: #d4edda;
+    /* Vert clair */
+    color: #155724;
+    /* Vert foncé */
+    padding: 15px;
+    border-radius: var(--radius);
+    border: 1px solid #c3e6cb;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    animation: slideDown 0.5s ease-out;
+    /* Petit effet d'apparition */
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
