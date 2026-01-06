@@ -9,4 +9,5 @@ use CodeIgniter\Router\RouteCollection;
 // Route principale : affiche la page d'accueil du club
 // On appelle la méthode 'index' du contrôleur 'Club'
 $routes->get('/', 'Home::index');
-$routes->get('calendriers', 'Home::calendriers');
+$routes->get('calendriers', 'Home::calendriers');   
+$routes->get('bureau', 'Bureau::index');

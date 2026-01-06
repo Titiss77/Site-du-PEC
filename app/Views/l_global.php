@@ -21,6 +21,7 @@
             <h2><?= $general['nomClub']; ?></h2>
             <ul>
                 <li><?= anchor('/', 'Accueil'); ?></li>
+                <li><?= anchor('/bureau', 'Bureau'); ?></li>
                 <li><?= anchor('/boutique', 'Boutique'); ?></li>
                 <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
                 <li><?= anchor('/calendriers', 'Calendriers'); ?></li>
