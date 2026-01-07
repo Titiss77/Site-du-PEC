@@ -6,21 +6,66 @@ use CodeIgniter\Database\Migration;
 
 class CreateActualites extends Migration
 {
-    // app/Database/Migrations/2026-01-06-000007_CreatePendingContacts.php
-
     public function up()
     {
         $this->forge->addField([
-            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'Titre' => ['type' => 'VARCHAR', 'constraint' => 50],
-            'image' => ['type' => 'VARCHAR', 'constraint' => 100],
-            'description' => ['type' => 'TEXT'],
-            'datePublication' => ['type' => 'DATE'],
-            'dateEvenement' => ['type' => 'DATE', 'null' => true],
-            'idAuteur' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
+            'id' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'auto_increment' => true
+            ],
+            'titre' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 150, // Plus long pour plus de flexibilité
+            ],
+            'slug' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 150,
+                'unique'     => true, // Pour des URLs uniques
+            ],
+            'type' => [
+                'type'       => 'ENUM',
+                'constraint' => ['actualite', 'evenement', 'annonce'],
+                'default'    => 'actualite',
+            ],
+            'statut' => [
+                'type'       => 'ENUM',
+                'constraint' => ['brouillon', 'publie', 'archive'],
+                'default'    => 'brouillon',
+            ],
+            'description' => [
+                'type' => 'TEXT',
+            ],
+            'image' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'null'       => true, // Optionnel
+            ],
+            'date_evenement' => [
+                'type' => 'DATE',
+                'null' => true, // Uniquement pour le type 'evenement'
+            ],
+            'id_auteur' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'unsigned'   => true,
+            ],
+            'created_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
+
         $this->forge->addPrimaryKey('id');
-        $this->forge->addForeignKey('idAuteur', 'membres', 'id', 'CASCADE', 'CASCADE');
+        
+        // Clé étrangère vers la table membres
+        $this->forge->addForeignKey('id_auteur', 'membres', 'id', 'CASCADE', 'CASCADE');
+        
         $this->forge->createTable('actualites');
     }
 
