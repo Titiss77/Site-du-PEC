@@ -13,8 +13,8 @@ class CreateBureau extends Migration
             'id' => ['type' => 'INT', 'constraint' => 11, 'auto_increment' => true],
             'nom' => ['type' => 'VARCHAR', 'constraint' => 100],
             'photo' => ['type' => 'VARCHAR', 'constraint' => 255, 'default' => 'vide.jpg'],
-            'numTel' => ['type' => 'VARCHAR', 'constraint' => 20],
-            'mail' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'numTel' => ['type' => 'VARCHAR', 'constraint' => 20, 'null' => true],
+            'mail' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('membres');

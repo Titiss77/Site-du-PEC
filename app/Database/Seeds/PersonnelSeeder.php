@@ -12,17 +12,17 @@ class PersonnelSeeder extends Seeder
 
         // 1. Insertion des membres uniques
         $membres = [
-            ['nom' => 'Yves PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'Yves_PRIGENT.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 12 34 56 78', 'photo' => 'vide.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Tifenn GAUDIN', 'numTel' => '06 12 34 56 78', 'photo' => 'Tifenn_GAUDIN.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Sandra PRIGENT', 'numTel' => '06 12 34 56 78', 'photo' => 'vide.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Anne Catherine CAPITAINE', 'numTel' => '06 12 34 56 78', 'photo' => 'Anne_Catherine_CAPITAINE.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Sandra KERGOURLAY', 'numTel' => '06 12 34 56 78', 'photo' => 'Sandra_KERGOURLAY.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 12 34 56 78', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Valérie THOMAS', 'numTel' => '06 12 34 56 78', 'photo' => 'Valérie_THOMAS.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Mathis FRANCES', 'numTel' => '06 12 34 56 78', 'photo' => 'Mathis_FRANCES.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Thierry HENRI', 'numTel' => '06 12 34 56 78', 'photo' => 'Thierry_HENRI.jpg', 'mail' => 'exemple@exemple.com'],
-            ['nom' => 'Martin LESPAGNOL', 'numTel' => '06 12 34 56 78', 'photo' => 'Martin_LESPAGNOL.jpg', 'mail' => 'exemple@exemple.com'],
+            ['nom' => 'Yves PRIGENT', 'numTel' => '06 30 85 78 60', 'photo' => 'Yves_PRIGENT.jpg', 'mail' => 'yvesandra.prigent@gmail.com'],
+            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 88 97 53 77', 'photo' => 'vide.jpg', 'mail' => 'marie_le_moigne@yahoo.fr'],
+            ['nom' => 'Tifenn GAUDIN', 'numTel' => '06 95 30 29 09', 'photo' => 'Tifenn_GAUDIN.jpg', 'mail' => 'tifenngaudin@yahoo.fr'],
+            ['nom' => 'Sandra PRIGENT', 'numTel' => '06 88 79 70 17', 'photo' => 'vide.jpg', 'mail' => 'yvesandra.prigent@gmail.com'],
+            ['nom' => 'Anne Catherine CAPITAINE', 'numTel' => '06 48 70 38 45', 'photo' => 'Anne_Catherine_CAPITAINE.jpg', 'mail' => 'a.c.capitaine@gmail.com'],
+            ['nom' => 'Sandra KERGOURLAY', 'numTel' => '06 31 83 91 03', 'photo' => 'Sandra_KERGOURLAY.jpg', 'mail' => 'sand_kerg@hotmail.com'],
+            ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 22 26 70 61', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'rodolespagnol@gmail.com'],
+            ['nom' => 'Valérie THOMAS', 'numTel' => '06 74 87 81 78', 'photo' => 'Valérie_THOMAS.jpg', 'mail' => 'valthomas56@gmail.com'],
+            ['nom' => 'Mathis FRANCES', 'numTel' => '06 80 35 71 93', 'photo' => 'Mathis_FRANCES.jpg', 'mail' => 'mathisfrances11@gmail.com'],
+            ['nom' => 'Thierry HENRI', 'numTel' => NULL, 'photo' => 'Thierry_HENRI.jpg', 'mail' => NULL],
+            ['nom' => 'Martin LESPAGNOL', 'numTel' => NULL, 'photo' => 'Martin_LESPAGNOL.jpg', 'mail' => NULL],
             
         ];
         $db->table('membres')->insertBatch($membres);
