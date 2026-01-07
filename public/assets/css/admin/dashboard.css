@@ -75,3 +75,56 @@
     background: var(--secondary);
     color: white !important;
 }
+
+.deconnexion-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* --- Bouton de Déconnexion --- */
+.logout-btn {
+    display: flex;
+    width: 10%;
+    margin: 0 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--secondary);
+    /* Rose PEC */
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    /* Padding déjà présent pour éviter le "saut" au hover */
+    border-radius: var(--radius);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 1px solid transparent;
+}
+
+.logout-btn i {
+    font-size: 1.3rem;
+    /* Taille de l'icône bootstrap */
+    display: flex;
+}
+
+.logout-btn:hover {
+    background: var(--secondary);
+    color: var(--white) !important;
+    /* Rappel de l'effet des autres liens du menu */
+    box-shadow: 0 4px 12px rgba(202, 37, 139, 0.2);
+}
+
+/* Optionnel : alignement en bas de la sidebar si besoin */
+.admin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.logout-container {
+    margin-top: auto;
+    /* Pousse le bouton vers le bas */
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}

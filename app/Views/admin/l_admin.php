@@ -28,6 +28,12 @@
                 <li><?= anchor('/actualites', 'Actualités'); ?></li>
         </nav>
         <!-- Fin de section -->
+        <div class="deconnexion-section">
+            <a href=" <?= base_url('logout') ?>" class="admin-nav-link logout-btn"
+                onclick="return confirm('Voulez-vous vraiment vous déconnecter ?')">
+                <i class="bi bi-box-arrow-right"></i> <span>Déconnexion</span>
+            </a>
+        </div>
 
         <?= $this->renderSection('admin_contenu') ?>
 
