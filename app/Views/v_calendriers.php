@@ -26,12 +26,28 @@
 
     <!-- Section pour l'affichage du calendrier des compétitions -->
     <section class="mb-5">
+        <h3 class="title-section"><i class="bi bi-trophy"></i> Calendrier des compétitions</h3>
 
-        <h3><i class="bi bi-trophy"></i> Calendrier des compétitions <?= $calendrierCompet['date'] ?></h3>
-        <div class="calendar-img-box single">
-            <img src="<?= base_url('uploads/calendriers/' . $calendrierCompet['image']) ?>"
-                alt="Calendrier compétitions" class="img-fluid img-zoom">
+        <?php foreach ($calendrierCompet as $item): ?>
+        <div class="card-item stats-box d-flex align-items-center justify-content-between p-4">
+            <div class="d-flex align-items-center gap-3">
+                <div class="icon-circle bg-light"
+                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f0f4f8;">
+                    <i class="bi bi-file-earmark-pdf-fill" style="font-size: 2rem; color: #dc3545;"></i>
+                </div>
+                <div>
+                    <h5 class="mb-1" style="color: var(--primary);">Saison <?= $item['date'] ?></h5>
+                    <p class="txt-small mb-0">Consultez les dates et lieux des prochaines rencontres (Format PDF)</p>
+                </div>
+            </div>
+
+            <a href="<?= base_url('uploads/calendriers/' . $item['image']) ?>" target="_blank" class="btn-home"
+                style="text-decoration:none; display: inline-flex; align-items:center; gap:8px;">
+                <i class="bi bi-download"></i> Télécharger le calendrier
+            </a>
         </div>
+        <?php endforeach; ?>
+
     </section>
     <!-- Fin de section -->
 </div>

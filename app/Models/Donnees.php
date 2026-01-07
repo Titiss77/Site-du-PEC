@@ -88,7 +88,7 @@ class Donnees extends Model {
 		$req = 'SELECT categorie, date, image FROM `plannings` WHERE categorie = "competitions"';	
 
 		$rs = $this->db->query($req);
-		$calendrier = $rs->getRowArray();
+		$calendrier = $rs->getResultArray();
 		return $calendrier;
 	}
 

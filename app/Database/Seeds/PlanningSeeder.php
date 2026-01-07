@@ -22,7 +22,7 @@ class PlanningSeeder extends Seeder
             [
                 'categorie' => 'competitions',
                 'date'      =>  '2025 - 2026',    
-                'image'     => 'calendrier_competitions.jpg',
+                'image'     => 'calendrier_competitions.pdf',
             ],
         ];
 
