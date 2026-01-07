@@ -9,7 +9,7 @@
         </div>
     </section>
 
-    <h3 class="title-section">Boutique Officielle</h3>
+    <h3 class="title-section">Boutiques du club</h3>
 
     <div class="grid-2">
         <?php foreach ($boutique as $item): ?>

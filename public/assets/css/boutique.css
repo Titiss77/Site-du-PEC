@@ -3,6 +3,85 @@
     padding-bottom: 80px;
 }
 
+/* --- Grilles de la boutique --- */
+.grid-2,
+.grid-3 {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: stretch;
+    /* Force toutes les cartes à avoir la même hauteur */
+}
+
+/* Force 2 colonnes pour la grid-2 sur PC */
+@media (min-width: 992px) {
+    .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- Amélioration des cartes pour l'alignement --- */
+.shop-card-clean {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Important pour que les cartes soient alignées */
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.shop-card-content {
+    padding: 30px;
+    flex-grow: 1;
+    /* Pousse le bouton vers le bas pour qu'ils soient tous alignés */
+    display: flex;
+    flex-direction: column;
+}
+
+.price-box {
+    margin-top: auto;
+    /* Aligne le prix en bas de la zone de contenu */
+    padding-top: 20px;
+}
+
+/* Bouton collé en bas de la carte */
+.btn-shop-link {
+    width: 100%;
+    padding: 20px;
+    background: var(--bg-light);
+    color: var(--primary) !important;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.shop-card-clean:hover {
+    transform: translateY(-5px);
+}
+
+.shop-card-clean:hover .btn-shop-link {
+    background: var(--primary);
+    color: white !important;
+}
+
+/* --- Mobile : On repasse en colonne sur smartphone --- */
+@media (max-width: 768px) {
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 /* --- Cartes Boutique (Version épurée sans images) --- */
 .shop-card-clean {
     display: flex;
@@ -52,7 +131,7 @@
 }
 
 .price-value {
-    font-size: 1.8rem;
+    font-size: 1rem;
     font-weight: 900;
     color: var(--secondary);
     /* Ton rose/violet PEC */
@@ -88,7 +167,7 @@
 }
 
 .shop-card-clean:hover .btn-shop-link {
-    background: var(--primary);
+    background: var(--secondary);
     color: var(--white) !important;
 }
 
@@ -103,12 +182,6 @@
 /* --- Bourse & Partenariats --- */
 .text-left {
     text-align: left !important;
-}
-
-/* Personnalisation de la carte "Bourse" pour qu'elle ressorte */
-.stats-box.card-item {
-    background: linear-gradient(to bottom right, #ffffff, #f8fbff);
-    border-top: 6px solid var(--primary) !important;
 }
 
 .card-item h3 {
