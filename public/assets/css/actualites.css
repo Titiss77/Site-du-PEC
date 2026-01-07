@@ -1,11 +1,15 @@
-/* --- Style des Cartes Actualités --- */
+/* --- Cartes Actualités & Événements --- */
+
 .news-card {
     display: flex;
     flex-direction: column;
-    text-align: left !important;
+    justify-content: space-between;
     padding: 0 !important;
+    background: var(--white);
+    border: 1px solid rgba(0, 45, 90, 0.08);
     overflow: hidden;
-    height: 100%;
+    position: relative;
+    border-radius: var(--radius);
 }
 
 .news-content {
@@ -16,60 +20,129 @@
 }
 
 .news-card h5 {
-    margin-top: 10px;
-    font-weight: 700;
+    font-size: 1.4rem;
     color: var(--primary);
+    margin: 10px 0;
+    line-height: 1.3;
 }
 
-/* Badge de type dynamique */
+.news-card p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* --- Badges de Statut (is-actualite, is-evenement, is-annonce) --- */
 .tag-status {
-    align-self: flex-start;
+    display: inline-block;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    align-self: flex-start;
+    /* Aligné à gauche */
+    margin-bottom: 15px;
 }
 
-.tag-status.is-actualite {
+/* Couleurs dynamiques selon le type */
+.is-actualite {
     background: #e7f3ff;
     color: #007bff;
 }
 
-.tag-status.is-evenement {
+.is-evenement {
     background: #fff0f6;
     color: var(--secondary);
+    /* Ton rose PEC */
 }
 
-.tag-status.is-annonce {
+.is-annonce {
     background: #fff4e6;
     color: #fd7e14;
+    /* Orange pour les alertes/annonces */
 }
 
-/* Date d'événement mise en avant */
+/* --- Bloc Événement --- */
 .event-date {
-    background: #f8f9fa;
-    padding: 8px;
+    background: var(--bg-light);
+    padding: 10px 15px;
     border-radius: var(--radius);
     color: var(--primary);
     font-size: 0.9rem;
-    margin: 10px 0;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--secondary);
 }
 
-/* Bouton lire la suite (réutilise ton style boutique) */
-.news-card .btn-shop-link {
+.event-date i {
+    margin-right: 8px;
+    color: var(--secondary);
+}
+
+/* --- Bouton "Lire la suite" --- */
+.btn-shop-link {
     margin-top: auto;
+    /* Pousse le bouton en bas de carte */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
     background: var(--bg-light);
     color: var(--primary);
-    text-decoration: none;
     font-weight: bold;
-    text-align: center;
-    padding: 15px;
+    border-radius: var(--radius);
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .news-card:hover .btn-shop-link {
-    background: var(--primary);
-    color: white !important;
+    background: var(--secondary);
+    color: var(--white) !important;
+}
+
+.btn-shop-link i {
+    transition: transform 0.3s ease;
+}
+
+.btn-shop-link:hover i {
+    transform: translateX(5px);
+}
+
+/* --- Images des Cartes Actualités --- */
+.news-card .img-card {
+    width: 100%;
+    height: 220px;
+    /* Fixe la hauteur pour l'alignement */
+
+    /* PROPRIÉTÉS CLÉS ANTI-DÉFORMATION */
+    object-fit: cover;
+    /* Recadre l'image sans la déformer pour remplir le cadre */
+    object-position: center;
+    /* Centre l'image dans son cadre */
+
+    margin-bottom: 0;
+    border-radius: var(--radius) var(--radius) 0 0;
+    display: block;
+}
+
+/* Optionnel : Effet de zoom élégant au survol sans déformation */
+.news-card {
+    overflow: hidden;
+    /* Nécessaire pour contenir le zoom */
+}
+
+.news-card .img-card {
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .img-card {
+    transform: scale(1.08);
+    /* Zoom léger */
+}
+
+/* Italique pour les messages vides */
+.italic {
+    font-style: italic;
+    opacity: 0.7;
 }
