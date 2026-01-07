@@ -11,7 +11,7 @@ class CreatePendingContacts extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'email_user' => ['type' => 'VARCHAR', 'constraint' => 100],
             'destinataire' => ['type' => 'VARCHAR', 'constraint' => 50],
             'message' => ['type' => 'TEXT'],

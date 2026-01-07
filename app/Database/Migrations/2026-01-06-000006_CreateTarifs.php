@@ -10,7 +10,7 @@ class CreateTarifs extends Migration
     {
         // Table Tarifs
         $this->forge->addField([
-            'id'        => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'id'        => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'categorie' => ['type' => 'VARCHAR', 'constraint' => 100],
             'description' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'prix'      => ['type' => 'DECIMAL', 'constraint' => '10,2'],

@@ -107,6 +107,14 @@ class Donnees extends Model {
 		$boutique = $rs->getResultArray();
 		return $boutique;
 	}
+	
+	public function getActualites()
+	{
+		$req = 'SELECT titre, contenu, datePublication, image FROM `actualites` ORDER BY datePublication DESC';
+		$rs = $this->db->query($req);
+		$actualites = $rs->getResultArray();
+		return $actualites;
+	}
 
 	
 }

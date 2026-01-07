@@ -11,9 +11,9 @@ class CreateBoutique extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id' => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nom' => ['type' => 'VARCHAR', 'constraint' => 50],
-            'url' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'url' => ['type' => 'VARCHAR', 'constraint' => 255],
             'description' => ['type' => 'TEXT'],
             'tranchePrix' => ['type' => 'VARCHAR', 'constraint' => 50],
         ]);

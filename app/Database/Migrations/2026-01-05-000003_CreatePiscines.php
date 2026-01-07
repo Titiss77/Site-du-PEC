@@ -9,13 +9,16 @@ class CreatePiscines extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'nom'         => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'adresse'     => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'adresse' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'type_bassin' => ['type' => 'ENUM', 'constraint' => ['25m', '50m'], 'null' => true],
-            'photo'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'photo' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
-        $this->forge->addKey('id', true);
+
+        // CORRECTION : Utilisez cette méthode au lieu de addKey
+        $this->forge->addPrimaryKey('id');
+
         $this->forge->createTable('piscines');
     }
 

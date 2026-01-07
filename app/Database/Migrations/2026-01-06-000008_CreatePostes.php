@@ -10,7 +10,7 @@ class CreatePostes extends Migration
     {
         // Table Postes
         $this->forge->addField([
-            'id'          => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'libelle'         => ['type' => 'VARCHAR', 'constraint' => 100],
             'mail' => ['type' => 'VARCHAR', 'constraint' => 255],
         ]);

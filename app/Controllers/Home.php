@@ -67,4 +67,17 @@ class Home extends BaseController {
 
         return view('v_boutique', $data);
     }
+
+    public function actualite()
+    {
+        $donneesModel = new Donnees();
+        $data = [
+            'cssPage'     => 'actualites.css',
+            'titrePage'   => 'Actualités du PEC',
+            'general'     => $donneesModel->getGeneral(),
+            //'actualites'   => $donneesModel->getActualites(),
+        ];
+
+        return view('v_actualites', $data);
+    }
 }
