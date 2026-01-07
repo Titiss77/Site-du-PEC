@@ -75,7 +75,9 @@ class Home extends BaseController {
             'cssPage'     => 'actualites.css',
             'titrePage'   => 'Actualités du PEC',
             'general'     => $donneesModel->getGeneral(),
-            //'actualites'   => $donneesModel->getActualites(),
+            'actualites'   => $donneesModel->getActualites("actualite"),
+            'evenements'   => $donneesModel->getActualites("evenement"),
+            'annonces'   => $donneesModel->getActualites("annonce"),
         ];
 
         return view('v_actualites', $data);
