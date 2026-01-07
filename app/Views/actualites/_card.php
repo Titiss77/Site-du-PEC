@@ -35,9 +35,5 @@
         <?php endif; ?>
 
         <p><?= esc($item['description']); ?></p>
-
-        <a href="<?= base_url('actualites/' . $item['slug']); ?>" class="btn-shop-link">
-            Lire la suite <i class="bi bi-arrow-right"></i>
-        </a>
     </div>
 </div>
