@@ -54,4 +54,17 @@ class Home extends BaseController {
 
         return view('v_bureau', $data);
     }
+
+    public function boutique()
+    {
+        $donneesModel = new Donnees();
+        $data = [
+            'cssPage'     => 'boutique.css',
+            'titrePage'   => 'Boutique du PEC',
+            'general'     => $donneesModel->getGeneral(),
+            'boutique'   => $donneesModel->getBoutique(),
+        ];
+
+        return view('v_boutique', $data);
+    }
 }
