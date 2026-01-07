@@ -1,97 +1,154 @@
+/* --- Formulaires (Contact) --- */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --- Correction de l'alignement global --- */
+.form-input,
+.btn-home {
+    box-sizing: border-box;
+    /* Force le padding à rester à l'intérieur de la largeur 100% */
+}
+
+/* On s'assure que tous les éléments prennent bien toute la largeur du parent */
+.form-input {
+    display: block;
+    width: 100%;
 }
 
 .form-input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
+    padding: 12px 15px;
+    border: 2px solid var(--bg-light);
     border-radius: var(--radius);
+    background-color: #fbe8e8;
+    color: var(--primary);
     font-family: inherit;
+    transition: var(--transition);
 }
 
-.list-check {
-    list-style: none;
-    padding: 0;
+.form-input:focus {
+    outline: none;
+    border-color: var(--secondary);
+    background-color: var(--white);
+    box-shadow: 0 0 0 4px rgba(202, 37, 139, 0.1);
 }
 
-.list-check li::before {
-    content: "✓ ";
-    color: var(--secondary);
-    font-weight: bold;
-    margin-right: 10px;
+/* --- Tableaux (Tarifs) --- */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.custom-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--bg-light);
+    color: var(--primary);
+}
+
+.custom-table tr:last-child td {
+    border-bottom: none;
 }
 
 .text-right {
     text-align: right;
 }
 
-.bg-success {
-    background-color: #d4edda;
-    color: #155724;
+.custom-table strong {
+    color: var(--secondary);
+    font-size: 1.1rem;
 }
 
-.bg-warning {
-    background-color: #fff3cd;
-    color: #856404;
+/* --- Listes d'infos --- */
+.list-check {
+    list-style: none;
+    padding: 0;
+    text-align: left;
 }
 
-/* Style de base des badges de matériel */
+.list-check li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.list-check li::before {
+    content: '\F272';
+    /* Icone bootstrap check-circle */
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    left: 0;
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+/* --- Tags de Statut Matériel --- */
 .tag-status {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
-/* Badge Succès (Prêt) */
 .is-lent {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    /* Bleu pour le prêt */
 }
 
-/* Badge Warning (À charge) */
 .is-personal {
-    background-color: #f6e398;
-    color: #4a5715;
-    border: 1px solid #eed67e;
+    background-color: #fce4ec;
+    color: #880e4f;
+    /* Rose pour l'achat perso */
 }
 
-/* Animation discrète au survol de la carte matériel */
-.card-item:hover .tag-status {
-    transform: scale(1.05);
-    transition: transform 0.2s ease;
+/* --- Utilitaires --- */
+.mb-4 {
+    margin-bottom: 1.5rem;
 }
 
-.alert-success-popup {
-    background-color: #d4edda;
-    /* Vert clair */
-    color: #155724;
-    /* Vert foncé */
-    padding: 15px;
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.txt-small {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* --- Bouton Envoyer (Style btn-home) --- */
+.btn-home {
+    background: var(--secondary);
+    color: var(--primary);
+    border: none;
+    padding: 15px 25px;
     border-radius: var(--radius);
-    border: 1px solid #c3e6cb;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    animation: slideDown 0.5s ease-out;
-    /* Petit effet d'apparition */
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.btn-home:hover {
+    transform: translateY(-2px);
 }

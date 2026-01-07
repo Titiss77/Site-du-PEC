@@ -16,7 +16,7 @@ class MaterielSeeder extends Seeder
             ],
             [
                 'nom' => 'Lunettes / masque',
-                'description' => "Lunettes de natation ou masque d'apnée.",
+                'description' => 'Lunettes / masque de natation.',
                 'pret' => false
             ],
             [
