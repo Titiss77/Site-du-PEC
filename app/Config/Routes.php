@@ -26,13 +26,18 @@ $routes->get('logout', 'Admin\Login::logout');
 // --- GROUPE ADMIN SÉCURISÉ ---
 // Le filtre 'auth' intercepte tout accès à /admin/*
 $routes->group('admin', ['filter' => 'auth'], function($routes) {
-    
-    // Si l'utilisateur tape votre-site.com/admin, il arrive ici
     $routes->get('/', 'Admin\Dashboard::index');
     
-    // Ressources CRUD
+    // Ressources pour toutes les tables
     $routes->resource('actualites', ['controller' => 'Admin\ActualiteAdmin']);
     $routes->resource('boutique',   ['controller' => 'Admin\BoutiqueAdmin']);
     $routes->resource('membres',    ['controller' => 'Admin\MembreAdmin']);
-    $routes->resource('calendriers', ['controller' => 'Admin\CalendrierAdmin']);
+    $routes->resource('plannings',  ['controller' => 'Admin\PlanningAdmin']);
+    $routes->resource('piscines',   ['controller' => 'Admin\PiscineAdmin']);
+    $routes->resource('tarifs',     ['controller' => 'Admin\TarifAdmin']);
+    $routes->resource('materiel',   ['controller' => 'Admin\MaterielAdmin']);
+    
+    // Pages de configuration unique
+    $routes->get('general', 'Admin\GeneralAdmin::index');
+    $routes->post('general/update', 'Admin\GeneralAdmin::update');
 });

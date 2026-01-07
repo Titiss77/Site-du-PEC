@@ -19,18 +19,17 @@ class Dashboard extends BaseController
      */
     public function index()
     {
-        // Nous récupérons les données essentielles pour les statistiques du tableau de bord
         $data = [
-            'cssPage'   => 'admin/dashboard.css',
-            'titrePage' => 'Tableau de bord - Admin',
-            'general'   => $this->donneesModel->getGeneral(), //
-            'count'     => [
-                'actualites' => count($this->donneesModel->getActualites('actualite')), //
-                'boutique'   => count($this->donneesModel->getBoutique()), //
-                'membres'    => count($this->donneesModel->getBureau()), //
+            'cssPage' => 'admin/dashboard.css',
+            'titrePage' => 'Dashboard - Admin',
+            'general' => $this->donneesModel->getGeneral(),
+            'count' => [
+                'actualites' => count($this->donneesModel->getActualites('actualite')),
+                'boutique' => count($this->donneesModel->getBoutique()),
+                'membres' => count($this->donneesModel->getBureau()),
+                // Ajoute ici d'autres comptages si nécessaire
             ]
         ];
-
         return view('admin/v_dashboard', $data);
     }
 }
