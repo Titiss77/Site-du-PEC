@@ -66,6 +66,6 @@ class Login extends BaseController
     public function logout()
     {
         session()->destroy();  // Détruit toutes les variables de session (isLoggedIn, nom, etc.)
-        return redirect()->to(base_url('login'))->with('success', 'Vous avez été déconnecté.');
+        return redirect()->to(base_url('/'))->with('success', 'Vous avez été déconnecté.');
     }
 }
