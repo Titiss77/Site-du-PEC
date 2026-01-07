@@ -100,5 +100,13 @@ class Donnees extends Model {
 		return $general;
     }
 
+	public function getBoutique()
+	{
+		$req = 'SELECT nom, url, description, tranchePrix FROM `boutique`';
+		$rs = $this->db->query($req);
+		$boutique = $rs->getResultArray();
+		return $boutique;
+	}
+
 	
 }
