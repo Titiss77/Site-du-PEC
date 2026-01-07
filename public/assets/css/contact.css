@@ -30,7 +30,7 @@
     padding: 12px 15px;
     border: 2px solid var(--bg-light);
     border-radius: var(--radius);
-    background-color: #fbe8e8;
+    background-color: #eaeaea;
     color: var(--primary);
     font-family: inherit;
     transition: var(--transition);
