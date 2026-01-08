@@ -8,32 +8,35 @@ class CreateBureau extends Migration
 {
     public function up()
     {
-        // Table des Membres
+        // 1. Table des Membres
         $this->forge->addField([
-            'id' => ['type' => 'INT', 'constraint' => 11, 'auto_increment' => true],
-            'nom' => ['type' => 'VARCHAR', 'constraint' => 100],
-            'photo' => ['type' => 'VARCHAR', 'constraint' => 255, 'default' => 'vide.jpg'],
-            'numTel' => ['type' => 'VARCHAR', 'constraint' => 20],
-            'mail' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'id'     => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom'    => ['type' => 'VARCHAR', 'constraint' => 100],
+            'photo'  => ['type' => 'VARCHAR', 'constraint' => 255, 'default' => 'vide.jpg'],
+            'numTel' => ['type' => 'VARCHAR', 'constraint' => 20, 'null' => true],
+            'mail'   => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('membres');
 
-        // Table des Fonctions
+        // 2. Table des Fonctions
         $this->forge->addField([
-            'id' => ['type' => 'INT', 'constraint' => 11, 'auto_increment' => true],
+            'id'    => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'titre' => ['type' => 'VARCHAR', 'constraint' => 100],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('fonctions');
 
-        // Table de liaison (Pivot)
+        // 3. Table de liaison (Pivot)
         $this->forge->addField([
-            'membre_id' => ['type' => 'INT'],
-            'fonction_id' => ['type' => 'INT'],
+            // ESSENTIEL : doit être 'unsigned' => true pour correspondre aux tables ci-dessus
+            'membre_id'   => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
+            'fonction_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
         ]);
+        
         $this->forge->addForeignKey('membre_id', 'membres', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('fonction_id', 'fonctions', 'id', 'CASCADE', 'CASCADE');
+        
         $this->forge->createTable('membre_fonction');
     }
 

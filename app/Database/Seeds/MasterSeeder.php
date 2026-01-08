@@ -16,5 +16,7 @@ class MasterSeeder extends Seeder
         $this->call('PersonnelSeeder');
         $this->call('PostesSeeder');
         $this->call('TarifsSeeder');
+        $this->call('BoutiqueSeeder');
+        $this->call('ActualitesSeeder');
     }
 }

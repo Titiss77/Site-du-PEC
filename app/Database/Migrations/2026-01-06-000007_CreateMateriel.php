@@ -10,7 +10,7 @@ class CreateMateriel extends Migration
     {
         // Table Matériel
         $this->forge->addField([
-            'id'          => ['type' => 'INT', 'unsigned' => true, 'auto_increment' => true],
+            'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nom'         => ['type' => 'VARCHAR', 'constraint' => 100],
             'description' => ['type' => 'TEXT'],
             'pret'        => ['type' => 'BOOLEAN', 'default' => false],

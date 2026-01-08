@@ -28,6 +28,7 @@ class CreatePlannings extends Migration
             'image' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
+                'null'       => true
             ],
         ]);
 
