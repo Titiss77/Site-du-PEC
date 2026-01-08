@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Section pour les styles CSS -->
-    <title><?= $titrePage; ?></title>
+    <title>Page d'administration</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/root.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/global.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/' . $cssPage); ?>">
@@ -28,8 +28,14 @@
                 <li><?= anchor('/actualites', 'Actualités'); ?></li>
         </nav>
         <!-- Fin de section -->
+        <div class="deconnexion-section">
+            <a href=" <?= base_url('logout') ?>" class="admin-nav-link logout-btn"
+                onclick="return confirm('Voulez-vous vraiment vous déconnecter ?')">
+                <i class="bi bi-box-arrow-right"></i> <span>Déconnexion</span>
+            </a>
+        </div>
 
-        <?= $this->renderSection('contenu') ?>
+        <?= $this->renderSection('admin_contenu') ?>
 
         <!-- Section pour le pied de page -->
         <footer id="piedBlog">
@@ -49,7 +55,6 @@
                 </a>
             </div>
             <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>
-            <p class="admin-link"><?= anchor('/login', '(Administration)'); ?></p>
         </footer>
         <!-- Fin de section -->
     </div>
