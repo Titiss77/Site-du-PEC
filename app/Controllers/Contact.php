@@ -46,6 +46,7 @@ class Contact extends BaseController
             'general' => $donneesModel->getGeneral(),
             'tarifs' => $inscrModel->getTarifs(),
             'materiel' => $inscrModel->getMateriel(),
+            'membres'   => $donneesModel->getBureau(),
         ];
 
         return view('v_contact', $data);

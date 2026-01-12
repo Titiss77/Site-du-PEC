@@ -42,19 +42,6 @@ class Home extends BaseController {
         return view('v_calendriers', $data);
     }
 
-    public function bureau()
-    {
-        $donneesModel = new Donnees();
-        $data = [
-            'cssPage'     => 'bureau.css',
-            'titrePage'   => 'Bureau du PEC',
-            'general'     => $donneesModel->getGeneral(),
-            'membres'   => $donneesModel->getBureau(),
-        ];
-
-        return view('v_bureau', $data);
-    }
-
     public function boutique()
     {
         $donneesModel = new Donnees();
