@@ -26,6 +26,21 @@
         </ul>
     </nav>
     <!-- Fin de section -->
+    <?php if (session()->get('isLoggedIn')): ?>
+    <div class="deconnexion-section">
+        <a href="<?= base_url('logout') ?>" class="admin-nav-link logout-btn"
+            onclick="return confirm('Voulez-vous vraiment vous déconnecter ?')">
+            <i class="bi bi-box-arrow-right"></i> <span>Déconnexion</span>
+        </a>
+    </div>
+    <div class="admin-header">
+        <h2 class="title-section" style="margin-top: 0;">Tableau de Bord : <?= session()->get('nom') ?></h2>
+        <div class="admin-user-pill">
+            <i class="bi bi-person-circle"></i>
+            <span>Administrateur</span>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?= $this->renderSection('contenu') ?>
 

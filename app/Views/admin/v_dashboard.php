@@ -1,14 +1,7 @@
-<?= $this->extend('admin/l_admin') ?>
-<?= $this->section('admin_contenu') ?>
+<?= $this->extend('l_global') ?>
+<?= $this->section('contenu') ?>
 
 <div class="site-container">
-    <div class="admin-header">
-        <h2 class="title-section" style="margin-top: 0;">Tableau de Bord : <?= session()->get('nom') ?></h2>
-        <div class="admin-user-pill">
-            <i class="bi bi-person-circle"></i>
-            <span>Administrateur</span>
-        </div>
-    </div>
 
     <h3 class="admin-subtitle"><i class="bi bi-megaphone"></i> Communication & Contenu</h3>
     <div class="grid-3 mb-5">
