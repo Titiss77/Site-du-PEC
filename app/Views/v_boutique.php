@@ -50,8 +50,8 @@
                 <li>Tarifs préférentiels club</li>
                 <li>Cumul de points fidélité</li>
             </ul>
-            <a href="https://www.decathlonpro.fr/boutique-club-decathlon-pro" target="_blank" class="color-blue"
-                style="font-weight: bold; font-size: 0.9rem;">
+            <a href="https://partnership.decathlonpro.fr/invitation/e09bce41-329d-4072-b8df-e591fc24e1a2"
+                target="_blank" class="color-blue" style="font-weight: bold; font-size: 0.9rem;">
                 Accéder à la boutique Pro <i class="bi bi-box-arrow-up-right"></i>
             </a>
         </div>
