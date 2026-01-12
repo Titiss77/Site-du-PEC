@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -14,43 +14,43 @@
 </head>
 
 <body>
-    <div id="global">
-        <!-- Section pour le menu de navigation -->
+    <!-- Section pour le menu de navigation -->
+    <nav>
+        <img src="<?= base_url('' . $general['image']); ?>" alt="logo du club" />
+        <h2><?= $general['nomClub']; ?></h2>
+        <ul>
+            <li><?= anchor('/', 'Accueil'); ?></li>
+            <li><?= anchor('/boutique', 'Boutique'); ?></li>
+            <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
+            <li><?= anchor('/calendriers', 'Calendriers'); ?></li>
+        </ul>
+    </nav>
+    <!-- Fin de section -->
+
+    <?= $this->renderSection('contenu') ?>
+
+    <!-- Section pour le pied de page -->
+    <footer id="piedBlog">
         <nav>
-            <img src="<?= base_url('uploads/general/' . $general['image']); ?>" alt="logo du club" />
-            <h2><?= $general['nomClub']; ?></h2>
             <ul>
                 <li><?= anchor('/', 'Accueil'); ?></li>
                 <li><?= anchor('/boutique', 'Boutique'); ?></li>
                 <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
                 <li><?= anchor('/calendriers', 'Calendriers'); ?></li>
-                <li><?= anchor('/actualites', 'Actualités'); ?></li>
+            </ul>
         </nav>
-        <!-- Fin de section -->
-
-        <?= $this->renderSection('contenu') ?>
-
-        <!-- Section pour le pied de page -->
-        <footer id="piedBlog">
-            <nav>
-                <ul>
-                    <li><?= anchor('/boutique', 'Boutique'); ?></li>
-                    <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
-                    <li><?= anchor('/actualites', 'Actualités'); ?></li>
-            </nav>
-            <div class="social-links">
-                <a href="<?= $general['lienFacebook']; ?>" target="_blank" aria-label="Facebook">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="<?= $general['lienInstagram']; ?>" target="_blank" aria-label="Instagram">
-                    <i class="bi bi-instagram"></i>
-                </a>
-            </div>
-            <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>
-            <!--<p class="admin-link"><?= anchor('/login', '(Administration)'); ?></p>-->
-        </footer>
-        <!-- Fin de section -->
-    </div>
+        <div class="social-links">
+            <a href="<?= $general['lienFacebook']; ?>" target="_blank" aria-label="Facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="<?= $general['lienInstagram']; ?>" target="_blank" aria-label="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>
+        <!--<p class="admin-link"><?= anchor('/login', '(Administration)'); ?></p>-->
+    </footer>
+    <!-- Fin de section -->
 </body>
 
 </html>
