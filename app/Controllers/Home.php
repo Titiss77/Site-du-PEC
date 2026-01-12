@@ -20,6 +20,7 @@ class Home extends BaseController {
             'disciplines' => $donneesModel->getDisciplines(),
             'coaches'     => $donneesModel->getCoachs(),
             'piscines'    => $donneesModel->getPiscines(),
+            'actualites'   => $donneesModel->getActualites("actualite"),
         ];
 
         return view('v_accueil', $data);
