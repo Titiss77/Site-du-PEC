@@ -1,3 +1,39 @@
+/* --- Variables & Configuration --- */
+:root {
+    --primary-light: rgba(202, 37, 139, 0.1);
+    /* Ajusté selon votre --secondary */
+    --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Structure & Utilitaires --- */
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+.mt-3 {
+    margin-top: 1.5rem;
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
 /* --- Formulaires (Contact) --- */
 .form-group {
     margin-bottom: 20px;
@@ -12,21 +48,10 @@
     font-size: 0.9rem;
 }
 
-/* --- Correction de l'alignement global --- */
-.form-input,
-.btn-home {
-    box-sizing: border-box;
-    /* Force le padding à rester à l'intérieur de la largeur 100% */
-}
-
-/* On s'assure que tous les éléments prennent bien toute la largeur du parent */
 .form-input {
     display: block;
     width: 100%;
-}
-
-.form-input {
-    width: 100%;
+    box-sizing: border-box;
     padding: 12px 15px;
     border: 2px solid var(--bg-light);
     border-radius: var(--radius);
@@ -40,10 +65,30 @@
     outline: none;
     border-color: var(--secondary);
     background-color: var(--white);
-    box-shadow: 0 0 0 4px rgba(202, 37, 139, 0.1);
+    box-shadow: 0 0 0 4px var(--primary-light);
 }
 
-/* --- Tableaux (Tarifs) --- */
+/* --- Boutons --- */
+.btn-home {
+    display: inline-block;
+    box-sizing: border-box;
+    background: var(--secondary);
+    color: var(--primary);
+    border: none;
+    padding: 15px 25px;
+    border-radius: var(--radius);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-home:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* --- Tableaux & Listes --- */
 .custom-table {
     width: 100%;
     border-collapse: collapse;
@@ -60,20 +105,14 @@
     border-bottom: none;
 }
 
-.text-right {
-    text-align: right;
-}
-
 .custom-table strong {
     color: var(--secondary);
     font-size: 1.1rem;
 }
 
-/* --- Listes d'infos --- */
 .list-check {
     list-style: none;
     padding: 0;
-    text-align: left;
 }
 
 .list-check li {
@@ -86,99 +125,14 @@
 
 .list-check li::before {
     content: '\F272';
-    /* Icone bootstrap check-circle */
     font-family: 'bootstrap-icons';
     position: absolute;
     left: 0;
     color: var(--secondary);
-    font-weight: bold;
 }
 
-/* --- Tags de Statut Matériel --- */
-.tag-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.is-lent {
-    background-color: #e3f2fd;
-    color: #0d47a1;
-    /* Bleu pour le prêt */
-}
-
-.is-personal {
-    background-color: #fce4ec;
-    color: #880e4f;
-    /* Rose pour l'achat perso */
-}
-
-/* --- Utilitaires --- */
-.mb-4 {
-    margin-bottom: 1.5rem;
-}
-
-.mt-2 {
-    margin-top: 1rem;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.txt-small {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 5px;
-}
-
-/* --- Bouton Envoyer (Style btn-home) --- */
-.btn-home {
-    background: var(--secondary);
-    color: var(--primary);
-    border: none;
-    padding: 15px 25px;
-    border-radius: var(--radius);
-    font-weight: bold;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.btn-home:hover {
-    transform: translateY(-2px);
-}
-
-/* --- Trombinoscope du Bureau --- */
-
-.trombi-container {
-    padding: 60px 0;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.trombi-container h1 {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 50px;
-    position: relative;
-    text-align: center;
-}
-
-/* Grille réutilisant la logique de la grid-3 de l'accueil */
-.trombi-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px;
-    padding: 10px;
-}
-
-/* Style des cartes basé sur .card-item */
-.trombi-card {
+/* --- Cartes Matériel (Style Bureau) --- */
+.materiel-card {
     background: var(--white);
     border-radius: var(--radius);
     padding: 25px;
@@ -189,19 +143,107 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 25px 0;
+}
+
+/* Conteneur photo circulaire identique au bureau */
+.materiel-photo-container {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 20px;
+}
+
+.materiel-photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* 'contain' est mieux pour du matériel que 'cover' */
+    border-radius: 50%;
+    border: 3px solid var(--bg-light);
+    padding: 8px;
+    background: #f9f9f9;
+    transition: var(--transition);
+}
+
+.materiel-card:hover .materiel-photo-container img {
+    border-color: var(--secondary);
+    background: var(--white);
+}
+
+/* Titres et textes */
+.materiel-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+/* Badges de statut (style badge-fonction) */
+.badge-status {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.is-lent {
+    background: #e3f2fd;
+    color: #0d47a1;
+}
+
+.is-personal {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+/* --- Trombinoscope --- */
+.trombi-container {
+    padding: 60px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trombi-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    padding: 10px;
+}
+
+.trombi-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 280px;
+    /* Optionnel : pour uniformiser la hauteur des cartes */
+    padding-bottom: 10px !important;
+}
+
+.trombi-card .info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .trombi-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-hover);
 }
 
-/* Conteneur photo circulaire (style .img-circle mais en plus grand) */
 .photo-container {
     width: 130px;
     height: 130px;
-    margin-bottom: 20px;
-    position: relative;
+    margin: 0 auto 20px;
 }
 
 .photo-container img {
@@ -210,21 +252,10 @@
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid var(--secondary);
-    /* Le rose/bleu secondaire */
     padding: 3px;
     background: var(--white);
 }
 
-/* Informations */
-.trombi-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Badge fonction style .tag-bassin */
 .badge-fonction {
     display: inline-block;
     padding: 5px 15px;
@@ -233,58 +264,25 @@
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
-    margin-bottom: 20px;
-}
-
-/* Liens de contact */
-.contact-links {
-    display: flex;
-    gap: 15px;
     margin-top: auto;
-    justify-content: center;
+    margin-bottom: 0;
 }
 
-.contact-links a {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    background: var(--bg-light);
-    border-radius: 50%;
-    color: var(--primary);
-    font-size: 1.1rem;
-    transition: var(--transition);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact-links a:hover {
-    background: var(--secondary);
-    color: var(--white);
-    transform: scale(1.1);
-}
-
+/* --- Responsive --- */
 @media (max-width: 1200px) {
     .trombi-grid {
         grid-template-columns: repeat(3, 1fr);
-        /* 3 par ligne sur tablettes */
     }
 }
 
 @media (max-width: 768px) {
-    .trombi-title {
-        font-size: 2rem;
-    }
-
     .trombi-grid {
         grid-template-columns: repeat(2, 1fr);
-        /* 2 par ligne sur gros smartphones */
     }
 }
 
 @media (max-width: 480px) {
     .trombi-grid {
         grid-template-columns: 1fr;
-        /* 1 seul par ligne sur petits mobiles */
     }
 }

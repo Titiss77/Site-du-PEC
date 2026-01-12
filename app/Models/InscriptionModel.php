@@ -26,7 +26,7 @@ class InscriptionModel extends Model
      */
     public function getMateriel()
     {
-        $req = 'SELECT nom, description, pret FROM `materiel`';
+        $req = 'SELECT nom, description, pret, image FROM `materiel`';
 		$rs = $this->db->query($req);
 		$materiel = $rs->getResultArray();
 		return $materiel;

@@ -118,12 +118,12 @@ class Donnees extends Model {
 	public function getBureau()
     {
         $req = '
-		SELECT m.*, GROUP_CONCAT(f.titre SEPARATOR ", ") as fonctions 
+		SELECT m.*, f.titre AS fonctions 
 		FROM membres m 
 		JOIN membre_fonction mf ON mf.membre_id = m.id 
 		JOIN fonctions f ON f.id = mf.fonction_id 
-		GROUP BY m.id 
-		HAVING fonctions NOT LIKE "Coach"
+		WHERE f.titre != "Coach" 
+		GROUP BY m.id, f.titre
 		';
 		$rs = $this->db->query($req);
 		$general = $rs->getResultArray();

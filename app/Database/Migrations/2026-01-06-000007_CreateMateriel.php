@@ -14,6 +14,7 @@ class CreateMateriel extends Migration
             'nom'         => ['type' => 'VARCHAR', 'constraint' => 100],
             'description' => ['type' => 'TEXT'],
             'pret'        => ['type' => 'BOOLEAN', 'default' => false],
+            'image'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('materiel');

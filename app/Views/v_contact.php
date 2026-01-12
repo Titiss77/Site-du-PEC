@@ -77,19 +77,28 @@
     <h3 class="title-section">Matériel nécessaire</h3>
     <div class="grid-3 mb-5">
         <?php foreach ($materiel as $m): ?>
-        <div class="card-item text-center">
-            <h5><?= esc($m['nom']) ?></h5>
-            <p class="txt-small"><?= esc($m['description']) ?></p>
-            <div class="mt-2">
-                <?php if ($m['pret']): ?>
-                <span class="tag-status is-lent">
-                    <i class="bi bi-check-circle"></i> Prêté par le club
-                </span>
-                <?php else: ?>
-                <span class="tag-status is-personal">
-                    <i class="bi bi-cart"></i> Personnel
-                </span>
-                <?php endif; ?>
+        <div class="materiel-card"> <?php if (!empty($m['image'])): ?>
+            <div class="materiel-photo-container">
+                <img src="<?= base_url('uploads/materiel/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
+                    class="materiel-img">
+            </div>
+            <?php endif; ?>
+
+            <div class="info">
+                <h3><?= esc($m['nom']) ?></h3>
+                <p class="txt-small text-muted"><?= esc($m['description']) ?></p>
+
+                <div class="mt-2">
+                    <?php if ($m['pret']): ?>
+                    <span class="badge-status is-lent">
+                        <i class="bi bi-arrow-repeat"></i> Prêté par le club
+                    </span>
+                    <?php else: ?>
+                    <span class="badge-status is-personal">
+                        <i class="bi bi-cart"></i> À votre charge
+                    </span>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
         <?php endforeach; ?>

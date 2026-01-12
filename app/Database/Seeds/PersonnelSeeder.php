@@ -29,7 +29,7 @@ class PersonnelSeeder extends Seeder
             ['titre' => 'Vice-Président'], //2
             ['titre' => 'Comptable'], //3
             ['titre' => 'Secrétaire'],//4
-            ['titre' => 'Partenariat / sponsoring'],//5
+            ['titre' => 'Sponsoring'],//5
             ['titre' => 'Informatique'],//6
             ['titre' => 'Coach'],//7
             
