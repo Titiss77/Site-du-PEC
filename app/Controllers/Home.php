@@ -3,39 +3,29 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Donnees;
+use App\Controllers\Root;
 
 class Home extends BaseController
 {
-    // Dans Home.php
-
-    private function getRootStyles()
+    public function __construct()
     {
-        $db = \Config\Database::connect();
-        $settings = $db->table('root')->get()->getResultArray();
-
-        $rootData = [];
-        foreach ($settings as $setting) {
-            // Remplace 'primary_color' par 'primary' (ou garde tel quel selon votre préférence)
-            $key = str_replace('_', '-', $setting['libelle']);
-            $rootData[$key] = $setting['value'];
-        }
-        return $rootData;
+        $this->donneesModel = new Donnees();
+        $this->root = new Root();
     }
 
     public function index()
     {
-        $donneesModel = new Donnees();
 
         $data = [
-            'root' => $this->getRootStyles(),
+            'root' => $this->root->getRootStyles(),
             'cssPage' => 'accueil.css',
-            'titrePage' => $donneesModel->getGeneral()['nomClub'],
-            'general' => $donneesModel->getGeneral(),
-            'disciplines' => $donneesModel->getDisciplines(),
-            'coaches' => $donneesModel->getCoachs(),
-            'piscines' => $donneesModel->getPiscines(),
-            'actualites' => $donneesModel->getActualites('actualite'),
-            'evenements' => $donneesModel->getActualites('evenement'),
+            'titrePage' => $this->donneesModel->getGeneral()['nomClub'],
+            'general' => $this->donneesModel->getGeneral(),
+            'disciplines' => $this->donneesModel->getDisciplines(),
+            'coaches' => $this->donneesModel->getCoachs(),
+            'piscines' => $this->donneesModel->getPiscines(),
+            'actualites' => $this->donneesModel->getActualites('actualite'),
+            'evenements' => $this->donneesModel->getActualites('evenement'),
             
         ];
 
@@ -44,14 +34,13 @@ class Home extends BaseController
 
     public function calendriers()
     {
-        $donneesModel = new Donnees();
         $data = [
-            'root' => $this->getRootStyles(),
+            'root' => $this->root->getRootStyles(),
             'cssPage' => 'calendrier.css',
             'titrePage' => 'Calendriers',
-            'general' => $donneesModel->getGeneral(),
-            'plannings' => $donneesModel->getPlannings(),
-            'calendrierCompet' => $donneesModel->getCalendrier(),
+            'general' => $this->donneesModel->getGeneral(),
+            'plannings' => $this->donneesModel->getPlannings(),
+            'calendrierCompet' => $this->donneesModel->getCalendrier(),
         ];
 
         return view('v_calendriers', $data);
@@ -59,13 +48,13 @@ class Home extends BaseController
 
     public function boutique()
     {
-        $donneesModel = new Donnees();
+        
         $data = [
-            'root' => $this->getRootStyles(),
+            'root' => $this->root->getRootStyles(),
             'cssPage' => 'boutique.css',
             'titrePage' => 'Boutique du PEC',
-            'general' => $donneesModel->getGeneral(),
-            'boutique' => $donneesModel->getBoutique(),
+            'general' => $this->donneesModel->getGeneral(),
+            'boutique' => $this->donneesModel->getBoutique(),
         ];
 
         return view('v_boutique', $data);

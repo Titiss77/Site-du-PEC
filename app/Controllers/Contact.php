@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Donnees;
 use App\Models\InscriptionModel;
+use App\Controllers\Root;
 
 class Contact extends BaseController
 {
@@ -13,6 +14,14 @@ class Contact extends BaseController
      *
      * @return \CodeIgniter\Email\Email
      */
+    private $donneesModel;
+
+    public function __construct()
+    {
+        $this->donneesModel = new Donnees();
+        $this->inscrModel = new InscriptionModel();
+        $this->root = new Root();
+    }
     private function _initEmail()
     {
         $email = \Config\Services::email();
@@ -30,20 +39,6 @@ class Contact extends BaseController
         return $email;
     }
 
-    private function getRootStyles()
-    {
-        $db = \Config\Database::connect();
-        $settings = $db->table('root')->get()->getResultArray();
-
-        $rootData = [];
-        foreach ($settings as $setting) {
-            // Remplace 'primary_color' par 'primary' (ou garde tel quel selon votre préférence)
-            $key = str_replace('_', '-', $setting['libelle']);
-            $rootData[$key] = $setting['value'];
-        }
-        return $rootData;
-    }
-
     /**
      * Affiche la page de contact avec les tarifs et le matériel
      *
@@ -51,17 +46,15 @@ class Contact extends BaseController
      */
     public function index()
     {
-        $donneesModel = new Donnees();
-        $inscrModel = new InscriptionModel();
 
         $data = [
-            'root' => $this->getRootStyles(),
+            'root' => $this->root->getRootStyles(),
             'titrePage' => 'Inscriptions & Contact',
             'cssPage' => 'contact.css',
-            'general' => $donneesModel->getGeneral(),
-            'tarifs' => $inscrModel->getTarifs(),
-            'materiel' => $inscrModel->getMateriel(),
-            'membres'   => $donneesModel->getBureau(),
+            'general' => $this->donneesModel->getGeneral(),
+            'tarifs' => $this->inscrModel->getTarifs(),
+            'materiel' => $this->inscrModel->getMateriel(),
+            'membres'   => $this->donneesModel->getBureau(),
         ];
 
         return view('v_contact', $data);
