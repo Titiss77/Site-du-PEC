@@ -26,7 +26,7 @@ class CreateActualites extends Migration
             ],
             'type' => [
                 'type'       => 'ENUM',
-                'constraint' => ['actualite', 'evenement', 'annonce'], // Propre et sans espaces
+                'constraint' => ['actualite'], // Propre et sans espaces
                 'default'    => 'actualite',
             ],
             'statut' => [

@@ -48,9 +48,16 @@
 
                 <h5><?= esc($item['titre']); ?></h5>
 
+                <?php if ($item['date_evenement'] == null): ?>
                 <p class="small text-muted">
                     <i class="bi bi-calendar3"></i> Publié le <?= date('d/m/Y', strtotime($item['created_at'])); ?>
                 </p>
+                <?php else: ?>
+                <p class="small text-muted">
+                    <i class="bi bi-calendar3"></i> Le <?= date('d/m/Y', strtotime($item['date_evenement'])); ?>
+                </p>
+                <?php endif; ?>
+
 
                 <?php if ($item['type'] === 'evenement' && !empty($item['date_evenement'])): ?>
                 <p class="event-date">
