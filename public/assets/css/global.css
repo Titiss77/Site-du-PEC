@@ -5,6 +5,7 @@ body {
     background-color: var(--bg-light);
     line-height: 1.6;
     overflow-x: hidden;
+    user-select: none;
 }
 
 .site-container {
@@ -152,31 +153,8 @@ footer p {
     font-weight: 600;
 }
 
-@media (max-width: 992px) {
-    nav h2 {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    nav ul {
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav ul li a {
-        font-size: 0.75rem;
-        padding: 5px;
-    }
-
-    .site-container {
-        padding: 20px 15px;
-    }
+img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
