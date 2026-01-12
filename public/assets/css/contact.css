@@ -1,10 +1,3 @@
-/* --- Variables & Configuration --- */
-:root {
-    --primary-light: rgba(202, 37, 139, 0.1);
-    /* Ajusté selon votre --secondary */
-    --shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.12);
-}
-
 /* --- Structure & Utilitaires --- */
 .text-center {
     text-align: center;
@@ -65,7 +58,7 @@
     outline: none;
     border-color: var(--secondary);
     background-color: var(--white);
-    box-shadow: 0 0 0 4px var(--primary-light);
+    box-shadow: 0 0 0 4px var(--secondary);
 }
 
 /* --- Boutons --- */
@@ -159,9 +152,8 @@
     object-fit: contain;
     /* 'contain' est mieux pour du matériel que 'cover' */
     border-radius: 50%;
-    border: 3px solid var(--bg-light);
+    border: 3px solid var(--secondary);
     padding: 8px;
-    background: #f9f9f9;
     transition: var(--transition);
 }
 
@@ -237,7 +229,7 @@
 
 .trombi-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-hover);
+    box-shadow: var(--shadow);
 }
 
 .photo-container {

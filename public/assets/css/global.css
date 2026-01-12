@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     color: var(--text-dark);
-    background-color: var(--bg-light);
+    background: var(--bg-light);
     line-height: 1.6;
     overflow-x: hidden;
     user-select: none;
