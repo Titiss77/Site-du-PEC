@@ -30,6 +30,20 @@ class Contact extends BaseController
         return $email;
     }
 
+    private function getRootStyles()
+    {
+        $db = \Config\Database::connect();
+        $settings = $db->table('root')->get()->getResultArray();
+
+        $rootData = [];
+        foreach ($settings as $setting) {
+            // Remplace 'primary_color' par 'primary' (ou garde tel quel selon votre préférence)
+            $key = str_replace('_', '-', $setting['libelle']);
+            $rootData[$key] = $setting['value'];
+        }
+        return $rootData;
+    }
+
     /**
      * Affiche la page de contact avec les tarifs et le matériel
      *
@@ -41,6 +55,7 @@ class Contact extends BaseController
         $inscrModel = new InscriptionModel();
 
         $data = [
+            'root' => $this->getRootStyles(),
             'titrePage' => 'Inscriptions & Contact',
             'cssPage' => 'contact.css',
             'general' => $donneesModel->getGeneral(),

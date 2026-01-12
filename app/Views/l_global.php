@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <!-- Section pour les styles CSS -->
     <title><?= $titrePage; ?></title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/root.css'); ?>">
+    <?= view('css/dynamic_root', ['root' => $root]); ?>
     <link rel="stylesheet" href="<?= base_url('assets/css/global.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/' . $cssPage); ?>">
     <!-- Fin de section -->

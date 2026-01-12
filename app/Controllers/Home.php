@@ -2,44 +2,58 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use Config\Database;
 use App\Models\Donnees;
 
-class Home extends BaseController {
-    /*  Retourne la page d'accueil avec les données nécessaires
-     *
-     * @return vue de la page d'accueil avec les données
-     */
-    public function index() {
+class Home extends BaseController
+{
+    // Dans Home.php
+
+    private function getRootStyles()
+    {
+        $db = \Config\Database::connect();
+        $settings = $db->table('root')->get()->getResultArray();
+
+        $rootData = [];
+        foreach ($settings as $setting) {
+            // Remplace 'primary_color' par 'primary' (ou garde tel quel selon votre préférence)
+            $key = str_replace('_', '-', $setting['libelle']);
+            $rootData[$key] = $setting['value'];
+        }
+        return $rootData;
+    }
+
+    public function index()
+    {
         $donneesModel = new Donnees();
 
         $data = [
-            'cssPage'     => 'accueil.css',
-            'titrePage'   => $donneesModel->getGeneral()['nomClub'],
-            'general'     => $donneesModel->getGeneral(),
+            'root' => $this->getRootStyles(),
+            'cssPage' => 'accueil.css',
+            'titrePage' => $donneesModel->getGeneral()['nomClub'],
+            'general' => $donneesModel->getGeneral(),
             'disciplines' => $donneesModel->getDisciplines(),
-            'coaches'     => $donneesModel->getCoachs(),
-            'piscines'    => $donneesModel->getPiscines(),
-            'actualites'   => $donneesModel->getActualites("actualite"),
+            'coaches' => $donneesModel->getCoachs(),
+            'piscines' => $donneesModel->getPiscines(),
+            'actualites' => $donneesModel->getActualites('actualite'),
+            'evenements' => $donneesModel->getActualites('evenement'),
+            
         ];
 
         return view('v_accueil', $data);
     }
 
-    /*  Retourne la page des calendriers avec les données nécessaires
-     *
-     * @return vue de la page des calendriers avec les données
-     */
-    public function calendriers() {
+    public function calendriers()
+    {
         $donneesModel = new Donnees();
         $data = [
-            'cssPage'     => 'calendrier.css',
-            'titrePage'   => 'Calendriers',
-            'general'     => $donneesModel->getGeneral(),
-            'plannings'   => $donneesModel->getPlannings(),
-            'calendrierCompet'   => $donneesModel->getCalendrier(),
+            'root' => $this->getRootStyles(),
+            'cssPage' => 'calendrier.css',
+            'titrePage' => 'Calendriers',
+            'general' => $donneesModel->getGeneral(),
+            'plannings' => $donneesModel->getPlannings(),
+            'calendrierCompet' => $donneesModel->getCalendrier(),
         ];
-        
+
         return view('v_calendriers', $data);
     }
 
@@ -47,10 +61,11 @@ class Home extends BaseController {
     {
         $donneesModel = new Donnees();
         $data = [
-            'cssPage'     => 'boutique.css',
-            'titrePage'   => 'Boutique du PEC',
-            'general'     => $donneesModel->getGeneral(),
-            'boutique'   => $donneesModel->getBoutique(),
+            'root' => $this->getRootStyles(),
+            'cssPage' => 'boutique.css',
+            'titrePage' => 'Boutique du PEC',
+            'general' => $donneesModel->getGeneral(),
+            'boutique' => $donneesModel->getBoutique(),
         ];
 
         return view('v_boutique', $data);
