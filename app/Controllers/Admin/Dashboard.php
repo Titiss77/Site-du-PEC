@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Donnees;
+use App\Controllers\Root;    
 
 class Dashboard extends BaseController
 {
@@ -12,6 +13,7 @@ class Dashboard extends BaseController
     public function __construct()
     {
         $this->donneesModel = new Donnees();
+        $this->root = new Root();
     }
 
     /**
@@ -20,6 +22,7 @@ class Dashboard extends BaseController
     public function index()
     {
         $data = [
+            'root' => $this->root->getRootStyles(),
             'cssPage' => 'admin/dashboard.css',
             'titrePage' => 'Dashboard - Admin',
             'general' => $this->donneesModel->getGeneral(),

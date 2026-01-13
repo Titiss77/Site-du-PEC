@@ -4,6 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Donnees;
+use App\Controllers\Root;
 
 class Login extends BaseController
 {
@@ -12,6 +13,7 @@ class Login extends BaseController
     public function __construct()
     {
         $this->donneesModel = new Donnees();
+        $this->root = new Root();
     }
 
     /**
@@ -21,6 +23,7 @@ class Login extends BaseController
     {
         // On récupère les infos générales pour le logo et le nom du club dans le layout
         $data = [
+            'root' => $this->root->getRootStyles(),
             'titrePage' => 'Connexion Administration',
             'cssPage' => 'contact.css',  // On réutilise le CSS contact pour les formulaires
             'general' => $this->donneesModel->getGeneral(),

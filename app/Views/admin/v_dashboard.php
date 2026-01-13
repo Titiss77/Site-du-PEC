@@ -9,7 +9,7 @@
             <div class="card-icon"><i class="bi bi-newspaper"></i></div>
             <div class="card-info">
                 <h4><?= $count['actualites'] ?> Actualités</h4>
-                <p>Articles, Événements & Annonces</p>
+                <p>Articles</p>
             </div>
             <a href="<?= base_url('admin/actualites') ?>" class="btn-admin-nav">Gérer les contenus <i
                     class="bi bi-chevron-right"></i></a>
@@ -22,16 +22,6 @@
                 <p>Articles & Commandes HelloAsso</p>
             </div>
             <a href="<?= base_url('admin/boutique') ?>" class="btn-admin-nav">Gérer la boutique <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
-
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-envelope-check"></i></div>
-            <div class="card-info">
-                <h4>Messages</h4>
-                <p>Historique des contacts vérifiés</p>
-            </div>
-            <a href="<?= base_url('admin/contacts') ?>" class="btn-admin-nav">Voir les messages <i
                     class="bi bi-chevron-right"></i></a>
         </div>
     </div>
