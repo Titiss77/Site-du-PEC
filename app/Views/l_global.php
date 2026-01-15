@@ -19,10 +19,15 @@
         <img src="<?= base_url('' . $general['image']); ?>" alt="logo du club" />
         <h2><?= $general['nomClub']; ?></h2>
         <ul>
-            <li><?= anchor('/', 'Accueil'); ?></li>
-            <li><?= anchor('/boutique', 'Boutique'); ?></li>
-            <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
-            <li><?= anchor('/calendriers', 'Calendriers'); ?></li>
+            <?php 
+            // On vérifie une seule fois si l'utilisateur est connecté pour alléger le code
+            $isLogged = session()->get('isLoggedIn'); 
+            ?>
+
+            <li><?= anchor($isLogged ? 'logout?return=/' : '/', 'Accueil'); ?></li>
+            <li><?= anchor($isLogged ? 'logout?return=boutique' : '/boutique', 'Boutique'); ?></li>
+            <li><?= anchor($isLogged ? 'logout?return=contact' : '/contact', 'Contact / inscriptions'); ?></li>
+            <li><?= anchor($isLogged ? 'logout?return=calendriers' : '/calendriers', 'Calendriers'); ?></li>
         </ul>
     </nav>
     <!-- Fin de section -->
@@ -48,10 +53,15 @@
     <footer id="piedBlog">
         <nav>
             <ul>
-                <li><?= anchor('/', 'Accueil'); ?></li>
-                <li><?= anchor('/boutique', 'Boutique'); ?></li>
-                <li><?= anchor('/contact', 'Contact / inscriptions'); ?></li>
-                <li><?= anchor('/calendriers', 'Calendriers'); ?></li>
+                <?php 
+            // On vérifie une seule fois si l'utilisateur est connecté pour alléger le code
+            $isLogged = session()->get('isLoggedIn'); 
+            ?>
+
+                <li><?= anchor($isLogged ? 'logout?return=/' : '/', 'Accueil'); ?></li>
+                <li><?= anchor($isLogged ? 'logout?return=boutique' : '/boutique', 'Boutique'); ?></li>
+                <li><?= anchor($isLogged ? 'logout?return=contact' : '/contact', 'Contact / inscriptions'); ?></li>
+                <li><?= anchor($isLogged ? 'logout?return=calendriers' : '/calendriers', 'Calendriers'); ?></li>
             </ul>
         </nav>
         <div class="social-links">

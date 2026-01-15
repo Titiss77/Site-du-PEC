@@ -66,9 +66,17 @@ class Login extends BaseController
         return redirect()->back()->with('error', 'Identifiants invalides.');
     }
 
+    /**
+     * Déconnecte l'utilisateur et redirige vers la page demandée
+     */
     public function logout()
     {
-        session()->destroy();  // Détruit toutes les variables de session (isLoggedIn, nom, etc.)
-        return redirect()->to(base_url('/'))->with('success', 'Vous avez été déconnecté.');
+        session()->destroy(); // Détruit la session
+
+        // Vérifie si une URL de retour est demandée (ex: ?return=boutique)
+        // Sinon, par défaut, on renvoie vers l'accueil '/'
+        $returnUrl = $this->request->getGet('return') ?? '/';
+
+        return redirect()->to(base_url($returnUrl))->with('success', 'Vous avez été déconnecté.');
     }
 }

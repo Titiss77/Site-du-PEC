@@ -1,96 +1,122 @@
 <?= $this->extend('l_global') ?>
 <?= $this->section('contenu') ?>
 
+<?php
+// 1. Configuration des données : On centralise tout ici
+// Cela rend l'ajout ou la modification de menus très rapide.
+$sections = [
+    [
+        'titre' => 'Communication & Contenu',
+        'icon'  => 'bi-megaphone',
+        'cards' => [
+            [
+                'count' => $count['actualites'], // Variable dynamique
+                'label' => 'Actualités',
+                'desc'  => 'Articles',
+                'icon'  => 'bi-newspaper',
+                'url'   => 'admin/actualites',
+                'btn'   => 'Gérer les contenus'
+            ],
+            [
+                'count' => $count['boutique'],
+                'label' => 'Boutique',
+                'desc'  => 'Articles & Commandes HelloAsso',
+                'icon'  => 'bi-cart4',
+                'url'   => 'admin/boutique',
+                'btn'   => 'Gérer la boutique'
+            ]
+        ]
+    ],
+    [
+        'titre' => 'Sportif & Logistique',
+        'icon'  => 'bi-water',
+        'cards' => [
+            [
+                'count' => $count['membres'],
+                'label' => 'Personnel',
+                'desc'  => 'Bureau, Coachs & Fonctions',
+                'icon'  => 'bi-people',
+                'url'   => 'admin/membres',
+                'btn'   => "Gérer l'équipe"
+            ],
+            [
+                'label' => 'Calendriers', // Pas de count ici
+                'desc'  => 'Entraînements & Compétitions',
+                'icon'  => 'bi-calendar-range',
+                'url'   => 'admin/plannings',
+                'btn'   => 'Modifier horaires'
+            ],
+            [
+                'label' => 'Lieux',
+                'desc'  => "Piscines & Bassins d'entraînement",
+                'icon'  => 'bi-geo-alt',
+                'url'   => 'admin/piscines',
+                'btn'   => 'Gérer les sites'
+            ]
+        ]
+    ],
+    [
+        'titre' => 'Administration Système',
+        'icon'  => 'bi-gear',
+        'cards' => [
+            [
+                'label' => 'Tarifs',
+                'desc'  => 'Adhésions & Cotisations 2026',
+                'icon'  => 'bi-currency-euro',
+                'url'   => 'admin/tarifs',
+                'btn'   => 'Éditer les prix'
+            ],
+            [
+                'label' => 'Matériel',
+                'desc'  => 'Inventaire & Prêts de palmes',
+                'icon'  => 'bi-tools',
+                'url'   => 'admin/materiel',
+                'btn'   => 'Gérer le stock'
+            ],
+            [
+                'label' => 'Identité',
+                'desc'  => 'Configuration générale du club',
+                'icon'  => 'bi-sliders',
+                'url'   => 'admin/general',
+                'btn'   => 'Modifier les infos'
+            ]
+        ]
+    ]
+];
+?>
+
 <div class="site-container">
 
-    <h3 class="admin-subtitle"><i class="bi bi-megaphone"></i> Communication & Contenu</h3>
-    <div class="grid-3 mb-5">
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-newspaper"></i></div>
-            <div class="card-info">
-                <h4><?= $count['actualites'] ?> Actualités</h4>
-                <p>Articles</p>
-            </div>
-            <a href="<?= base_url('admin/actualites') ?>" class="btn-admin-nav">Gérer les contenus <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
+    <?php foreach ($sections as $section): ?>
 
+    <h3 class="admin-subtitle">
+        <i class="bi <?= $section['icon'] ?>"></i> <?= esc($section['titre']) ?>
+    </h3>
+
+    <div class="grid-3 mb-5">
+        <?php foreach ($section['cards'] as $card): ?>
         <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-cart4"></i></div>
-            <div class="card-info">
-                <h4><?= $count['boutique'] ?> Boutique</h4>
-                <p>Articles & Commandes HelloAsso</p>
+            <div class="card-icon">
+                <i class="bi <?= $card['icon'] ?>"></i>
             </div>
-            <a href="<?= base_url('admin/boutique') ?>" class="btn-admin-nav">Gérer la boutique <i
-                    class="bi bi-chevron-right"></i></a>
+
+            <div class="card-info">
+                <h4>
+                    <?= isset($card['count']) ? esc($card['count']) . ' ' : '' ?>
+                    <?= esc($card['label']) ?>
+                </h4>
+                <p><?= esc($card['desc']) ?></p>
+            </div>
+
+            <a href="<?= base_url($card['url']) ?>" class="btn-admin-nav">
+                <?= esc($card['btn']) ?> <i class="bi bi-chevron-right"></i>
+            </a>
         </div>
+        <?php endforeach; ?>
     </div>
 
-    <h3 class="admin-subtitle"><i class="bi bi-water"></i> Sportif & Logistique</h3>
-    <div class="grid-3 mb-5">
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-people"></i></div>
-            <div class="card-info">
-                <h4><?= $count['membres'] ?> Personnel</h4>
-                <p>Bureau, Coachs & Fonctions</p>
-            </div>
-            <a href="<?= base_url('admin/membres') ?>" class="btn-admin-nav">Gérer l'équipe <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
+    <?php endforeach; ?>
 
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-calendar-range"></i></div>
-            <div class="card-info">
-                <h4>Calendriers</h4>
-                <p>Entraînements & Compétitions</p>
-            </div>
-            <a href="<?= base_url('admin/plannings') ?>" class="btn-admin-nav">Modifier horaires <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
-
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-geo-alt"></i></div>
-            <div class="card-info">
-                <h4>Lieux</h4>
-                <p>Piscines & Bassins d'entraînement</p>
-            </div>
-            <a href="<?= base_url('admin/piscines') ?>" class="btn-admin-nav">Gérer les sites <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
-    </div>
-
-    <h3 class="admin-subtitle"><i class="bi bi-gear"></i> Administration Système</h3>
-    <div class="grid-3 mb-5">
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-currency-euro"></i></div>
-            <div class="card-info">
-                <h4>Tarifs</h4>
-                <p>Adhésions & Cotisations 2026</p>
-            </div>
-            <a href="<?= base_url('admin/tarifs') ?>" class="btn-admin-nav">Éditer les prix <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
-
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-tools"></i></div>
-            <div class="card-info">
-                <h4>Matériel</h4>
-                <p>Inventaire & Prêts de palmes</p>
-            </div>
-            <a href="<?= base_url('admin/materiel') ?>" class="btn-admin-nav">Gérer le stock <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
-
-        <div class="card-item admin-nav-card">
-            <div class="card-icon"><i class="bi bi-sliders"></i></div>
-            <div class="card-info">
-                <h4>Identité</h4>
-                <p>Configuration générale du club</p>
-            </div>
-            <a href="<?= base_url('admin/general') ?>" class="btn-admin-nav">Modifier les infos <i
-                    class="bi bi-chevron-right"></i></a>
-        </div>
-    </div>
 </div>
 
 <?= $this->endSection() ?>

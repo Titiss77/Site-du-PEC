@@ -4,9 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Page non trouvée - PEC</title>
-    <link rel="stylesheet" href="<?= base_url('assets/css/root.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/err404.css'); ?>">
-
 </head>
 
 <body>
@@ -23,7 +21,7 @@
         <?php endif; ?>
 
         <br>
-        <a href="<?= base_url() ?>" class="btn-home">Retourner à l'accueil</a>
+        <a href="javascript:history.back()" class="btn-home">Retourner à la page précédente</a>
     </div>
 </body>
 
