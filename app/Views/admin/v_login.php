@@ -12,10 +12,11 @@
 
         <form action="<?= base_url('login/auth') ?>" method="post">
             <div class="form-group">
-                <input type="text" name="identifiant" placeholder="Identifiant" class="form-input" required>
+                <input type="text" name="identifiant" placeholder="Identifiant (Admin)" class="form-input" required>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Mot de passe" class="form-input" required>
+                <input type="password" name="password" placeholder="Mot de passe (admin123)" class="form-input"
+                    required>
             </div>
             <button type="submit" class="btn-home" style="width:100%">Se connecter</button>
         </form>
