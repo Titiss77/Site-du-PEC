@@ -1,16 +1,42 @@
 <?= $this->extend('l_global') ?>
+
+<?php
+/**
+ * ============================================================================
+ * VUE : INSCRIPTIONS & CONTACT
+ * ============================================================================
+ * Cette vue gère la page de renseignements administratifs et de contact.
+ * Elle est composée de 4 blocs principaux :
+ * 1. Informations (Conditions d'âge, niveau requis, tarifs).
+ * 2. Formulaire de contact (Sécurisé avec CSRF + Honeypot).
+ * 3. Matériel nécessaire (Liste avec statut Prêt/Achat).
+ * 4. Trombinoscope (Membres du bureau).
+ *
+ * Les données ($tarifs, $materiel, $membres) proviennent du Contrôleur 'Contact'.
+ */
+?>
+
 <?= $this->section('contenu') ?>
 
 <?php
-// 1. CONFIGURATION DES DONNÉES STATIQUES
-// Centraliser ces textes permet de les modifier facilement sans toucher au HTML.
+/**
+ * ----------------------------------------------------------------------------
+ * 1. CONFIGURATION LOCALE (Données Statiques)
+ * ----------------------------------------------------------------------------
+ * Nous définissons ici les listes qui ne nécessitent pas de base de données.
+ * Cela permet de modifier les conditions ou les destinataires directement ici
+ * sans toucher au code HTML plus bas.
+ */
 
+// Liste des pré-requis affichés en haut de page
 $conditions = [
     "Être âgé de 6 ans minimum.",
     "Savoir nager 25 mètres sans aide.",
     "Certificat médical de non contre-indication indispensable."
 ];
 
+// Liste des destinataires pour le menu déroulant du formulaire
+// Format : 'valeur_technique' => 'Libellé affiché à l'utilisateur'
 $destinataires = [
     'president'  => 'Président (Général)',
     'tresorier'  => 'Trésorier (Facturation/Tarifs)',
@@ -57,6 +83,7 @@ $destinataires = [
             <?php endif; ?>
 
             <form action="<?= base_url('contact/envoyer') ?>" method="post" class="mt-3">
+
                 <?= csrf_field() ?>
 
                 <div style="display:none;">
@@ -72,6 +99,7 @@ $destinataires = [
                             <?php endforeach; ?>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="email">Votre adresse email :</label>
                         <input type="email" name="email" id="email" placeholder="exemple@mail.com" class="form-input"
@@ -86,8 +114,9 @@ $destinataires = [
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn-home" style="max-width: 300px; width:100%">Envoyer mon
-                        message</button>
+                    <button type="submit" class="btn-home" style="max-width: 300px; width:100%">
+                        Envoyer mon message
+                    </button>
                 </div>
             </form>
         </section>
@@ -96,7 +125,10 @@ $destinataires = [
     <h3 class="title-section">Matériel nécessaire</h3>
     <div class="grid-responsive">
         <?php foreach ($materiel as $m): ?>
-        <div class="materiel-card card-item h-100"> <?php if (!empty($m['image'])): ?>
+
+        <div class="materiel-card card-item h-100">
+
+            <?php if (!empty($m['image'])): ?>
             <div class="materiel-photo-container">
                 <img src="<?= base_url('uploads/materiel/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
                     class="materiel-img">
@@ -126,6 +158,7 @@ $destinataires = [
     <section class="trombi-container mt-5">
         <h2 class="title-section text-center">L'équipe du Bureau</h2>
         <div class="trombi-grid">
+
             <?php if (!empty($membres)): ?>
             <?php foreach ($membres as $m): ?>
             <div class="trombi-card">
@@ -138,9 +171,11 @@ $destinataires = [
                 </div>
             </div>
             <?php endforeach; ?>
+
             <?php else: ?>
             <p class="text-center">Aucun membre n'est enregistré pour le moment.</p>
             <?php endif; ?>
+
         </div>
     </section>
 </div>

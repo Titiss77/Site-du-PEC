@@ -1,10 +1,27 @@
 <?= $this->extend('l_global') ?>
+<?php
+/**
+ * ============================================================================
+ * VUE : PAGE D'ACCUEIL (Homepage)
+ * ============================================================================
+ * Cette vue représente la vitrine du site. Elle est chargée par le contrôleur 'Home'.
+ * * STRUCTURE DE LA PAGE :
+ * 1. Hero Banner : Grande image d'en-tête avec le logo et le titre.
+ * 2. Info Club   : Présentation textuelle, statistiques et projet sportif.
+ * 3. Actualités  : Liste des derniers articles ou événements à venir.
+ * 4. Disciplines : Grille présentant les activités (Apnée, Nage, etc.).
+ * 5. Coachs      : Trombinoscope de l'équipe sportive.
+ * 6. Lieux       : Carte des piscines.
+ */
+?>
+
 <?= $this->section('contenu') ?>
 
 <div class="site-container">
 
     <section class="hero-banner full-bleed">
         <img src="<?= base_url('uploads/general/groupe.jpg') ?>" alt="Photo du club" loading="lazy" />
+
         <div class="hero-overlay">
             <div class="hero-logo-container">
                 <img src="<?= base_url($general['image']); ?>" alt="Logo <?= esc($general['nomClub']); ?>"
@@ -18,6 +35,7 @@
 
         <div class="main-content">
             <section class="block-club">
+
                 <div class="info">
                     <h2>Bienvenue au <?= esc($general['nomClub']); ?></h2>
                     <p class="txt-intro"><?= esc($general['description']); ?></p>
@@ -41,7 +59,10 @@
         <h3 class="title-section">Actualités</h3>
         <div class="card-item news-card">
             <?php foreach ($actualites as $item): ?>
-            <div class="news-item mb-4 border-bottom pb-3"> <?php if (!empty($item['image'])): ?>
+
+            <div class="news-item mb-4 border-bottom pb-3">
+
+                <?php if (!empty($item['image'])): ?>
                 <img src="<?= base_url('uploads/actualites/' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
                     class="img-card mb-3" />
                 <?php endif; ?>
@@ -49,11 +70,18 @@
                 <div class="news-content">
                     <h5><?= esc($item['titre']); ?></h5>
 
-                    <?php 
-                        // Logique de date simplifiée
-                        $dateRef = $item['date_evenement'] ?? $item['created_at'];
-                        $dateLabel = $item['date_evenement'] ? 'Le' : 'Publié le';
-                        ?>
+                    <?php
+
+                    /**
+                     * LOGIQUE DE DATE INTELLIGENTE
+                     * ----------------------------
+                     * 1. $dateRef   : Si c'est un événement futur, on prend sa date ('date_evenement').
+                     * Sinon, on prend la date de publication ('created_at').
+                     * 2. $dateLabel : Adapte le texte ("Le..." pour un event, "Publié le..." pour une news).
+                     */
+                    $dateRef = $item['date_evenement'] ?? $item['created_at'];
+                    $dateLabel = $item['date_evenement'] ? 'Le' : 'Publié le';
+                    ?>
 
                     <p class="small text-muted">
                         <i class="bi bi-calendar3"></i> <?= $dateLabel ?> <?= date('d/m/Y', strtotime($dateRef)); ?>
@@ -109,9 +137,11 @@
             <div class="piscine-card card-item">
                 <img src="<?= base_url('uploads/piscines/' . ($p['photo'] ?? 'default_piscine.jpg')) ?>"
                     class="img-card" />
+
                 <div class="piscine-info p-3">
                     <h5><?= esc($p['nom']); ?></h5>
                     <p><i class="bi bi-geo-alt"></i> <?= esc($p['adresse']); ?></p>
+
                     <span class="tag-bassin">Bassin <?= esc($p['type_bassin'] ?? '25m'); ?></span>
                 </div>
             </div>
