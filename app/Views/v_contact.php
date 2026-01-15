@@ -1,16 +1,35 @@
 <?= $this->extend('l_global') ?>
 <?= $this->section('contenu') ?>
 
+<?php
+// 1. CONFIGURATION DES DONNÉES STATIQUES
+// Centraliser ces textes permet de les modifier facilement sans toucher au HTML.
+
+$conditions = [
+    "Être âgé de 6 ans minimum.",
+    "Savoir nager 25 mètres sans aide.",
+    "Certificat médical de non contre-indication indispensable."
+];
+
+$destinataires = [
+    'president'  => 'Président (Général)',
+    'tresorier'  => 'Trésorier (Facturation/Tarifs)',
+    'secretaire' => 'Secrétaire (Licences/Dossiers)',
+    'coach'      => 'Entraîneur (Sportif)'
+];
+?>
+
 <div class="site-container">
     <h2 class="title-section">Inscriptions & Contact</h2>
 
     <div class="grid-2 mb-5">
+
         <section class="card-item border-blue">
             <h3><i class="bi bi-info-circle"></i> Conditions d'inscription</h3>
             <ul class="list-check">
-                <li>Être âgé de 6 ans minimum.</li>
-                <li>Savoir nager 25 mètres sans aide.</li>
-                <li>Certificat médical de non contre-indication indispensable.</li>
+                <?php foreach ($conditions as $condition): ?>
+                <li><?= esc($condition) ?></li>
+                <?php endforeach; ?>
             </ul>
         </section>
 
@@ -20,7 +39,7 @@
                 <?php foreach ($tarifs as $t): ?>
                 <tr>
                     <td><?= esc($t['categorie']) ?></td>
-                    <td class="text-right"><strong><?= $t['prix'] ?>€</strong></td>
+                    <td class="text-right"><strong><?= esc($t['prix']) ?>€</strong></td>
                 </tr>
                 <?php endforeach; ?>
             </table>
@@ -41,29 +60,29 @@
                 <?= csrf_field() ?>
 
                 <div style="display:none;">
-                    <input type="text" name="honeypot" value="">
+                    <input type="text" name="honeypot" value="" tabindex="-1" autocomplete="off">
                 </div>
 
                 <div class="grid-2">
                     <div class="form-group">
-                        <label>Votre demande s'adresse au :</label>
-                        <select name="destinataire" class="form-input">
-                            <option value="president">Président (Général)</option>
-                            <option value="tresorier">Trésorier (Facturation/Tarifs)</option>
-                            <option value="secretaire">Secrétaire (Licences/Dossiers)</option>
-                            <option value="coach">Entraîneur (Sportif)</option>
+                        <label for="destinataire">Votre demande s'adresse au :</label>
+                        <select name="destinataire" id="destinataire" class="form-input">
+                            <?php foreach ($destinataires as $value => $label): ?>
+                            <option value="<?= esc($value) ?>"><?= esc($label) ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Votre adresse email :</label>
-                        <input type="email" name="email" placeholder="exemple@mail.com" class="form-input" required>
+                        <label for="email">Votre adresse email :</label>
+                        <input type="email" name="email" id="email" placeholder="exemple@mail.com" class="form-input"
+                            required>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Votre message :</label>
-                    <textarea name="message" placeholder="Détaillez votre demande ici..." rows="4" class="form-input"
-                        required></textarea>
+                    <label for="message">Votre message :</label>
+                    <textarea name="message" id="message" placeholder="Détaillez votre demande ici..." rows="4"
+                        class="form-input" required></textarea>
                 </div>
 
                 <div class="text-center">
@@ -75,16 +94,16 @@
     </div>
 
     <h3 class="title-section">Matériel nécessaire</h3>
-    <div class="grid-3 mb-5">
+    <div class="grid-responsive">
         <?php foreach ($materiel as $m): ?>
-        <div class="materiel-card"> <?php if (!empty($m['image'])): ?>
+        <div class="materiel-card card-item h-100"> <?php if (!empty($m['image'])): ?>
             <div class="materiel-photo-container">
                 <img src="<?= base_url('uploads/materiel/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
                     class="materiel-img">
             </div>
             <?php endif; ?>
 
-            <div class="info">
+            <div class="info p-3">
                 <h3><?= esc($m['nom']) ?></h3>
                 <p class="txt-small text-muted"><?= esc($m['description']) ?></p>
 

@@ -1,6 +1,41 @@
 <?= $this->extend('l_global') ?>
 <?= $this->section('contenu') ?>
 
+<?php
+// 1. CONFIGURATION DES BLOCS "BOURSE & PARTENARIATS"
+// On définit ici le contenu spécifique de chaque carte.
+// Si vous devez ajouter un partenaire, il suffit d'ajouter une entrée ici.
+$partenariats = [
+    [
+        'titre' => 'Bourse aux matériels',
+        'icon'  => 'bi-recycle',
+        'html'  => '<p>Plateforme d\'échange de matériel d\'occasion (palmes, tubas...).</p>
+                    <p class="txt-small"><em>Réservé aux adhérents.</em></p>',
+        'btn'   => [
+            'text'  => 'Consulter le listing',
+            'url'   => base_url('uploads/docs/bourse_materiel.pdf'),
+            'icon'  => 'bi-file-earmark-pdf',
+            'class' => 'tag-bassin text-decoration-none' // Style bouton gris arrondi
+        ]
+    ],
+    [
+        'titre' => 'Decathlon Pro Club',
+        'icon'  => 'bi-shop',
+        'html'  => '<p>Profitez de notre partenariat équipement neuf.</p>
+                    <ul class="list-check">
+                        <li>Tarifs préférentiels club</li>
+                        <li>Cumul de points fidélité</li>
+                    </ul>',
+        'btn'   => [
+            'text'  => 'Accéder à la boutique Pro',
+            'url'   => 'https://partnership.decathlonpro.fr/invitation/e09bce41-329d-4072-b8df-e591fc24e1a2',
+            'icon'  => 'bi-box-arrow-up-right',
+            'class' => 'color-blue fw-bold small' // Style lien bleu simple
+        ]
+    ]
+];
+?>
+
 <div class="site-container">
 
     <section class="hero-banner">
@@ -10,18 +45,17 @@
     </section>
 
     <h3 class="title-section">Boutiques du club</h3>
-
     <div class="grid-2">
         <?php foreach ($boutique as $item): ?>
         <div class="card-item shop-card-clean">
             <div class="shop-card-content">
-                <h5><?= $item['nom'] ?></h5>
-                <p class="txt-small"><?= $item['description'] ?></p>
+                <h5><?= esc($item['nom']) ?></h5>
+                <p class="txt-small"><?= esc($item['description']) ?></p>
                 <div class="price-box">
-                    <span class="price-value"><?= $item['tranchePrix'] ?></span>
+                    <span class="price-value"><?= esc($item['tranchePrix']) ?></span>
                 </div>
             </div>
-            <a href="<?= $item['url'] ?>" target="_blank" class="btn-shop-link">
+            <a href="<?= esc($item['url']) ?>" target="_blank" class="btn-shop-link">
                 Commander sur HelloAsso <i class="bi bi-arrow-right"></i>
             </a>
         </div>
@@ -29,32 +63,30 @@
     </div>
 
     <h3 class="title-section">Bourse & Partenariats</h3>
-
     <div class="grid-2">
-        <div class="card-item stats-box text-left">
-            <h3><i class="bi bi-recycle"></i> Bourse aux matériels</h3>
-            <p>Plateforme d'échange de matériel d'occasion entre les familles du club (palmes, tubas, masques).</p>
-            <p class="txt-small"><em>L'accès est réservé aux adhérents du club.</em></p>
-            <div class="mt-2">
-                <a href="<?= base_url('uploads/docs/bourse_materiel.pdf') ?>" target="_blank" class="tag-bassin"
-                    style="text-decoration:none;">
-                    <i class="bi bi-file-earmark-pdf"></i> Consulter le listing
+        <?php foreach ($partenariats as $p): ?>
+        <div class="card-item text-left h-100">
+            <h3><i class="bi <?= esc($p['icon']) ?>"></i> <?= esc($p['titre']) ?></h3>
+
+            <div class="mb-3">
+                <?= $p['html'] ?>
+            </div>
+
+            <div class="mt-auto"> <a href="<?= $p['btn']['url'] ?>" target="_blank"
+                    class="<?= esc($p['btn']['class']) ?>">
+                    <?php if (strpos($p['btn']['icon'], 'arrow-right') === false): ?>
+                    <i class="bi <?= esc($p['btn']['icon']) ?>"></i>
+                    <?php endif; ?>
+
+                    <?= esc($p['btn']['text']) ?>
+
+                    <?php if (strpos($p['btn']['icon'], 'arrow-right') !== false): ?>
+                    <i class="bi <?= esc($p['btn']['icon']) ?>"></i>
+                    <?php endif; ?>
                 </a>
             </div>
         </div>
-
-        <div class="card-item text-left">
-            <h3><i class="bi bi-shop"></i> Decathlon Pro Club</h3>
-            <p>Profitez de notre partenariat pour vos achats d'équipement neuf.</p>
-            <ul class="list-check">
-                <li>Tarifs préférentiels club</li>
-                <li>Cumul de points fidélité</li>
-            </ul>
-            <a href="https://partnership.decathlonpro.fr/invitation/e09bce41-329d-4072-b8df-e591fc24e1a2"
-                target="_blank" class="color-blue" style="font-weight: bold; font-size: 0.9rem;">
-                Accéder à la boutique Pro <i class="bi bi-box-arrow-up-right"></i>
-            </a>
-        </div>
+        <?php endforeach; ?>
     </div>
 
 </div>

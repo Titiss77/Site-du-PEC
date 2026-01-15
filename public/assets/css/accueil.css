@@ -177,6 +177,20 @@ a:hover {
     color: var(--secondary);
 }
 
+/* Une classe unique pour gérer toutes vos grilles (Disciplines, Coachs, Piscines) */
+.grid-responsive {
+    display: grid;
+    /* Crée autant de colonnes que possible, avec une largeur min de 250px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 3rem;
+}
+
+/* Optionnel : centrer les éléments si c'est la seule ligne */
+.grid-responsive:empty {
+    display: none;
+}
+
 /* --- Responsive --- */
 @media (max-width: 1024px) {
     .main-layout-with-sidebar {

@@ -138,3 +138,43 @@ h3 {
     color: var(--text-muted);
     margin-bottom: 2rem;
 }
+
+/* Carte de téléchargement (Compétitions) */
+.download-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    /* Pour le mobile */
+}
+
+.download-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f0f4f8;
+    color: #dc3545;
+    /* Rouge PDF */
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+/* Images des plannings */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Responsive : Empiler sur mobile */
+@media (max-width: 768px) {
+    .download-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}

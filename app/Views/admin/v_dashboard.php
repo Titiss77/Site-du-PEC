@@ -10,7 +10,7 @@ $sections = [
         'icon'  => 'bi-megaphone',
         'cards' => [
             [
-                'count' => $count['actualites'], // Variable dynamique
+                'count' => $count['actualites'],
                 'label' => 'Actualités',
                 'desc'  => 'Articles',
                 'icon'  => 'bi-newspaper',
@@ -40,7 +40,7 @@ $sections = [
                 'btn'   => "Gérer l'équipe"
             ],
             [
-                'label' => 'Calendriers', // Pas de count ici
+                'label' => 'Calendriers',
                 'desc'  => 'Entraînements & Compétitions',
                 'icon'  => 'bi-calendar-range',
                 'url'   => 'admin/plannings',
