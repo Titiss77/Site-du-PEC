@@ -138,18 +138,17 @@ $destinataires = [
             <div class="info p-3">
                 <h3><?= esc($m['nom']) ?></h3>
                 <p class="txt-small text-muted"><?= esc($m['description']) ?></p>
-
-                <div class="mt-2">
-                    <?php if ($m['pret']): ?>
-                    <span class="badge-status is-lent">
-                        <i class="bi bi-arrow-repeat"></i> Prêté par le club
-                    </span>
-                    <?php else: ?>
-                    <span class="badge-status is-personal">
-                        <i class="bi bi-cart"></i> À votre charge
-                    </span>
-                    <?php endif; ?>
-                </div>
+            </div>
+            <div class="mt-2">
+                <?php if ($m['pret']): ?>
+                <span class="badge-status is-lent">
+                    <i class="bi bi-arrow-repeat"></i> Prêté par le club
+                </span>
+                <?php else: ?>
+                <span class="badge-status is-personal">
+                    <i class="bi bi-cart"></i> À votre charge
+                </span>
+                <?php endif; ?>
             </div>
         </div>
         <?php endforeach; ?>
