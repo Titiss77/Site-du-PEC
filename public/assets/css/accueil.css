@@ -243,3 +243,27 @@ a:hover {
 .btn-shop-link:hover i {
     transform: translateX(5px);
 }
+
+/* --- Lien Google Maps --- */
+.maps-link {
+    color: var(--primary);
+    /* Bleu du club */
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.maps-link i {
+    color: var(--secondary);
+    /* Icône rose pour attirer l'œil */
+    margin-right: 5px;
+}
+
+.maps-link:hover {
+    color: var(--secondary);
+    /* Le texte devient rose au survol */
+    text-decoration: underline;
+    transform: translateY(-2px);
+    /* Petit effet de saut */
+}

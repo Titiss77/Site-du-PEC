@@ -21,6 +21,12 @@ class PiscineSeeder extends Seeder
                 'type_bassin' => '25m',
                 'photo'       => 'aquarive.png'
             ],
+            [
+                'nom'         => 'Aquaform',
+                'adresse'     => "Piscine aqua forme, Av. du Rouillen, 29500 Ergué-Gabéric, France",
+                'type_bassin' => '25m',
+                'photo'       => 'aquaform.jpg'
+            ],
         ];
         $this->db->table('piscines')->insertBatch($data);
     }

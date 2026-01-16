@@ -144,15 +144,28 @@
         <h3 class="title-section">Lieux d'entraînement</h3>
         <div class="grid-responsive">
             <?php foreach ($piscines as $p): ?>
-            <div class="piscine-card card-item">
-                <img src="<?= base_url('uploads/piscines/' . ($p['photo'] ?? 'default_piscine.jpg')) ?>"
-                    class="img-card" />
+            <div class="piscine-card card-item h-100 d-flex flex-column"> <img
+                    src="<?= base_url('uploads/piscines/' . ($p['photo'] ?? 'default_piscine.jpg')) ?>"
+                    alt="<?= esc($p['nom']) ?>" class="img-card" style="height: 200px; object-fit: cover;" />
 
-                <div class="piscine-info p-3">
+                <div class="piscine-info p-3 d-flex flex-column flex-grow-1">
                     <h5><?= esc($p['nom']); ?></h5>
-                    <p><i class="bi bi-geo-alt"></i> <?= esc($p['adresse']); ?></p>
 
-                    <span class="tag-bassin">Bassin <?= esc($p['type_bassin'] ?? '25m'); ?></span>
+                    <?php 
+                // Création de l'URL Google Maps
+                $adresseUrl = urlencode($p['adresse']);
+                $lienMaps = "https://www.google.com/maps/search/?api=1&query={$adresseUrl}";
+            ?>
+
+                    <p class="mb-3">
+                        <a href="<?= $lienMaps ?>" target="_blank" class="maps-link" title="Ouvrir dans Google Maps">
+                            <i class="bi bi-geo-alt-fill"></i> <?= esc($p['adresse']); ?>
+                        </a>
+                    </p>
+
+                    <div class="mt-auto">
+                        <span class="tag-bassin">Bassin <?= esc($p['type_bassin'] ?? '25m'); ?></span>
+                    </div>
                 </div>
             </div>
             <?php endforeach; ?>
