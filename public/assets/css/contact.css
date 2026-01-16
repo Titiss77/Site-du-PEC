@@ -125,6 +125,14 @@
 }
 
 /* --- Cartes Matériel (Style Bureau) --- */
+
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    padding: 10px;
+}
+
 .materiel-card {
     background: var(--white);
     border-radius: var(--radius);
