@@ -19,6 +19,12 @@ class PersonnelSeeder extends Seeder
             ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 22 26 70 61', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'rodolespagnol@gmail.com'],
             ['nom' => 'Thierry HENRI', 'numTel' => NULL, 'photo' => 'Thierry_HENRI.jpg', 'mail' => NULL],
             ['nom' => 'Martin LESPAGNOL', 'numTel' => NULL, 'photo' => 'Martin_LESPAGNOL.jpg', 'mail' => NULL],
+            ['nom' => 'Zacharie LEDUC', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
+            ['nom' => 'Célian PRIGENT', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
+            ['nom' => 'Luca SOLLAZZO LE MOIGNE', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
+            ['nom' => 'Killian TORCH', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
+            ['nom' => 'Florie BOUTOUILLER', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
+            ['nom' => 'Eloise KERJEAN', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
             
         ];
         $db->table('membres')->insertBatch($membres);
@@ -32,6 +38,7 @@ class PersonnelSeeder extends Seeder
             ['titre' => 'Sponsoring'],//5
             ['titre' => 'Informatique'],//6
             ['titre' => 'Coach'],//7
+            ['titre' => 'Coach en formation'],//8
             
         ];
         $db->table('fonctions')->insertBatch($fonctions);
@@ -51,6 +58,13 @@ class PersonnelSeeder extends Seeder
 
             ['membre_id' => 7, 'fonction_id' => 7],
             ['membre_id' => 2, 'fonction_id' => 7],
+
+            ['membre_id' => 8, 'fonction_id' => 8],
+            ['membre_id' => 9, 'fonction_id' => 8],
+            ['membre_id' => 10, 'fonction_id' => 8],
+            ['membre_id' => 11, 'fonction_id' => 8],
+            ['membre_id' => 12, 'fonction_id' => 8],
+            ['membre_id' => 13, 'fonction_id' => 8],
             
         ];
         $db->table('membre_fonction')->insertBatch($liaisons);

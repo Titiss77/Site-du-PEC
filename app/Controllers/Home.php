@@ -25,6 +25,7 @@ class Home extends BaseController
             'general' => $this->donneesModel->getGeneral(),
             'disciplines' => $this->donneesModel->getDisciplines(),
             'coaches' => $this->donneesModel->getCoachs(),
+            'coachesForm' => $this->donneesModel->getCoachsFormation(),
             'piscines' => $this->donneesModel->getPiscines(),
             'actualites' => $this->donneesModel->getActualites('actualite'),
             'evenements' => $this->donneesModel->getActualites('evenement'),

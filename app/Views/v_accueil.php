@@ -141,6 +141,17 @@
             <?php endforeach; ?>
         </div>
 
+        <h3 class="title-section">Nos Coachs en formation</h3>
+        <div class="grid-responsive">
+            <?php foreach ($coachesForm as $c): ?>
+            <div class="coach-item text-center p-3">
+                <img src="<?= base_url('uploads/personnel/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
+                    class="img-circle mb-3" />
+                <h4><?= esc($c['nom']); ?></h4>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
         <h3 class="title-section">Lieux d'entraînement</h3>
         <div class="grid-responsive">
             <?php foreach ($piscines as $p): ?>

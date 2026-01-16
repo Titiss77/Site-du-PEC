@@ -49,6 +49,24 @@ class Donnees extends Model {
 		$coachs = $rs->getResultArray();
 		return $coachs;
 	}
+
+	/**
+	 * Retourne la liste des coachs en formation
+	 *
+	 * @return nom, description, photo, numTel, mail sous la forme d'un tableau associatif
+	 */
+	function getCoachsFormation() {
+		$req = '
+		SELECT m.nom, m.photo 
+		FROM `membres` m 
+		JOIN membre_fonction mf ON m.id=mf.membre_id 
+		JOIN fonctions f ON mf.fonction_id=f.id 
+		WHERE f.titre = "Coach en formation"
+		';
+		$rs = $this->db->query($req);
+		$coachs = $rs->getResultArray();
+		return $coachs;
+	}
 	
 	/**
 	 * Retourne la liste des disciplines
