@@ -62,10 +62,10 @@ $destinataires = [
         <section class="card-item">
             <h3><i class="bi bi-cash-stack"></i> Tarifs 2026</h3>
             <table class="custom-table small">
-                <?php foreach ($tarifs as $t): ?>
+                <?php foreach ($groupes as $g): ?>
                 <tr>
-                    <td><?= esc($t['categorie']) ?></td>
-                    <td class="text-right"><strong><?= esc($t['prix']) ?>€</strong></td>
+                    <td><?= esc($g['nom']) ?></td>
+                    <td class="text-right"><strong><?= esc($g['prix']) ?>€</strong></td>
                 </tr>
                 <?php endforeach; ?>
             </table>

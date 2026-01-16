@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Donnees;
 use App\Models\InscriptionModel;
+use App\Models\GroupeModel;
 use App\Controllers\Root;
 
 class Contact extends BaseController
@@ -20,6 +21,7 @@ class Contact extends BaseController
     {
         $this->donneesModel = new Donnees();
         $this->inscrModel = new InscriptionModel();
+        $this->groupeModel = new GroupeModel();
         $this->root = new Root();
     }
     private function _initEmail()
@@ -52,9 +54,9 @@ class Contact extends BaseController
             'titrePage' => 'Inscriptions & Contact',
             'cssPage' => 'contact.css',
             'general' => $this->donneesModel->getGeneral(),
-            'tarifs' => $this->inscrModel->getTarifs(),
             'materiel' => $this->inscrModel->getMateriel(),
             'membres'   => $this->donneesModel->getBureau(),
+            'groupes' => $this->groupeModel->getGroupes(),
         ];
 
         return view('v_contact', $data);

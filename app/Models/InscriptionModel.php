@@ -6,18 +6,6 @@ use CodeIgniter\Model;
 
 class InscriptionModel extends Model
 {
-    /**
-     * Retourne la liste des tarifs
-     *
-     * @return categorie, description, prix sous la forme d'un tableau associatif
-     */
-    public function getTarifs()
-    {
-        $req = 'SELECT categorie, description, prix FROM `tarifs`';
-		$rs = $this->db->query($req);
-		$tarifs = $rs->getResultArray();
-		return $tarifs;
-    }
 
     /**
      * Retourne la liste du matériel

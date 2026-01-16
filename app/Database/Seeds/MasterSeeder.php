@@ -15,10 +15,10 @@ class MasterSeeder extends Seeder
         $this->call('MaterielSeeder');
         $this->call('PersonnelSeeder');
         $this->call('PostesSeeder');
-        $this->call('TarifsSeeder');
         $this->call('BoutiqueSeeder');
         $this->call('ActualitesSeeder');
         $this->call('UserSeeder');
         $this->call('RootSeeder');
+        $this->call('GroupesSeeder');
     }
 }

@@ -1,0 +1,80 @@
+/* --- Cartes des Groupes / Tarifs --- */
+
+/* Ajustement de la carte pour permettre le flex-direction column */
+.group-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Sécurité pour les coins arrondis */
+}
+
+/* Conteneur de l'image pour gérer le "bleed" (débordement) */
+/* On compense le padding de 20px du .card-item parent */
+.group-img-container {
+    height: 180px;
+    margin: -20px -20px 15px -20px;
+    /* Haut Droite Bas Gauche */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.group-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* On garde les coins arrondis en haut seulement */
+    border-radius: var(--radius) var(--radius) 0 0;
+    transition: transform 0.3s ease;
+}
+
+/* Petit effet zoom sympa au survol de la carte */
+.group-card:hover .group-img-container img {
+    transform: scale(1.05);
+}
+
+/* En-tête (Titre + Prix) */
+.group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Aligne en haut si le titre est sur 2 lignes */
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.group-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.3;
+}
+
+.group-price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--secondary);
+    /* Le rose du site */
+    white-space: nowrap;
+    /* Empêche le prix de se couper */
+}
+
+/* Description */
+.group-desc {
+    font-size: 0.95rem;
+    color: #666;
+    /* Gris texte doux */
+    margin-bottom: 20px;
+    flex-grow: 1;
+    /* C'est ça qui pousse les tags vers le bas pour aligner les cartes */
+}
+
+/* Footer (Badges) */
+.group-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    /* Petite séparation visuelle */
+}

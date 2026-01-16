@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Donnees;
+use App\Models\GroupeModel;
 use App\Controllers\Root;
 
 class Home extends BaseController
@@ -10,6 +11,7 @@ class Home extends BaseController
     public function __construct()
     {
         $this->donneesModel = new Donnees();
+        $this->groupeModel = new GroupeModel();
         $this->root = new Root();
     }
 
@@ -40,7 +42,7 @@ class Home extends BaseController
             'cssPage' => 'groupes.css',
             'titrePage' => $this->donneesModel->getGeneral()['nomClub'],
             'general' => $this->donneesModel->getGeneral(),
-            'groupes' => $this->donneesModel->getDisciplines(),
+            'groupes' => $this->groupeModel->getGroupes(),
             
         ];
 
