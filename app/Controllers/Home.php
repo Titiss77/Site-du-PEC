@@ -28,6 +28,7 @@ class Home extends BaseController
             'piscines' => $this->donneesModel->getPiscines(),
             'actualites' => $this->donneesModel->getActualites('actualite'),
             'evenements' => $this->donneesModel->getActualites('evenement'),
+            'groupes' => $this->groupeModel->getGroupes(),
             
         ];
 

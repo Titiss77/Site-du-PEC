@@ -11,7 +11,7 @@ class GroupesSeeder extends Seeder
         $data = [
             [
                 'nom'            => 'Tritons & Sirène',
-                'description'    => 'Apprentissage des fondamentaux de la natation et découverte de la palme. Ludique et pédagogique.',
+                'description'    => 'Description à prévoir.',
                 'tranche_age'    => '6 - 8 ans',
                 'horaire_resume' => 'Samedi',
                 'prix'           => 201.00,
@@ -20,7 +20,7 @@ class GroupesSeeder extends Seeder
             ],
             [
                 'nom'            => 'Débutants',
-                'description'    => 'Apprentissage des fondamentaux de la natation et découverte de la palme. Ludique et pédagogique.',
+                'description'    => 'Description à prévoir.',
                 'tranche_age'    => '9 ans et +',
                 'horaire_resume' => '3x / semaine',
                 'prix'           => 000.00,
@@ -29,7 +29,7 @@ class GroupesSeeder extends Seeder
             ],
             [
                 'nom'            => 'Jeunes',
-                'description'    => 'Perfectionnement technique et préparation aux premières compétitions régionales et nationales.',
+                'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
                 'prix'           => 282.00,
@@ -38,7 +38,7 @@ class GroupesSeeder extends Seeder
             ],
             [
                 'nom'            => 'Espoirs',
-                'description'    => 'Entretien physique, perfectionnement ou compétition adulte dans une ambiance conviviale.',
+                'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
                 'prix'           => 282.00,
@@ -47,7 +47,7 @@ class GroupesSeeder extends Seeder
             ],
             [
                 'nom'            => 'Masters',
-                'description'    => 'Séances intenses axées sur le cardio et le renforcement musculaire aquatique.',
+                'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
                 'prix'           => 000.00,

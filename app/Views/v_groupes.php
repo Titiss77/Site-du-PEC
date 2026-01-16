@@ -1,40 +1,54 @@
 <?= $this->extend('l_global') ?>
 <?= $this->section('contenu') ?>
-<div class="site-container">
-    <h3 class="title-section">Nos Groupes & Tarifs 2026</h3>
 
-    <div class="grid-responsive mb-5">
-        <?php foreach ($groupes as $g): ?>
+<div class="site-container">
+    <h3 class="title-section">Nos Groupes</h3>
+
+    <div class="grid-responsive">
+        <?php foreach ($groupes as $d): ?>
 
         <div class="card-item group-card h-100 d-flex flex-column">
 
-            <?php if (!empty($g['image'])): ?>
-            <div class="group-img-container">
-                <img src="<?= base_url('uploads/groupes/' . esc($g['image'])); ?>" alt="<?= esc($g['nom']) ?>">
-            </div>
-            <?php endif; ?>
-
-            <div class="group-header">
-                <h4 class="group-title"><?= esc($g['nom']) ?></h4>
-                <span class="group-price"><?= esc($g['prix']) ?>€</span>
-            </div>
-
-            <p class="group-desc">
-                <?= esc($g['description']) ?>
-            </p>
-
-            <div class="group-footer mt-auto">
-                <?php if (!empty($g['tranche_age'])): ?>
-                <span class="tag-bassin"><i class="bi bi-person"></i> <?= esc($g['tranche_age']) ?></span>
+            <div class="group-img-header">
+                <?php if (!empty($d['image'])): ?>
+                <img src="<?= base_url('uploads/groupes/' . esc($d['image'])); ?>" alt="<?= esc($d['nom']) ?>"
+                    loading="lazy" />
+                <?php else: ?>
+                <div class="group-img-placeholder">
+                    <i class="bi bi-image"></i>
+                </div>
                 <?php endif; ?>
 
-                <?php if (!empty($g['horaire_resume'])): ?>
-                <span class="tag-bassin"><i class="bi bi-clock"></i> <?= esc($g['horaire_resume']) ?></span>
-                <?php endif; ?>
+                <span class="price-badge"><?= esc($d['prix']) ?> €*</span>
             </div>
 
+            <div class="group-body d-flex flex-column flex-grow-1">
+
+                <h5 class="group-title"><?= esc($d['nom']); ?></h5>
+
+                <p class="group-desc flex-grow-1">
+                    <?= esc($d['description']); ?>
+                </p>
+
+                <div class="group-meta mt-3">
+                    <?php if(!empty($d['tranche_age'])): ?>
+                    <span class="meta-pill">
+                        <i class="bi bi-person"></i> <?= esc($d['tranche_age']); ?>
+                    </span>
+                    <?php endif; ?>
+
+                    <?php if(!empty($d['horaire_resume'])): ?>
+                    <span class="meta-pill">
+                        <i class="bi bi-clock"></i> <?= esc($d['horaire_resume']); ?>
+                    </span>
+                    <?php endif; ?>
+                </div>
+
+            </div>
         </div>
         <?php endforeach; ?>
     </div>
+    <p>*Prix Général des inscriptions</p>
 </div>
+
 <?= $this->endSection() ?>

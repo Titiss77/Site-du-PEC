@@ -56,6 +56,23 @@
             </section>
         </div>
 
+        <h3 class="title-section">Nos Groupes</h3>
+        <div class="grid-responsive">
+            <?php foreach ($groupes as $d): ?>
+            <div class="card-item hover-effect">
+                <img src="<?= base_url('uploads/groupes/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>"
+                    class="img-card" />
+                <div class="p-3">
+                    <h5><?= esc($d['nom']); ?></h5>
+                    <p><?= esc($d['tranche_age']); ?></p>
+                </div>
+                <a href="<?= base_url('/groupes'); ?>" class="btn-shop-link">
+                    Plus d'infos <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
         <h3 class="title-section">Actualités</h3>
         <div class="card-item news-card">
             <?php foreach ($actualites as $item): ?>
@@ -111,13 +128,6 @@
                 </div>
             </div>
             <?php endforeach; ?>
-        </div>
-
-        <div class="banner-info mt-5 mb-5">
-            <div class="banner-content">
-                <h4>Initiation : Tritons & Sirènes</h4>
-                <p>Accueil dès 7 ans pour découvrir l'aisance aquatique avec palmes.</p>
-            </div>
         </div>
 
         <h3 class="title-section">Nos Coachs</h3>
