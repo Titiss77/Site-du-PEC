@@ -102,6 +102,10 @@ $menuItems = [
             <a href="<?= $general['lienInstagram']; ?>" target="_blank" aria-label="Instagram">
                 <i class="bi bi-instagram"></i>
             </a>
+            <a href="<?= $general['lienffessm']; ?>" target="_blank" aria-label="FFESSM"
+                title="Site officiel de la FFESSM">
+                <i class="bi bi-globe"></i>
+            </a>
         </div>
 
         <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>

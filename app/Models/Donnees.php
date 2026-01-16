@@ -24,7 +24,7 @@ class Donnees extends Model {
 		nombreNageurs, 
 		ROUND(nombreHommes / nombreNageurs * 100, 1) as pourcentH, 
 		ROUND((nombreNageurs-nombreHommes) / nombreNageurs * 100, 1) as pourcentF,
-		projetSportif, lienFacebook, lienInstagram
+		projetSportif, lienFacebook, lienInstagram, lienffessm
 		FROM `general` LIMIT 1
 		';
 		$rs = $this->db->query($req);

@@ -19,6 +19,7 @@ class CreateGeneral extends Migration
             'projetSportif' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'lienFacebook'  => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'lienInstagram' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'lienffessm'    => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('general');

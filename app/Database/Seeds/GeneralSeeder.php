@@ -18,6 +18,7 @@ class GeneralSeeder extends Seeder
             'projetSportif' => 'Compétitions régionales et nationales, championnats de France',
             'lienFacebook'  => 'https://www.facebook.com/palmesencornouaille',
             'lienInstagram' => 'https://www.instagram.com/palmesencornouaille/',
+            'lienffessm'    => 'https://ffessm.fr/',
         ];
         $this->db->table('general')->insert($data);
     }
