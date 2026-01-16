@@ -48,13 +48,10 @@ class CreateGroupes extends Migration
                 'constraint' => 2,
                 'default'    => 0,
             ],
-            'created_at' => [
-                'type' => 'DATETIME',
-                'null' => true,
-            ],
-            'updated_at' => [
-                'type' => 'DATETIME',
-                'null' => true,
+            'codeCouleur' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
+                'default'    => null,
             ],
         ]);
 

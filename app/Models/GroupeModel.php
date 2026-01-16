@@ -10,7 +10,7 @@ class GroupeModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['nom', 'description', 'tranche_age', 'horaire_resume', 'prix', 'image', 'ordre'];
+    protected $allowedFields    = ['nom', 'description', 'tranche_age', 'horaire_resume', 'prix', 'image', 'ordre', 'codeCouleur'];
 
     // Dates
     protected $useTimestamps = true;
