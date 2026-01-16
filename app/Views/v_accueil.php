@@ -59,7 +59,7 @@
         <h3 class="title-section">Nos Groupes</h3>
         <div class="grid-responsive">
             <?php foreach ($groupes as $d): ?>
-            <div class="card-item hover-effect">
+            <div class="card-item hover-effect" style="background:<?= esc($d['codeCouleur']) ?>;">
                 <img src="<?= base_url('uploads/groupes/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>"
                     class="img-card" />
                 <div class="p-3">

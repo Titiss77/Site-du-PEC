@@ -32,13 +32,13 @@
 
                 <div class="group-meta mt-3">
                     <?php if(!empty($d['tranche_age'])): ?>
-                    <span class="meta-pill">
+                    <span class="meta-pill" style="background-color:<?= esc($d['codeCouleur']) ?>;">
                         <i class="bi bi-person"></i> <?= esc($d['tranche_age']); ?>
                     </span>
                     <?php endif; ?>
 
                     <?php if(!empty($d['horaire_resume'])): ?>
-                    <span class="meta-pill">
+                    <span class="meta-pill" style="background-color:<?= esc($d['codeCouleur']) ?>;">
                         <i class="bi bi-clock"></i> <?= esc($d['horaire_resume']); ?>
                     </span>
                     <?php endif; ?>
