@@ -22,6 +22,7 @@ $isLogged = session()->get('isLoggedIn');
 // AVANTAGE : Modifier le menu ici le met à jour automatiquement dans le Header ET le Footer.
 $menuItems = [
     '/' => 'Accueil',
+    '/groupes' => 'Nos Groupes',
     '/boutique' => 'Boutique',
     '/contact' => 'Contact / inscriptions',
     '/calendriers' => 'Calendriers',

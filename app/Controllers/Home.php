@@ -32,6 +32,21 @@ class Home extends BaseController
         return view('v_accueil', $data);
     }
 
+    public function groupes()
+    {
+
+        $data = [
+            'root' => $this->root->getRootStyles(),
+            'cssPage' => 'groupes.css',
+            'titrePage' => $this->donneesModel->getGeneral()['nomClub'],
+            'general' => $this->donneesModel->getGeneral(),
+            'groupes' => $this->donneesModel->getDisciplines(),
+            
+        ];
+
+        return view('v_groupes', $data);
+    }
+
     public function calendriers()
     {
         $data = [

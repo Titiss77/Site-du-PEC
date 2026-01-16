@@ -177,6 +177,10 @@ a:hover {
     color: var(--secondary);
 }
 
+.coach-item h4 {
+    text-align: center;
+}
+
 /* Une classe unique pour gérer toutes vos grilles (Disciplines, Coachs, Piscines) */
 .grid-responsive {
     display: grid;

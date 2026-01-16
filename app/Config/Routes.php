@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 
 // --- ROUTES PUBLIQUES ---
 $routes->get('/', 'Home::index');
+$routes->get('groupes', 'Home::groupes');
 $routes->get('calendriers', 'Home::calendriers');
 $routes->get('boutique', 'Home::boutique');
 
