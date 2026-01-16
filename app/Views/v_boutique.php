@@ -41,10 +41,10 @@ $partenariats = [
     [
         'titre' => 'Decathlon Pro Club',
         'icon'  => 'bi-shop',
-        'html'  => '<p>Profitez de notre partenariat équipement neuf.</p>
+        'html'  => '<p>Profitez de notre partenariat.</p>
                     <ul class="list-check">
-                        <li>Tarifs préférentiels club</li>
-                        <li>Cumul de points fidélité</li>
+                        <li>Cumul personnel de points fidélité</li>
+                        <li>Bonus : le club cumul des points afin de réduire le coût des achats groupés</li>
                     </ul>',
         'btn'   => [
             'text'  => 'Accéder à la boutique Pro',
