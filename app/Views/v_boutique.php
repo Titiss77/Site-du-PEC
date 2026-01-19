@@ -31,9 +31,9 @@ $partenariats = [
         'html'  => '<p>Plateforme d\'échange de matériel d\'occasion (palmes, tubas...).</p>
                     <p class="txt-small"><em>Réservé aux adhérents.</em></p>',
         'btn'   => [
-            'text'  => 'Consulter le listing',
-            'url'   => base_url('uploads/docs/bourse_materiel.pdf'),
-            'icon'  => 'bi-file-earmark-pdf',       // Icône PDF
+            'text'  => 'Consulter le tableau de ventes',
+            'url'   => base_url('listing'),
+            'icon'  => 'bi-box-arrow-up-right',       // Icône PDF
             'class' => 'tag-bassin text-decoration-none' // Style : Bouton gris arrondi (badge)
         ]
     ],

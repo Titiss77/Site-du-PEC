@@ -1,28 +1,47 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\Root;  // Note: Ensure this is intended to be used as a library object
 use App\Models\Donnees;
 use App\Models\GroupeModel;
-use App\Controllers\Root;
 
 class Home extends BaseController
 {
+    protected $donneesModel;
+    protected $groupeModel;
+    protected $root;
+    protected $generalData;
+
     public function __construct()
     {
         $this->donneesModel = new Donnees();
         $this->groupeModel = new GroupeModel();
         $this->root = new Root();
+
+        // Pre-fetch general data to use in all methods (Performance)
+        $this->generalData = $this->donneesModel->getGeneral();
+    }
+
+    /**
+     * Helper to merge page-specific data with global data (Header, Footer, Styles)
+     */
+    private function _render(string $view, array $pageData = [])
+    {
+        $globalData = [
+            'root' => $this->root->getRootStyles(),
+            'general' => $this->generalData,
+            'titrePage' => $pageData['titrePage'] ?? $this->generalData['nomClub'],  // Default to Club Name
+        ];
+
+        return view($view, array_merge($globalData, $pageData));
     }
 
     public function index()
     {
-
         $data = [
-            'root' => $this->root->getRootStyles(),
             'cssPage' => 'accueil.css',
-            'titrePage' => $this->donneesModel->getGeneral()['nomClub'],
-            'general' => $this->donneesModel->getGeneral(),
             'disciplines' => $this->donneesModel->getDisciplines(),
             'coaches' => $this->donneesModel->getCoachs(),
             'coachesForm' => $this->donneesModel->getCoachsFormation(),
@@ -30,52 +49,41 @@ class Home extends BaseController
             'actualites' => $this->donneesModel->getActualites('actualite'),
             'evenements' => $this->donneesModel->getActualites('evenement'),
             'groupes' => $this->groupeModel->getGroupes(),
-            
         ];
 
-        return view('v_accueil', $data);
+        return $this->_render('v_accueil', $data);
     }
 
     public function groupes()
     {
-
         $data = [
-            'root' => $this->root->getRootStyles(),
             'cssPage' => 'groupes.css',
-            'titrePage' => $this->donneesModel->getGeneral()['nomClub'],
-            'general' => $this->donneesModel->getGeneral(),
             'groupes' => $this->groupeModel->getGroupes(),
-            
         ];
 
-        return view('v_groupes', $data);
+        return $this->_render('v_groupes', $data);
     }
 
     public function calendriers()
     {
         $data = [
-            'root' => $this->root->getRootStyles(),
             'cssPage' => 'calendrier.css',
             'titrePage' => 'Calendriers',
-            'general' => $this->donneesModel->getGeneral(),
             'plannings' => $this->donneesModel->getPlannings(),
             'calendrierCompet' => $this->donneesModel->getCalendrier(),
         ];
 
-        return view('v_calendriers', $data);
+        return $this->_render('v_calendriers', $data);
     }
 
     public function boutique()
     {
-        
         $data = [
-            'root' => $this->root->getRootStyles(),
             'cssPage' => 'boutique.css',
             'titrePage' => 'Boutique du PEC',
-            'general' => $this->donneesModel->getGeneral(),
             'boutique' => $this->donneesModel->getBoutique(),
         ];
 
-        return view('v_boutique', $data);
+        return $this->_render('v_boutique', $data);
     }
 }

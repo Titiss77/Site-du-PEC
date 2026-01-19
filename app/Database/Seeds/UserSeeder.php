@@ -9,12 +9,20 @@ class UserSeeder extends Seeder
     public function run()
     {
         $data = [
-            'username' => 'admin',
-            'nom'      => 'Responsable PEC',
-            // Génération du hachage sécurisé
-            'password' => password_hash('admin123', PASSWORD_DEFAULT),
+            [
+                'username' => 'admin',
+                'nom' => 'Responsable PEC',
+                'password' => password_hash('admin123', PASSWORD_DEFAULT),
+                'role' => 'admin',
+            ],
+            [
+                'username' => 'Adhérant',
+                'nom' => 'Adhérant du club',
+                'password' => password_hash('adherant', PASSWORD_DEFAULT),
+                'role' => 'user',
+            ],
         ];
 
-        $this->db->table('utilisateurs')->insert($data);
+        $this->db->table('utilisateurs')->insertBatch($data);
     }
 }

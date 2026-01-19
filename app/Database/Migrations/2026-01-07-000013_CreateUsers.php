@@ -13,6 +13,7 @@ class CreateUsers extends Migration
             'username' => ['type' => 'VARCHAR', 'constraint' => 50, 'unique' => true],
             'password' => ['type' => 'VARCHAR', 'constraint' => 255],
             'nom'      => ['type' => 'VARCHAR', 'constraint' => 100],
+            'role'      => ['type' => 'ENUM', 'constraint' => ['admin', 'user'], 'default' => 'user'],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('utilisateurs');

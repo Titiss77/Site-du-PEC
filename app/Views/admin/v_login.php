@@ -32,14 +32,14 @@
         <form action="<?= base_url('login/auth') ?>" method="post">
             <div class="form-group">
                 <label for="identifiant" class="sr-only" style="display:none">Identifiant</label> <input type="text"
-                    id="identifiant" name="identifiant" placeholder="Identifiant (Admin)" class="form-input" required
+                    id="identifiant" name="identifiant" placeholder="Identifiant" class="form-input" required
                     autocomplete="username">
             </div>
 
             <div class="form-group">
                 <label for="password" class="sr-only" style="display:none">Mot de passe</label>
-                <input type="password" id="password" name="password" placeholder="Mot de passe (admin123)"
-                    class="form-input" required autocomplete="current-password">
+                <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-input"
+                    required autocomplete="current-password">
             </div>
 
             <button type="submit" class="btn-home" style="width:100%">
