@@ -4,16 +4,20 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\Donnees;
+use App\Models\UtilisateurModel; // Ajout du modèle utilisateur
 use App\Controllers\Root;
 
 class Login extends BaseController
 {
     protected $donneesModel;
+    protected $userModel;
+    protected $root;
 
     public function __construct()
     {
         $this->donneesModel = new Donnees();
-        $this->root = new Root();
+        $this->userModel    = new UtilisateurModel(); // Instanciation
+        $this->root         = new Root();
     }
 
     /**
@@ -21,12 +25,16 @@ class Login extends BaseController
      */
     public function index()
     {
-        // On récupère les infos générales pour le logo et le nom du club dans le layout
+        // Si l'admin est déjà connecté, on le redirige directement vers le dashboard
+        if (session()->get('isLoggedIn') && session()->get('role') === 'admin') {
+            return redirect()->to(base_url('admin/dashboard'));
+        }
+
         $data = [
-            'root' => $this->root->getRootStyles(),
+            'root'      => $this->root->getRootStyles(),
             'titrePage' => 'Connexion Administration',
-            'cssPage' => 'contact.css',  // On réutilise le CSS contact pour les formulaires
-            'general' => $this->donneesModel->getGeneral(),
+            'cssPage'   => 'contact.css',
+            'general'   => $this->donneesModel->getGeneral(),
         ];
 
         return view('admin/v_login', $data);
@@ -38,45 +46,52 @@ class Login extends BaseController
     public function authenticate()
     {
         $session = session();
-        $db = \Config\Database::connect();
-        $username = $this->request->getPost('identifiant');
+        
+        $username    = $this->request->getPost('identifiant');
         $passwordRaw = $this->request->getPost('password');
 
-        // Recherche de l'utilisateur en base
-        $user = $db
-            ->table('utilisateurs')
-            ->where('username', $username)
-            ->get()
-            ->getRowArray();
+        // 1. Recherche via le Modèle (plus propre)
+        $user = $this->userModel->where('username', $username)->first();
 
         if ($user) {
-            // Vérification du mot de passe haché
+            // 2. Vérification du mot de passe
             if (password_verify($passwordRaw, $user['password'])) {
+
+                // 3. SÉCURITÉ : Vérification du Rôle ADMIN
+                if ($user['role'] !== 'admin') {
+                    return redirect()->back()->withInput()->with('error', 'Accès refusé : Droits insuffisants.');
+                }
+
+                // 4. SÉCURITÉ : Régénération de l'ID de session (anti-fixation)
+                $session->regenerate();
+
+                // Création de la session
                 $session->set([
-                    'user_id' => $user['id'],
-                    'nom' => $user['nom'],
+                    'user_id'    => $user['id'],
+                    'nom'        => $user['nom'],
+                    'username'   => $user['username'],
+                    'role'       => $user['role'], // Important de stocker le rôle
                     'isLoggedIn' => true,
                 ]);
 
-                return redirect()->to(base_url('admin'));
+                return redirect()->to(base_url('admin')); // Ou 'admin/dashboard' selon tes routes
             }
         }
 
         // En cas d'échec (utilisateur inconnu OU mauvais mot de passe)
-        return redirect()->back()->with('error', 'Identifiants invalides.');
+        return redirect()->back()->withInput()->with('error', 'Identifiants invalides.');
     }
 
     /**
-     * Déconnecte l'utilisateur et redirige vers la page demandée
+     * Déconnecte l'utilisateur
      */
     public function logout()
     {
-        session()->destroy(); // Détruit la session
+        session()->destroy();
 
-        // Vérifie si une URL de retour est demandée (ex: ?return=boutique)
-        // Sinon, par défaut, on renvoie vers l'accueil '/'
+        // Gestion de l'URL de retour
         $returnUrl = $this->request->getGet('return') ?? '/';
-
+        
         return redirect()->to(base_url($returnUrl))->with('success', 'Vous avez été déconnecté.');
     }
 }
