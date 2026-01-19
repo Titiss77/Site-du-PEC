@@ -1,6 +1,7 @@
 <?= $this->extend('l_global') ?>
 
 <?php
+
 /**
  * ============================================================================
  * VUE : CALENDRIERS & HORAIRES
@@ -21,17 +22,14 @@
 
     <section class="mb-5">
         <h3><i class="bi bi-calendar3"></i> Planning des Entraînements</h3>
-        <p class="txt-muted">Périodes scolaires et vacances.</p>
 
-        <?php 
-        // VÉRIFICATION : Est-ce qu'il y a des plannings à afficher ?
-        // Si le tableau est vide (début de saison), on affiche un message d'information.
-        if (!empty($plannings)): 
-        ?>
+        <?php if (!empty($plannings)): ?>
+        <p class="txt-muted">Pendant les vacances :</p>
 
         <div class="calendar-grid">
 
             <?php foreach ($plannings as $planning): ?>
+            <?php if ($planning['categorie'] == 'vacances'): ?>
             <div class="calendar-img-box">
 
                 <p class="label-cal">
@@ -41,6 +39,27 @@
                 <img src="<?= base_url('uploads/calendriers/' . $planning['image']) ?>"
                     alt="Planning <?= esc($planning['categorie']) ?>" class="img-fluid img-zoom" loading="lazy">
             </div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+
+        </div>
+
+        <p class="txt-muted">Périodes scolaires :</p>
+
+        <div class="calendar-grid">
+
+            <?php foreach ($plannings as $planning): ?>
+            <?php if ($planning['categorie'] == 'scolaire'): ?>
+            <div class="calendar-img-box">
+
+                <p class="label-cal">
+                    <strong><?= esc($planning['categorie']) ?></strong> : <?= esc($planning['date']) ?>
+                </p>
+
+                <img src="<?= base_url('uploads/calendriers/' . $planning['image']) ?>"
+                    alt="Planning <?= esc($planning['categorie']) ?>" class="img-fluid img-zoom" loading="lazy">
+            </div>
+            <?php endif; ?>
             <?php endforeach; ?>
 
         </div>
@@ -57,10 +76,10 @@
     <section class="mb-5">
         <h3 class="title-section"><i class="bi bi-trophy"></i> Calendrier des compétitions</h3>
 
-        <?php 
+        <?php
         // VÉRIFICATION : Y a-t-il un calendrier de compétition publié ?
-        if (!empty($calendrierCompet)): 
-        ?>
+        if (!empty($calendrierCompet)):
+            ?>
 
         <?php foreach ($calendrierCompet as $item): ?>
         <div class="card-item stats-box download-card">
