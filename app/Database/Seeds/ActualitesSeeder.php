@@ -10,13 +10,13 @@ class ActualitesSeeder extends Seeder
     {
         $data = [
             [
-                'titre'           => 'Gala du club 2026',
-                'slug'            => 'gala-du-club-2026',
+                'titre'           => 'Competition Angers',
+                'slug'            => 'competition-angers',
                 'type'            => 'actualite',
                 'statut'          => 'publie',
-                'description'     => 'Un grand gala annuel pour célébrer les succès de nos nageurs et nageuses !',
+                'description'     => 'Grosse compétittion !',
                 'image'           => null,
-                'date_evenement'  => '2026-01-17',
+                'date_evenement'  => '2026-01-25',
                 'id_auteur'       => 1,
                 'created_at'      => date('Y-m-d H:i:s'),
                 'updated_at'      => date('Y-m-d H:i:s'),

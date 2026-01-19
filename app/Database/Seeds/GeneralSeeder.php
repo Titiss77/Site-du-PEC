@@ -15,7 +15,7 @@ class GeneralSeeder extends Seeder
             'philosophie'   => 'La nage avec palmes apporte gainage et sensation de glisse incomparable.',
             'nombreNageurs' => 100,
             'nombreHommes'  => 45,
-            'projetSportif' => 'Compétitions régionales et nationales, championnats de France',
+            'projetSportif' => 'Progresser dans la pratique et pour certains accéder à des classements importants',
             'lienFacebook'  => 'https://www.facebook.com/palmesencornouaille',
             'lienInstagram' => 'https://www.instagram.com/palmesencornouaille/',
             'lienffessm'    => 'https://ffessm.fr/',
