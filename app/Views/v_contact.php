@@ -65,8 +65,10 @@ $destinataires = [
                 <?php foreach ($groupes as $g): ?>
                 <tr>
                     <td style="background-color:<?= esc($g['codeCouleur']) ?>;"><?= esc($g['nom']) ?></td>
+                    <td style="background-color:<?= esc($g['codeCouleur']) ?>;"><?= esc($g['description']) ?></td>
                     <td class="text-right" style="background-color:<?= esc($g['codeCouleur']) ?>;">
-                        <strong><?= esc($g['prix']) ?>€</strong></td>
+                        <strong><?= esc($g['prix']) ?>€</strong>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </table>

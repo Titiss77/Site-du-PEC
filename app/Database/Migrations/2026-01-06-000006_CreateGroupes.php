@@ -35,8 +35,9 @@ class CreateGroupes extends Migration
                 'null'       => true,
             ],
             'prix' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2', // Prix avec centimes
+                'type'       => 'VARCHAR',
+                'constraint' => '50',
+                'null'       => false,
             ],
             'image' => [
                 'type'       => 'VARCHAR',
