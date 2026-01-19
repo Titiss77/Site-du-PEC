@@ -17,7 +17,7 @@ class Donnees extends Model
 		return $this
 			->db
 			->table('general')
-			->select('image, nomClub, description, philosophie, nombreNageurs, projetSportif, lienFacebook, lienInstagram, lienffessm')
+			->select('image, nomClub, description, philosophie, nombreNageurs, projetSportif, lienFacebook, lienInstagram, lienffessm, lienDrive')
 			// Calculs directement dans le select pour la performance
 			->select('ROUND(nombreHommes / nombreNageurs * 100, 1) as pourcentH')
 			->select('ROUND((nombreNageurs - nombreHommes) / nombreNageurs * 100, 1) as pourcentF')

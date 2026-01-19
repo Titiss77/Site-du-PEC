@@ -32,7 +32,7 @@ $partenariats = [
                     <p class="txt-small"><em>Réservé aux adhérents.</em></p>',
         'btn'   => [
             'text'  => 'Consulter le tableau de ventes',
-            'url'   => base_url('listing'),
+            'url'   => base_url('liste'),
             'icon'  => 'bi-box-arrow-up-right',       // Icône PDF
             'class' => 'tag-bassin text-decoration-none' // Style : Bouton gris arrondi (badge)
         ]
@@ -102,7 +102,7 @@ $partenariats = [
             </div>
 
             <div class="mt-auto">
-                <a href="<?= $p['btn']['url'] ?>" target="_blank" class="<?= esc($p['btn']['class']) ?>">
+                <a href="<?= $p['btn']['url'] ?>" target="blank" class="<?= esc($p['btn']['class']) ?>">
 
                     <?php 
                     // LOGIQUE D'AFFICHAGE DE L'ICÔNE

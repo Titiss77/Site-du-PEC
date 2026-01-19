@@ -16,11 +16,13 @@ $routes->get('contact', 'Contact::index');
 $routes->post('contact/envoyer', 'Contact::envoyer');
 $routes->get('contact/confirmer/(:any)', 'Contact::confirmer/$1');
 
-// --- AUTHENTIFICATION (HORS DU FILTRE) ---
-// Cette route doit rester accessible pour pouvoir se connecter
 $routes->get('login', 'Admin\Login::index'); 
 $routes->post('login/auth', 'Admin\Login::authenticate');
 $routes->get('logout', 'Admin\Login::logout');
+
+$routes->get('liste', 'Liste::index');
+$routes->post('login/auth/liste', 'Liste::authenticate');
+$routes->get('logout/liste', 'Liste::logout');
 
 // --- GROUPE ADMIN SÉCURISÉ ---
 // Le filtre 'auth' intercepte tout accès à /admin/*
