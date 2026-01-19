@@ -1,3 +1,4 @@
+@ -1,97 +1,116 @@
 <?= $this->extend('l_global') ?>
 
 <?php
@@ -22,49 +23,41 @@
 
     <section class="mb-5">
         <h3><i class="bi bi-calendar3"></i> Planning des Entraînements</h3>
+        <p class="txt-muted">Périodes scolaires et vacances.</p>
 
-        <?php if (!empty($plannings)): ?>
-        <p class="txt-muted">Pendant les vacances :</p>
+        <?php 
+    if (!empty($plannings)): 
+        // 1. On groupe les plannings par catégorie dans un nouveau tableau
+        $groupedPlannings = [];
+        foreach ($plannings as $planning) {
+            $groupedPlannings[$planning['categorie']][] = $planning;
+        }
 
-        <div class="calendar-grid">
+        // 2. On boucle sur chaque catégorie
+        foreach ($groupedPlannings as $categorie => $items): 
+    ?>
+        <div class="category-block mb-4">
+            <h4 class="text-secondary border-bottom pb-2 mb-3">
+                <?= esc(ucfirst($categorie)) ?>
+            </h4>
 
-            <?php foreach ($plannings as $planning): ?>
-            <?php if ($planning['categorie'] == 'vacances'): ?>
-            <div class="calendar-img-box">
+            <div class="calendar-grid">
+                <?php foreach ($items as $item): ?>
+                <div class="calendar-img-box">
+                    <p class="label-cal">
+                        <strong><?= esc($item['date']) ?></strong>
+                    </p>
 
-                <p class="label-cal">
-                    <strong><?= esc($planning['categorie']) ?></strong> : <?= esc($planning['date']) ?>
-                </p>
-
-                <img src="<?= base_url('uploads/calendriers/' . $planning['image']) ?>"
-                    alt="Planning <?= esc($planning['categorie']) ?>" class="img-fluid img-zoom" loading="lazy">
+                    <img src="<?= base_url('uploads/calendriers/' . $item['image']) ?>"
+                        alt="Planning <?= esc($categorie) ?>" class="img-fluid img-zoom" loading="lazy">
+                </div>
+                <?php endforeach; ?>
             </div>
-            <?php endif; ?>
-            <?php endforeach; ?>
-
         </div>
-
-        <p class="txt-muted">Périodes scolaires :</p>
-
-        <div class="calendar-grid">
-
-            <?php foreach ($plannings as $planning): ?>
-            <?php if ($planning['categorie'] == 'scolaire'): ?>
-            <div class="calendar-img-box">
-
-                <p class="label-cal">
-                    <strong><?= esc($planning['categorie']) ?></strong> : <?= esc($planning['date']) ?>
-                </p>
-
-                <img src="<?= base_url('uploads/calendriers/' . $planning['image']) ?>"
-                    alt="Planning <?= esc($planning['categorie']) ?>" class="img-fluid img-zoom" loading="lazy">
-            </div>
-            <?php endif; ?>
-            <?php endforeach; ?>
-
-        </div>
-
-        <?php else: // Si aucun planning n'est trouvé en base de données ?>
+        <?php 
+        endforeach; 
+    else: 
+    ?>
 
         <div class="alert-info-box">
             <i class="bi bi-info-circle"></i> Aucun planning disponible pour le moment.
@@ -77,9 +70,9 @@
         <h3 class="title-section"><i class="bi bi-trophy"></i> Calendrier des compétitions</h3>
 
         <?php
-        // VÉRIFICATION : Y a-t-il un calendrier de compétition publié ?
-        if (!empty($calendrierCompet)):
-            ?>
+            // VÉRIFICATION : Y a-t-il un calendrier de compétition publié ?
+            if (!empty($calendrierCompet)):
+                ?>
 
         <?php foreach ($calendrierCompet as $item): ?>
         <div class="card-item stats-box download-card">
