@@ -14,7 +14,6 @@ class GroupesSeeder extends Seeder
                 'description'    => 'Description à prévoir.',
                 'tranche_age'    => '6 - 8 ans',
                 'horaire_resume' => 'Samedi',
-                'prix'           => 201.00,
                 'image'          => 'g1.jpg',
                 'ordre'          => 1,
                 'codeCouleur'    => '#92C47D'
@@ -24,7 +23,6 @@ class GroupesSeeder extends Seeder
                 'description'    => 'Description à prévoir.',
                 'tranche_age'    => '9 ans et +',
                 'horaire_resume' => '3x / semaine',
-                'prix'           => 000.00,
                 'image'          => 'g1.jpg',
                 'ordre'          => 2,
                 'codeCouleur'    => '#9FC6E7'
@@ -34,7 +32,6 @@ class GroupesSeeder extends Seeder
                 'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
-                'prix'           => 282.00,
                 'image'          => 'g1.jpg',
                 'ordre'          => 3,
                 'codeCouleur'    => '#FED966'
@@ -44,7 +41,6 @@ class GroupesSeeder extends Seeder
                 'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
-                'prix'           => 282.00,
                 'image'          => 'g1.jpg',
                 'ordre'          => 4,
                 'codeCouleur'    => '#F9BEDC'
@@ -54,7 +50,6 @@ class GroupesSeeder extends Seeder
                 'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
-                'prix'           => 000.00,
                 'image'          => 'g1.jpg',
                 'ordre'          => 5,
                 'codeCouleur'    => '#B4A7D5'
@@ -64,7 +59,6 @@ class GroupesSeeder extends Seeder
                 'description'    => 'Description à prévoir.',
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
-                'prix'           => 000.00,
                 'image'          => 'g1.jpg',
                 'ordre'          => 5,
                 'codeCouleur'    => '#B4A7D5'

@@ -34,10 +34,6 @@ class CreateGroupes extends Migration
                 'constraint' => '100', // Ex: "2x par semaine"
                 'null'       => true,
             ],
-            'prix' => [
-                'type'       => 'DECIMAL',
-                'constraint' => '10,2', // Prix avec centimes
-            ],
             'image' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',

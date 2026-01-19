@@ -12,28 +12,34 @@ class TarifsSeeder extends Seeder
             [
                 'idGroupe'      => '1',
                 'description'   => 'Description à prévoir.',
+                'prix'          => 200.0,
                 
             ],
             [
                 'idGroupe'      => '2',
                 'description'   => 'Description à prévoir.',
+                'prix'          => 200.0,
                 
             ],
             [
                 'idGroupe'      => '3',
                 'description'   => 'Description à prévoir.',
+                'prix'          => 200.0,
             ],
             [
                 'idGroupe'      => '4',
                 'description'   => 'Description à prévoir.',
+                'prix'          => 200.0,
             ],
             [
                 'idGroupe'      => '5',
                 'description'   => 'Description à prévoir.',
+                'prix'          => 200.0,
             ],
             [
                 'idGroupe'      => '6',
                 'description'   => 'Description à prévoir.',
+                'prix'          => 200.0,
             ],
         ];
 

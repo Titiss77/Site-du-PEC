@@ -10,27 +10,31 @@ class CreateTarifs extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'idGroupe' => [
-                'type'       => 'INT',
+                'type' => 'INT',
                 'constraint' => 5,
-                'unsigned'   => true,
+                'unsigned' => true,
             ],
             'description' => [
                 'type' => 'TEXT',
                 'null' => true,
             ],
+            'prix' => [
+                'type' => 'DECIMAL',
+                'constraint' => '10,2',  // Prix avec centimes
+            ],
         ]);
 
         $this->forge->addKey('id', true);
-        
+
         // Ajout de la clé étrangère
         $this->forge->addForeignKey('idGroupe', 'groupes', 'id', 'CASCADE', 'CASCADE');
-        
+
         $this->forge->createTable('tarifs');
     }
 
