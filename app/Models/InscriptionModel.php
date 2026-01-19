@@ -12,8 +12,12 @@ class InscriptionModel extends Model
      */
     public function getMateriel()
     {
-        return $this->db->table('materiel')
-            ->select('nom, description, pret, image')
+        return $this
+            ->db
+            ->table('materiel m')
+            ->select('m.nom, m.description, m.idPret, m.image, p.nom as nomPret')
+            
+            ->join('pret p', 'p.id = m.idPret', 'left')
             ->get()
             ->getResultArray();
     }
@@ -25,12 +29,14 @@ class InscriptionModel extends Model
      */
     public function getMail(string $poste)
     {
-        $result = $this->db->table('postes')
+        $result = $this
+            ->db
+            ->table('postes')
             ->select('mail')
             ->where('libelle', $poste)
             ->limit(1)
             ->get()
-            ->getRow(); // Retourne un objet ou null
+            ->getRow();  // Retourne un objet ou null
 
         return $result ? $result->mail : null;
     }

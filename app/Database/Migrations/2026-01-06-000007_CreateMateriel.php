@@ -8,20 +8,30 @@ class CreateMateriel extends Migration
 {
     public function up()
     {
+        // Table Pret
+        $this->forge->addField([
+            'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom'         => ['type' => 'VARCHAR', 'constraint' => 100],
+        ]);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->createTable('pret');
+        
         // Table Matériel
         $this->forge->addField([
             'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nom'         => ['type' => 'VARCHAR', 'constraint' => 100],
             'description' => ['type' => 'TEXT'],
-            'pret'        => ['type' => 'BOOLEAN', 'default' => false],
+            'idPret'        => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true,],
             'image'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('idPret', 'pret', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('materiel');
 
     }
 
     public function down() {
         $this->forge->dropTable('materiel');
+        $this->forge->dropTable('pret');
     }
 }

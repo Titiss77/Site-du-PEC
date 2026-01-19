@@ -1,6 +1,7 @@
 <?= $this->extend('l_global') ?>
 
 <?php
+
 /**
  * ============================================================================
  * VUE : INSCRIPTIONS & CONTACT
@@ -19,6 +20,7 @@
 <?= $this->section('contenu') ?>
 
 <?php
+
 /**
  * ----------------------------------------------------------------------------
  * 1. CONFIGURATION LOCALE (Données Statiques)
@@ -30,16 +32,16 @@
 
 // Liste des pré-requis affichés en haut de page
 $conditions = [
-    "Être âgé de 6 ans minimum.",
-    "Savoir nager 25 mètres sans aide.",
-    "Certificat médical de non contre-indication indispensable."
+    'Être âgé de 6 ans minimum.',
+    'Savoir nager 25 mètres sans aide.',
+    'Certificat médical de non contre-indication indispensable.'
 ];
 
 // Liste des destinataires pour le menu déroulant du formulaire
 // Format : 'valeur_technique' => 'Libellé affiché à l'utilisateur'
 $destinataires = [
-    'pas_choisi'  => '-- Veuillez choisir --',
-    'tresorier'  => '(Facturation/Tarifs)',
+    'pas_choisi' => '-- Veuillez choisir --',
+    'tresorier' => '(Facturation/Tarifs)',
     'secretaire' => '(Licences/Dossiers)',
 ];
 ?>
@@ -129,10 +131,10 @@ $destinataires = [
         </section>
     </div>
 
-    <h3 class="title-section">Matériel nécessaire</h3>
+    <h3 class="title-section">Matériel à avoir</h3>
     <div class="grid-responsive">
         <?php foreach ($materiel as $m): ?>
-
+        <?php if ($m['idPret'] == 2): ?>
         <div class="materiel-card card-item h-100">
 
             <?php if (!empty($m['image'])): ?>
@@ -147,17 +149,51 @@ $destinataires = [
                 <p class="txt-small text-muted"><?= esc($m['description']) ?></p>
             </div>
             <div class="mt-2">
-                <?php if ($m['pret']): ?>
+                <?php if ($m['idPret'] == 1): ?>
                 <span class="badge-status is-lent">
-                    <i class="bi bi-arrow-repeat"></i> Prêté par le club
+                    <i class="bi bi-arrow-repeat"></i> <?= esc($m['nomPret']) ?>
                 </span>
                 <?php else: ?>
                 <span class="badge-status is-personal">
-                    <i class="bi bi-cart"></i> À votre charge
+                    <i class="bi bi-cart"></i> <?= esc($m['nomPret']) ?>
                 </span>
                 <?php endif; ?>
             </div>
         </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <h3 class="title-section">Matériel suplémentaire</h3>
+    <div class="grid-responsive">
+        <?php foreach ($materiel as $m): ?>
+        <?php if ($m['idPret'] == 1): ?>
+        <div class="materiel-card card-item h-100">
+
+            <?php if (!empty($m['image'])): ?>
+            <div class="materiel-photo-container">
+                <img src="<?= base_url('uploads/materiel/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
+                    class="materiel-img">
+            </div>
+            <?php endif; ?>
+
+            <div class="info p-3">
+                <h3><?= esc($m['nom']) ?></h3>
+                <p class="txt-small text-muted"><?= esc($m['description']) ?></p>
+            </div>
+            <div class="mt-2">
+                <?php if ($m['idPret'] == 1): ?>
+                <span class="badge-status is-lent">
+                    <i class="bi bi-arrow-repeat"></i> <?= esc($m['nomPret']) ?>
+                </span>
+                <?php else: ?>
+                <span class="badge-status is-personal">
+                    <i class="bi bi-cart"></i> <?= esc($m['nomPret']) ?>
+                </span>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
         <?php endforeach; ?>
     </div>
 
