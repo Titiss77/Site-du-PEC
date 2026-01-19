@@ -14,7 +14,7 @@ class ActualitesSeeder extends Seeder
                 'slug'            => 'competition-angers',
                 'type'            => 'actualite',
                 'statut'          => 'publie',
-                'description'     => 'Grosse compétittion !',
+                'description'     => 'Grosse compétition !',
                 'image'           => null,
                 'date_evenement'  => '2026-01-25',
                 'id_auteur'       => 1,

@@ -38,10 +38,9 @@ $conditions = [
 // Liste des destinataires pour le menu déroulant du formulaire
 // Format : 'valeur_technique' => 'Libellé affiché à l'utilisateur'
 $destinataires = [
-    'president'  => 'Président (Général)',
-    'tresorier'  => 'Trésorier (Facturation/Tarifs)',
-    'secretaire' => 'Secrétaire (Licences/Dossiers)',
-    'coach'      => 'Entraîneur (Sportif)'
+    'pas_choisi'  => '-- Veuillez choisir --',
+    'tresorier'  => '(Facturation/Tarifs)',
+    'secretaire' => '(Licences/Dossiers)',
 ];
 ?>
 
@@ -100,7 +99,7 @@ $destinataires = [
 
                 <div class="grid-2">
                     <div class="form-group">
-                        <label for="destinataire">Votre demande s'adresse au :</label>
+                        <label for="destinataire">Vous avez une question concernant :</label>
                         <select name="destinataire" id="destinataire" class="form-input">
                             <?php foreach ($destinataires as $value => $label): ?>
                             <option value="<?= esc($value) ?>"><?= esc($label) ?></option>

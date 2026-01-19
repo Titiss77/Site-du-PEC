@@ -120,6 +120,7 @@ class Donnees extends Model
 			->join('membre_fonction mf', 'mf.membre_id = m.id')
 			->join('fonctions f', 'f.id = mf.fonction_id')
 			->where('f.titre !=', 'Coach')
+			->where('f.titre !=', 'Coach en formation')
 			->groupBy('m.id')
 			->get()
 			->getResultArray();

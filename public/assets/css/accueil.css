@@ -185,7 +185,7 @@ a:hover {
 .grid-responsive {
     display: grid;
     /* Crée autant de colonnes que possible, avec une largeur min de 250px */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     margin-bottom: 3rem;
 }
