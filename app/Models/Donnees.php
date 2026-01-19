@@ -1,177 +1,156 @@
-<?php 
+<?php
 
 namespace App\Models;
 
 use CodeIgniter\Model;
-class Donnees extends Model {
-    protected $db ;
 
-	function __construct()
-	{
-		// Call the Model constructor
-		parent::__construct();
-        $this->db = \Config\database::connect();
-	}
+class Donnees extends Model
+{
+	// Pas besoin de redéfinir $db et le constructeur si tu n'as pas de logique spécifique,
+	// CodeIgniter gère la connexion automatiquement.
 
 	/**
 	 * Retourne les informations générales du blog
-	 *
-	 * @return nom du club, description, nombre de nageurs, nombre d'hommes, nombre de femmes sous la forme d'un tableau associatif
 	 */
-	function getGeneral() {
-		$req = '
-		SELECT image, nomClub, description, philosophie, 
-		nombreNageurs, 
-		ROUND(nombreHommes / nombreNageurs * 100, 1) as pourcentH, 
-		ROUND((nombreNageurs-nombreHommes) / nombreNageurs * 100, 1) as pourcentF,
-		projetSportif, lienFacebook, lienInstagram, lienffessm
-		FROM `general` LIMIT 1
-		';
-		$rs = $this->db->query($req);
-		$general = $rs->getRowArray();
-		return $general;
+	public function getGeneral()
+	{
+		return $this
+			->db
+			->table('general')
+			->select('image, nomClub, description, philosophie, nombreNageurs, projetSportif, lienFacebook, lienInstagram, lienffessm')
+			// Calculs directement dans le select pour la performance
+			->select('ROUND(nombreHommes / nombreNageurs * 100, 1) as pourcentH')
+			->select('ROUND((nombreNageurs - nombreHommes) / nombreNageurs * 100, 1) as pourcentF')
+			->get()
+			->getRowArray();
 	}
 
 	/**
-	 * Retourne la liste des coachs
-	 *
-	 * @return nom, description, photo, numTel, mail sous la forme d'un tableau associatif
+	 * Méthode générique interne pour récupérer des membres par fonction
+	 * Évite la répétition de code (DRY - Don't Repeat Yourself)
 	 */
-	function getCoachs() {
-		$req = '
-		SELECT m.nom, m.photo 
-		FROM `membres` m 
-		JOIN membre_fonction mf ON m.id=mf.membre_id 
-		JOIN fonctions f ON mf.fonction_id=f.id 
-		WHERE f.titre = "Coach"
-		';
-		$rs = $this->db->query($req);
-		$coachs = $rs->getResultArray();
-		return $coachs;
+	private function getMembresParFonction(string $titreFonction)
+	{
+		return $this
+			->db
+			->table('membres m')
+			->select('m.nom, m.photo')
+			->join('membre_fonction mf', 'm.id = mf.membre_id')
+			->join('fonctions f', 'mf.fonction_id = f.id')
+			->where('f.titre', $titreFonction)
+			->get()
+			->getResultArray();
 	}
 
-	/**
-	 * Retourne la liste des coachs en formation
-	 *
-	 * @return nom, description, photo, numTel, mail sous la forme d'un tableau associatif
-	 */
-	function getCoachsFormation() {
-		$req = '
-		SELECT m.nom, m.photo 
-		FROM `membres` m 
-		JOIN membre_fonction mf ON m.id=mf.membre_id 
-		JOIN fonctions f ON mf.fonction_id=f.id 
-		WHERE f.titre = "Coach en formation"
-		';
-		$rs = $this->db->query($req);
-		$coachs = $rs->getResultArray();
-		return $coachs;
+	public function getCoachs()
+	{
+		return $this->getMembresParFonction('Coach');
 	}
-	
+
+	public function getCoachsFormation()
+	{
+		return $this->getMembresParFonction('Coach en formation');
+	}
+
 	/**
 	 * Retourne la liste des disciplines
-	 *
-	 * @return nom, description, image sous la forme d'un tableau associatif
 	 */
-	function getDisciplines() {
-		$req = '
-		SELECT nom, description, image 
-		FROM `disciplines`
-		';
-		$rs = $this->db->query($req);
-		$disciplines = $rs->getResultArray();
-		return $disciplines;
+	public function getDisciplines()
+	{
+		return $this
+			->db
+			->table('disciplines')
+			->select('nom, description, image')
+			->get()
+			->getResultArray();
 	}
 
 	/**
 	 * Retourne la liste des piscines
-	 *
-	 * @return nom, adresse, type_bassin, photo sous la forme d'un tableau associatif
 	 */
-	function getPiscines() {
-		$req = '
-		SELECT nom, adresse, type_bassin, photo 
-		FROM `piscines`
-		';
-		$rs = $this->db->query($req);
-		$piscines = $rs->getResultArray();
-		return $piscines;
+	public function getPiscines()
+	{
+		return $this
+			->db
+			->table('piscines')
+			->select('nom, adresse, type_bassin, photo')
+			->get()
+			->getResultArray();
 	}
 
 	/**
-	 * Retourne la liste des plannings (scolaire et vacances)
-	 *
-	 * @return categorie, date, image sous la forme d'un tableau associatif
+	 * Retourne les plannings (Scolaire/Vacances)
 	 */
-	function getPlannings() {
-		$req = '
-		SELECT categorie, date, image 
-		FROM `plannings` 
-		WHERE categorie != "competitions" 
-		ORDER BY categorie DESC
-		';	
-
-		$rs = $this->db->query($req);
-		$plannings = $rs->getResultArray();
-		return $plannings;
+	public function getPlannings()
+	{
+		return $this
+			->db
+			->table('plannings')
+			->select('categorie, date, image')
+			->where('categorie !=', 'competitions')
+			->orderBy('categorie', 'DESC')
+			->get()
+			->getResultArray();
 	}
 
 	/**
 	 * Retourne le calendrier des compétitions
-	 *
-	 * @return categorie, date, image sous la forme d'un tableau associatif
 	 */
-	function getCalendrier() {
-		$req = '
-		SELECT categorie, date, image 
-		FROM `plannings` 
-		WHERE categorie = "competitions"
-		';	
-
-		$rs = $this->db->query($req);
-		$calendrier = $rs->getResultArray();
-		return $calendrier;
+	public function getCalendrier()
+	{
+		return $this
+			->db
+			->table('plannings')
+			->select('categorie, date, image')
+			->where('categorie', 'competitions')
+			->get()
+			->getResultArray();
 	}
 
+	/**
+	 * Retourne le bureau (Exclut les coachs)
+	 * Optimisation : Utilisation de GROUP_CONCAT si un membre a plusieurs fonctions
+	 */
 	public function getBureau()
-    {
-        $req = '
-		SELECT m.*, f.titre AS fonctions 
-		FROM membres m 
-		JOIN membre_fonction mf ON mf.membre_id = m.id 
-		JOIN fonctions f ON f.id = mf.fonction_id 
-		WHERE f.titre != "Coach" 
-		GROUP BY m.id, f.titre
-		';
-		$rs = $this->db->query($req);
-		$general = $rs->getResultArray();
-		return $general;
-    }
+	{
+		return $this
+			->db
+			->table('membres m')
+			->select('m.*, GROUP_CONCAT(f.titre SEPARATOR ", ") AS fonctions')
+			->join('membre_fonction mf', 'mf.membre_id = m.id')
+			->join('fonctions f', 'f.id = mf.fonction_id')
+			->where('f.titre !=', 'Coach')
+			->groupBy('m.id')
+			->get()
+			->getResultArray();
+	}
 
 	public function getBoutique()
 	{
-		$req = '
-		SELECT nom, url, description, tranchePrix 
-		FROM `boutique`
-		';
-		$rs = $this->db->query($req);
-		$boutique = $rs->getResultArray();
-		return $boutique;
-	}
-	
-	public function getActualites($categorie)
-	{
-		$req = '
-		SELECT titre, slug, type, description, image, date_evenement, created_at, nom 
-		FROM `actualites` 
-		JOIN membres ON actualites.id_auteur=membres.id 
-		WHERE statut = "publie" AND type = ?
-		ORDER BY created_at DESC
-		';
-		$rs = $this->db->query($req, [$categorie]);
-		$actualites = $rs->getResultArray();
-		return $actualites;
+		return $this
+			->db
+			->table('boutique')
+			->select('nom, url, description, tranchePrix')
+			->get()
+			->getResultArray();
 	}
 
-	
+	/**
+	 * Retourne les actualités par catégorie
+	 */
+	public function getActualites($categorie)
+	{
+		return $this
+			->db
+			->table('actualites a')
+			->select('a.titre, a.slug, a.type, a.description, a.image, a.date_evenement, a.created_at, m.nom as auteur')
+			->join('membres m', 'a.id_auteur = m.id')
+			->where([
+				'a.statut' => 'publie',
+				'a.type' => $categorie
+			])
+			->orderBy('a.created_at', 'DESC')
+			->get()
+			->getResultArray();
+	}
 }

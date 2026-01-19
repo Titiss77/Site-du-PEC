@@ -59,6 +59,16 @@ class GroupesSeeder extends Seeder
                 'ordre'          => 5,
                 'codeCouleur'    => '#B4A7D5'
             ],
+            [
+                'nom'            => 'Masters',
+                'description'    => 'Description à prévoir.',
+                'tranche_age'    => null,
+                'horaire_resume' => '4x / semaine',
+                'prix'           => 000.00,
+                'image'          => 'g1.jpg',
+                'ordre'          => 5,
+                'codeCouleur'    => '#B4A7D5'
+            ],
         ];
 
         // Insertion des données

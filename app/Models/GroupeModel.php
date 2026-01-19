@@ -10,16 +10,35 @@ class GroupeModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = ['nom', 'description', 'tranche_age', 'horaire_resume', 'prix', 'image', 'ordre', 'codeCouleur'];
+    protected $protectFields    = true;
+    protected $allowedFields    = [
+        'nom', 'description', 'tranche_age', 'horaire_resume', 
+        'prix', 'image', 'ordre', 'codeCouleur'
+    ];
 
     // Dates
     protected $useTimestamps = true;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
 
     /**
-     * Récupère les groupes triés par ordre défini
+     * Récupère tous les groupes triés par ordre
+     * * @return array
      */
     public function getGroupes()
     {
-        return $this->orderBy('ordre', 'ASC')->findAll();
+        return $this->select('nom, description, tranche_age, horaire_resume, prix, image, codeCouleur')
+                    ->orderBy('ordre', 'ASC')
+                    ->findAll();
+    }
+
+    /**
+     * Récupère un groupe spécifique par son ID
+     * * @param int $id
+     * @return array|null
+     */
+    public function getGroupeById(int $id)
+    {
+        return $this->where('id', $id)->first();
     }
 }
