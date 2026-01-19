@@ -1,8 +1,7 @@
 /* --- GRILLE PRINCIPALE (CÔTE À CÔTE) --- */
 .grid-responsive {
     display: grid;
-    /* Adapte auto : met autant de cartes que possible par ligne (min 300px de large) */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: var(--grid-template-columns);
     gap: 30px;
     /* Espace entre les cartes */
     margin-bottom: 3rem;

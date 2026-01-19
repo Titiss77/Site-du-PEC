@@ -184,7 +184,7 @@ a:hover {
 /* Une classe unique pour gérer toutes vos grilles (Disciplines, Coachs, Piscines) */
 .grid-responsive {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    grid-template-columns: var(--grid-template-columns);
     gap: 30px;
     margin-bottom: 3rem;
 }

@@ -119,7 +119,7 @@ h3 {
 /* Grille pour les calendriers */
 .grid-2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: var(--grid-template-columns);
     gap: 30px;
 }
 
@@ -167,7 +167,7 @@ h3 {
 /* Images des plannings */
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: var(--grid-template-columns);
     gap: 2rem;
 }
 
