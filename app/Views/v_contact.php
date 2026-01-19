@@ -56,6 +56,10 @@ $destinataires = [
                 <?php foreach ($conditions as $condition): ?>
                 <li><?= esc($condition) ?></li>
                 <?php endforeach; ?>
+                <a href="<?= base_url('uploads/CACI.pdf') ?>" target="_blank"
+                    class="btn-home d-inline-flex align-items-center gap-2 text-decoration-none">
+                    <i class="bi bi-download"></i> Télécharger le certificat
+                </a>
             </ul>
         </section>
 
@@ -72,6 +76,7 @@ $destinataires = [
                 </tr>
                 <?php endforeach; ?>
             </table>
+            <p>*Via Hello asso, paiement en 3x, passport et chèques vacances</p>
         </section>
     </div>
 

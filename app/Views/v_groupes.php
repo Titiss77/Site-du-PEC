@@ -48,7 +48,7 @@
         </div>
         <?php endforeach; ?>
     </div>
-    <p>*Prix Général des inscriptions</p>
+    <p>*Via Hello asso, paiement en 3x, passport et chèques vacances</p>
 </div>
 
 <?= $this->endSection() ?>
