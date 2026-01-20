@@ -1,4 +1,4 @@
 /htdocs/writable
-htdocs/.env
+/htdocs/.env
 database.sql
 public.zip
