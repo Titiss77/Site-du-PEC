@@ -164,7 +164,7 @@ $destinataires = [
         <?php endforeach; ?>
     </div>
 
-    <h3 class="title-section">Matériel suplémentaire</h3>
+    <h3 class="title-section">Matériel supplémentaire (Prété pour essais)</h3>
     <div class="grid-responsive">
         <?php foreach ($materiel as $m): ?>
         <?php if ($m['idPret'] == 1): ?>
