@@ -5,58 +5,38 @@ namespace Config;
 use CodeIgniter\Database\Config;
 
 /**
- * Configuration de la Base de Données.
- *
- * Cette classe contient les paramètres de configuration pour les connexions
- * à la base de données. Elle permet de définir plusieurs groupes de connexion
- * (ex: local, production) et de basculer automatiquement selon l'environnement.
+ * Configuration de la Base de Données
  */
 class Database extends Config
 {
     /**
-     * Le répertoire où se trouvent les migrations et les seeds.
-     * Typiquement utilisé par les commandes CLI (spark).
-     *
-     * @var string
+     * Répertoire des migrations/seeds.
      */
     public string $filesPath = APPPATH . 'Database' . DIRECTORY_SEPARATOR;
 
     /**
-     * Le nom du groupe de connexion à utiliser par défaut.
-     * Cette valeur est modifiée dynamiquement dans le constructeur
-     * en fonction de l'environnement actuel.
-     *
-     * @var string
+     * Groupe par défaut.
+     * Sera défini dynamiquement dans le constructeur.
      */
-    public string $defaultGroup = 'local';
+    public string $defaultGroup = 'development';
 
-    /**
-     * Constructeur de la classe.
-     *
-     * Initialise la configuration parente et détermine quel groupe
-     * de base de données utiliser (local ou product) en vérifiant
-     * la constante d'environnement 'ENVIRONMENT'.
-     */
     public function __construct()
     {
         parent::__construct();
 
-        // Bascule automatiquement sur le groupe de production si l'environnement est 'production'
-        if (ENVIRONMENT === 'production') {
-            $this->defaultGroup = 'product';
-        }
+        // MAGIE ICI :
+        // On force le groupe par défaut à être égal au nom de l'environnement.
+        // Si CI_ENVIRONMENT = production, ça utilisera le groupe $production.
+        // Si CI_ENVIRONMENT = development, ça utilisera le groupe $development.
+        $this->defaultGroup = ENVIRONMENT;
     }
 
     /**
-     * Configuration pour l'environnement de développement local.
-     *
-     * Utilise 'localhost' et les identifiants locaux.
-     *
-     * @var array<string, mixed>
+     * Configuration DEVELOPMENT (vide, remplie par .env)
      */
-    public array $local = [
+    public array $development = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
+        'hostname'     => '',
         'username'     => '',
         'password'     => '',
         'database'     => '',
@@ -82,13 +62,9 @@ class Database extends Config
     ];
 
     /**
-     * Configuration pour l'environnement de production (ByetHost).
-     *
-     * Utilise le serveur SQL distant (sql313.byethost13.com).
-     *
-     * @var array<string, mixed>
+     * Configuration PRODUCTION (vide, remplie par .env)
      */
-    public array $product = [
+    public array $production = [
         'DSN'          => '',
         'hostname'     => '',
         'username'     => '',
