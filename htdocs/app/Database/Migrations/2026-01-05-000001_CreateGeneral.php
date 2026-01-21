@@ -20,6 +20,7 @@ class CreateGeneral extends Migration
             'lienFacebook'  => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'lienInstagram' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'lienffessm'    => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'logoffessm'    => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'lienDrive'     => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
         $this->forge->addKey('id', true);

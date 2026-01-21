@@ -127,10 +127,13 @@ footer p {
     margin-top: 15px;
     font-size: 0.85rem;
 }
+
 .social-links {
     display: flex;
     justify-content: center;
     gap: 25px;
+    align-content: flex-start;
+    align-items: center;
 }
 
 .social-links a {
@@ -138,6 +141,22 @@ footer p {
     font-size: 1.8rem;
     transition: var(--transition);
     display: inline-block;
+}
+
+.social-links .fede {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.8rem;
+    transition: var(--transition);
+    display: flex;
+    border: 2px solid var(--secondary);
+    border-radius: var(--radius);
+    z-index: 1000;
+}
+
+.social-links a img {
+    width: 45px;
+    height: auto;
+    border-radius: var(--radius);
 }
 
 .social-links a:hover {

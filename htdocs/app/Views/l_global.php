@@ -102,9 +102,10 @@ $menuItems = [
             <a href="<?= $general['lienInstagram']; ?>" target="_blank" aria-label="Instagram">
                 <i class="bi bi-instagram"></i>
             </a>
-            <a href="<?= $general['lienffessm']; ?>" target="_blank" aria-label="FFESSM"
+            <a class="fede" href="<?= $general['lienffessm']; ?>" target="_blank" aria-label="FFESSM"
                 title="Site officiel de la FFESSM">
-                <i class="bi bi-globe"></i>
+                <img src="<?= base_url('uploads/general/' . $general['logoffessm']); ?>"
+                    alt="<?= $general['logoffessm']; ?>">
             </a>
         </div>
 
