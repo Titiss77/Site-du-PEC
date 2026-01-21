@@ -20,5 +20,6 @@ class MasterSeeder extends Seeder
         $this->call('UserSeeder');
         $this->call('RootSeeder');
         $this->call('GroupesSeeder');
+        $this->call('PartenairesSeeder');
     }
 }

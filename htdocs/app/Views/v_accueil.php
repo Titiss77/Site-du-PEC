@@ -161,26 +161,30 @@
         </div>
 
     </div>
-    <!--
-    <div class="partenaires">
-        <h2 class="titre_section">Nos Partenaires</h2>
+
+    <h3 class="title-section">Nos Partenaires</h3>
+    <div class="grid-responsive">
+
 
         <?php foreach ($partenaires as $partenaire): ?>
         <?php if (str_starts_with($partenaire['image_url'], 'https://')): ?>
-        <a href="<?= $partenaire['site_web'] ?>" target="_blank">
-            <img src="<?= $partenaire['image_url'] ?>" alt="<?= esc($partenaire['nom']) ?>">
-        </a>
+        <div class="partenaires-item text-center p-3">
+            <a href="<?= $partenaire['site_web'] ?>" target="_blank">
+                <img src="<?= $partenaire['image_url']; ?>" alt="<?= esc($partenaire['nom']) ?>">
+            </a>
+        </div>
 
         <?php else: ?>
-        <a href="<?= $partenaire['site_web'] ?>" target="_blank">
-            <img src="<?= base_url('uploads/partenaires/' . $partenaire['image_url']); ?>"
-                alt="<?= esc($partenaire['nom']) ?>">
-        </a>
+        <div class="partenaires-item text-center p-3">
+            <a href="<?= $partenaire['site_web'] ?>" target="_blank">
+                <img class="img-card" src="<?= base_url('uploads/partenaires/' . $partenaire['image_url']); ?>"
+                    alt="<?= esc($partenaire['nom']) ?>">
+            </a>
+        </div>
         <?php endif; ?>
 
         <?php endforeach; ?>
     </div>
-        -->
 
 </div>
 

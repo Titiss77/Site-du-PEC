@@ -68,7 +68,8 @@
 .stats-box,
 .coach-item,
 .piscine-card,
-.sidebar-news {
+.sidebar-news,
+.partenaires-item {
     background: var(--white);
     border-radius: var(--radius);
     padding: 20px;
@@ -270,4 +271,8 @@ a:hover {
     text-decoration: underline;
     transform: translateY(-2px);
     /* Petit effet de saut */
+}
+
+.partenaires {
+    width: 100%;
 }
