@@ -74,6 +74,15 @@ $menuItems = [
 
     <?= $this->renderSection('contenu') ?>
 
+
+    <div class="bandeau-soutien-global">
+        <div class="container">
+            <span>Avec le soutien de :</span>
+            <img src="<?= base_url('public/uploads/partenaires/cd-finistère.jpg') ?>" alt="C.D. Finistère">
+            <img src="<?= base_url('public/uploads/general/logo_federation_ffessm.png') ?>" alt="FFESSM">
+        </div>
+    </div>
+
     <footer id="piedBlog">
 
         <nav>
@@ -99,6 +108,8 @@ $menuItems = [
                     alt="<?= $general['logoffessm']; ?>">
             </a>
         </div>
+
+
 
         <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>
 

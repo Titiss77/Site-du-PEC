@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Controllers\Root;  // Note: Ensure this is intended to be used as a library object
 use App\Models\Donnees;
 use App\Models\GroupeModel;
+use \App\Models\PartenaireModel;
 
 class Home extends BaseController
 {
@@ -13,16 +14,18 @@ class Home extends BaseController
     protected $groupeModel;
     protected $root;
     protected $generalData;
+    protected $partenaireModel;
 
     public function __construct()
     {
         $this->donneesModel = new Donnees();
         $this->groupeModel = new GroupeModel();
         $this->root = new Root();
+        $this->partenaireModel = new PartenaireModel();
 
-        // Pre-fetch general data to use in all methods (Performance)
         $this->generalData = $this->donneesModel->getGeneral();
     }
+    
 
     /**
      * Helper to merge page-specific data with global data (Header, Footer, Styles)
@@ -40,6 +43,7 @@ class Home extends BaseController
 
     public function index()
     {
+        
         $data = [
             'cssPage' => 'accueil.css',
             'disciplines' => $this->donneesModel->getDisciplines(),
@@ -49,6 +53,7 @@ class Home extends BaseController
             'actualites' => $this->donneesModel->getActualites('actualite'),
             'evenements' => $this->donneesModel->getActualites('evenement'),
             'groupes' => $this->groupeModel->getGroupes(),
+            'partenaires' => $this->partenaireModel->getPartenaires()
         ];
 
         return $this->_render('v_accueil', $data);
