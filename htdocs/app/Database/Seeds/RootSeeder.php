@@ -22,6 +22,8 @@ class RootSeeder extends Seeder
             ['libelle' => 'radius', 'value' => '12px'],
             ['libelle' => 'transition', 'value' => 'all 0.3s ease'],
             ['libelle' => 'grid-template-columns', 'value' => 'repeat(auto-fit, minmax(15rem, 1fr))'],
+            ['libelle' => 'aspect-ratio', 'value' => '2/1'],
+            ['libelle' => 'size-logo-top', 'value' => '80px'],
         ];
 
         $this->db->table('root')->insertBatch($data);

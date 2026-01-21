@@ -23,10 +23,6 @@
         <img src="<?= base_url('uploads/general/groupe.jpg') ?>" alt="Photo du club" loading="lazy" />
 
         <div class="hero-overlay">
-            <div class="hero-logo-container">
-                <img src="<?= base_url($general['image']); ?>" alt="Logo <?= esc($general['nomClub']); ?>"
-                    class="hero-logo">
-            </div>
             <h1 class="hero-title"><?= esc($general['nomClub']); ?></h1>
         </div>
     </section>

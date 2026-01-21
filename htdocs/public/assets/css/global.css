@@ -25,6 +25,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
+    height: 6rem;
 }
 
 .nav-brand {
@@ -34,8 +35,8 @@ nav {
 }
 
 nav img {
-    height: 55px;
-    width: 55px;
+    height: var(--size-logo-top);
+    width: var(--size-logo-top);
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid var(--secondary);
@@ -47,7 +48,7 @@ nav h2 {
     color: var(--primary);
     font-weight: 700;
     position: absolute;
-    margin-left: 5rem;
+    margin-left: 6rem;
 }
 
 nav ul {
