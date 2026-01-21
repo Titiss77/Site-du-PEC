@@ -12,7 +12,7 @@ class CreateBureau extends Migration
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nom' => ['type' => 'VARCHAR', 'constraint' => 100],
-            'photo' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true, 'default' => '1'],
+            'photo' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true, 'default' => '22'],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('photo', 'images', 'id', 'CASCADE', 'CASCADE');

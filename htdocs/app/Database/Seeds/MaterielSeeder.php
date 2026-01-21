@@ -23,25 +23,25 @@ class MaterielSeeder extends Seeder
                 'nom' => 'Palmes (Bi-palmes)',
                 'description' => 'Palmes de natation spécifiques NAP.',
                 'idPret' => '1',
-                'image' => 'bi-palmes.jpg',
+                'image' => '24',
             ],
             [
                 'nom' => 'Masque',
                 'description' => 'Masque de natation.',
                 'idPret' => '1',
-                'image' => 'masque.jpg',
+                'image' => '25',
             ],
             [
                 'nom' => 'Tuba',
                 'description' => "Tuba frontal indispensable pour l'alignement.",
                 'idPret' => '1',
-                'image' => 'tuba.jpg',
+                'image' => '26',
             ],
             [
                 'nom' => 'Monopalme',
                 'description' => 'La voile mythique pour la glisse pure.',
                 'idPret' => '1',
-                'image' => 'monopalmes.png',
+                'image' => '27',
                 
             ],
             [
@@ -54,13 +54,13 @@ class MaterielSeeder extends Seeder
                 'nom' => 'Lunettes',
                 'description' => 'Lunettes de natation.',
                 'idPret' => '2',
-                'image' => 'lunettes.jpg',
+                'image' => '28',
             ],
             [
                 'nom' => 'Palmes',
                 'description' => 'Palmes de natation classiques decathlon.',
                 'idPret' => '2',
-                'image' => 'bi-palmes-decat.jpg',
+                'image' => '29',
             ],
         ];
 

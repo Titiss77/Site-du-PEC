@@ -12,19 +12,19 @@ class PersonnelSeeder extends Seeder
 
         // 1. Insertion des membres uniques
         $membres = [
-            ['nom' => 'Yves PRIGENT', 'photo' => 'Yves_PRIGENT.jpg'],
-            ['nom' => 'Marie LANDOLSI', 'photo' => 'Marie_LANDOLSI.jpg'],
-            ['nom' => 'Tifenn GAUDIN', 'photo' => 'Tifenn_GAUDIN.jpg'],
-            ['nom' => 'Anne Catherine CAPITAINE', 'photo' => 'Anne_Catherine_CAPITAINE.jpg'],
-            ['nom' => 'Rodolphe LESPAGNOL', 'photo' => 'Rodolphe_LESPAGNOL.jpg'],
-            ['nom' => 'Thierry HENRI', 'photo' => 'Thierry_HENRI.jpg'],
-            ['nom' => 'Martin LESPAGNOL', 'photo' => 'Martin_LESPAGNOL.jpg'],
-            ['nom' => 'Zacharie LEDUC', 'photo' => 'Zacharie_LEDUC.jpg'],
-            ['nom' => 'Célian PRIGENT', 'photo' => 'Celian_PRIGENT.jpg'],
-            ['nom' => 'Luca SOLLAZZO LE MOIGNE', 'photo' => 'Luca_SOLLAZZO_LE_MOIGNE.jpg'],
-            ['nom' => 'Killian TORCH', 'photo' => 'Killian_TORCH.jpg'],
-            ['nom' => 'Florie BOUTOUILLER', 'photo' => 'vide.jpg'],
-            ['nom' => 'Eloise KERJEAN', 'photo' => 'Eloise_KERJEAN.jpg'],
+            ['nom' => 'Yves PRIGENT', 'photo' => '11'],
+            ['nom' => 'Marie LANDOLSI', 'photo' => '12'],
+            ['nom' => 'Tifenn GAUDIN', 'photo' => '13'],
+            ['nom' => 'Anne Catherine CAPITAINE', 'photo' => '14'],
+            ['nom' => 'Rodolphe LESPAGNOL', 'photo' => '15'],
+            ['nom' => 'Thierry HENRI', 'photo' => '16'],
+            ['nom' => 'Martin LESPAGNOL', 'photo' => '17'],
+            ['nom' => 'Zacharie LEDUC', 'photo' => '18'],
+            ['nom' => 'Célian PRIGENT', 'photo' => '19'],
+            ['nom' => 'Luca SOLLAZZO LE MOIGNE', 'photo' => '20'],
+            ['nom' => 'Killian TORCH', 'photo' => '21'],
+            ['nom' => 'Florie BOUTOUILLER', 'photo' => '22'],
+            ['nom' => 'Eloise KERJEAN', 'photo' => '23'],
             
         ];
         $db->table('membres')->insertBatch($membres);

@@ -8,6 +8,7 @@ class MasterSeeder extends Seeder
 {
     public function run()
     {
+        $this->call('ImagesSeeder');
         $this->call('GeneralSeeder');
         $this->call('DisciplineSeeder');
         $this->call('PiscineSeeder');
