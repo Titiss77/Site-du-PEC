@@ -178,3 +178,16 @@ img {
     user-select: none;
     -webkit-user-drag: none;
 }
+
+.bandeau-soutien-global {
+    position: relative;
+    text-align: left;
+}
+
+.bandeau-soutien-global img {
+    width: var(--size-logo-top);
+
+    height: var(--size-logo-top);
+    border-radius: var(--radius);
+    border: 2px solid var(--secondary);
+}
