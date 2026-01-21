@@ -1,19 +1,4 @@
 <?= $this->extend('l_global') ?>
-<?php
-/**
- * ============================================================================
- * VUE : PAGE D'ACCUEIL (Homepage)
- * ============================================================================
- * Cette vue représente la vitrine du site. Elle est chargée par le contrôleur 'Home'.
- * * STRUCTURE DE LA PAGE :
- * 1. Hero Banner : Grande image d'en-tête avec le logo et le titre.
- * 2. Info Club   : Présentation textuelle, statistiques et projet sportif.
- * 3. Actualités  : Liste des derniers articles ou événements à venir.
- * 4. Disciplines : Grille présentant les activités (Apnée, Nage, etc.).
- * 5. Coachs      : Trombinoscope de l'équipe sportive.
- * 6. Lieux       : Carte des piscines.
- */
-?>
 
 <?= $this->section('contenu') ?>
 
@@ -76,22 +61,20 @@
             <div class="news-item mb-4 border-bottom pb-3">
 
                 <?php if (!empty($item['image'])): ?>
+
+                <?php if (str_starts_with($item['image'], 'https://')): ?>
+                <img src="<?= $item['image']; ?>" alt="<?= esc($item['titre']) ?>" class="img-card mb-3" />
+
+                <?php else: ?>
                 <img src="<?= base_url('uploads/actualites/' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
                     class="img-card mb-3" />
+                <?php endif; ?>
                 <?php endif; ?>
 
                 <div class="news-content">
                     <h5><?= esc($item['titre']); ?></h5>
 
                     <?php
-
-                    /**
-                     * LOGIQUE DE DATE INTELLIGENTE
-                     * ----------------------------
-                     * 1. $dateRef   : Si c'est un événement futur, on prend sa date ('date_evenement').
-                     * Sinon, on prend la date de publication ('created_at').
-                     * 2. $dateLabel : Adapte le texte ("Le..." pour un event, "Publié le..." pour une news).
-                     */
                     $dateRef = $item['date_evenement'] ?? $item['created_at'];
                     $dateLabel = $item['date_evenement'] ? 'Le' : 'Publié le';
                     ?>
@@ -158,11 +141,10 @@
                 <div class="piscine-info p-3 d-flex flex-column flex-grow-1">
                     <h5><?= esc($p['nom']); ?></h5>
 
-                    <?php 
-                // Création de l'URL Google Maps
-                $adresseUrl = urlencode($p['adresse']);
-                $lienMaps = "https://www.google.com/maps/search/?api=1&query={$adresseUrl}";
-            ?>
+                    <?php
+                    $adresseUrl = urlencode($p['adresse']);
+                    $lienMaps = "https://www.google.com/maps/search/?api=1&query={$adresseUrl}";
+                    ?>
 
                     <p class="mb-3">
                         <a href="<?= $lienMaps ?>" target="_blank" class="maps-link" title="Ouvrir dans Google Maps">

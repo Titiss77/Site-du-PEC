@@ -48,15 +48,6 @@ $menuItems = [
         <ul>
             <?php foreach ($menuItems as $url => $label): ?>
             <li>
-                <?php
-                /**
-                 * LOGIQUE DES LIENS :
-                 * Si l'utilisateur est CONNECTÉ (Admin), cliquer sur un lien du menu
-                 * le déconnecte d'abord ('logout?return=...') pour qu'il voie la page
-                 * comme un visiteur lambda.
-                 * Si NON CONNECTÉ, le lien est normal.
-                 */
-                ?>
                 <?= anchor($isLogged ? 'logout?return=' . $url : $url, $label); ?>
             </li>
             <?php endforeach; ?>
