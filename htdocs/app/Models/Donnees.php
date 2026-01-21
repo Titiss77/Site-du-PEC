@@ -6,25 +6,26 @@ use CodeIgniter\Model;
 
 class Donnees extends Model
 {
-	// Define the table name here
-	protected $table = 'general';
-	protected $primaryKey = 'id';
-	protected $useAutoIncrement = true;
-	protected $returnType = 'array';  // or 'object'
-	protected $useSoftDeletes = false;
+    protected $table            = 'general'; // Defines the database table
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
 
-	// Define the fields that can be inserted or updated
-	protected $allowedFields = [
-		'nomClub',
-		'image',
-		'logo',
-		'description',
-		'adresse',
-		'email',
-		'telephone',
-		'facebook',
-		'instagram'
-	];
+    // Based on your previous migrations and view usage
+    protected $allowedFields    = [
+        'nomClub', 
+        'image', 
+        'logo', 
+        'description', 
+        'adresse', 
+        'email', 
+        'telephone', 
+        'facebook', 
+        'instagram',
+        'philosophie',   // Used in v_accueil.php
+        'projetSportif'  // Used in v_accueil.php
+    ];
 
 	public function getGeneral()
 	{

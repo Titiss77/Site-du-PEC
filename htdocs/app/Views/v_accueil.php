@@ -26,7 +26,6 @@
                 <div class="stats-card mt-3">
                     <div class="stats-box">
                         <h4 class="color-blue"><?= esc($general['nombreNageurs']); ?> Nageurs</h4>
-                        <p>Mixité : <?= esc($general['pourcentH']); ?>% H / <?= esc($general['pourcentF']); ?>% F</p>
                         <hr>
                         <p class="small">
                             <strong>Projet Sportif :</strong>
