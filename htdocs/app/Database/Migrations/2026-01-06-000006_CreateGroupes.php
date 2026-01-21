@@ -11,13 +11,13 @@ class CreateGroupes extends Migration
         // On crée la structure de la table 'groupes'
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'nom' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
             'description' => [
@@ -25,38 +25,40 @@ class CreateGroupes extends Migration
                 'null' => true,
             ],
             'tranche_age' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50', // Ex: "6-10 ans", "Adultes", "Tout âge"
-                'null'       => true,
+                'type' => 'VARCHAR',
+                'constraint' => '50',  // Ex: "6-10 ans", "Adultes", "Tout âge"
+                'null' => true,
             ],
             'horaire_resume' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100', // Ex: "2x par semaine"
-                'null'       => true,
+                'type' => 'VARCHAR',
+                'constraint' => '100',  // Ex: "2x par semaine"
+                'null' => true,
             ],
             'prix' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => '50',
-                'null'       => false,
+                'null' => false,
             ],
             'image' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-                'null'       => true,
+                'type' => 'INT',
+                'constraint' => '11',
+                'null' => true,
+                'unsigned' => true,
             ],
-            'ordre' => [ // Pour gérer l'ordre d'affichage
-                'type'       => 'INT',
+            'ordre' => [  // Pour gérer l'ordre d'affichage
+                'type' => 'INT',
                 'constraint' => 2,
-                'default'    => 0,
+                'default' => 0,
             ],
             'codeCouleur' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => 255,
-                'default'    => null,
+                'default' => null,
             ],
         ]);
 
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('image', 'images', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('groupes');
     }
 

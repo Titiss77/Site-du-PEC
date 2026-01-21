@@ -10,7 +10,8 @@ class GeneralSeeder extends Seeder
     {
         $data = [
             'nomClub'       => 'Palmes en Cornouailles',
-            'image'         => 'favicon.ico',
+            'image'         => '1',
+            'logo'         => '2',
             'description'   => 'Nous sommes ravis de vous accueillir sur le site officiel de notre club de natation basé à Quimper. Que vous soyez un nageur débutant ou expérimenté, notre club offre une variété de disciplines et d\'activités pour tous les âges et niveaux.',
             'philosophie'   => 'La nage avec palmes apporte gainage et sensation de glisse incomparable.',
             'nombreNageurs' => 109,

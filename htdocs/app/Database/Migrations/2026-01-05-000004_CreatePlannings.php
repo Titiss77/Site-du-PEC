@@ -10,29 +10,31 @@ class CreatePlannings extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'categorie' => [
-                'type'       => 'ENUM',
+                'type' => 'ENUM',
                 'constraint' => ['scolaire', 'vacances', 'competitions'],
-                'null'       => true,
+                'null' => true,
             ],
             'date' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => 100,
-                'null'       => true,
+                'null' => true,
             ],
             'image' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-                'null'       => true
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true,
+                'unsigned' => true,
             ],
         ]);
 
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('image', 'images', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('plannings');
     }
 

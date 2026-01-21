@@ -10,27 +10,37 @@ class CreateMateriel extends Migration
     {
         // Table Pret
         $this->forge->addField([
-            'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'nom'         => ['type' => 'VARCHAR', 'constraint' => 100],
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom' => ['type' => 'VARCHAR', 'constraint' => 100],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('pret');
-        
+
         // Table Matériel
         $this->forge->addField([
-            'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'nom'         => ['type' => 'VARCHAR', 'constraint' => 100],
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom' => ['type' => 'VARCHAR', 'constraint' => 100],
             'description' => ['type' => 'TEXT'],
-            'idPret'        => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true,],
-            'image'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'idPret' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
+            ],
+            'image' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true,
+                'unsigned' => true,
+            ],
         ]);
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('idPret', 'pret', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('image', 'images', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('materiel');
-
     }
 
-    public function down() {
+    public function down()
+    {
         $this->forge->dropTable('materiel');
         $this->forge->dropTable('pret');
     }

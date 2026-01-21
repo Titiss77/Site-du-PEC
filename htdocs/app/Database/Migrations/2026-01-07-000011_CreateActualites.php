@@ -10,46 +10,47 @@ class CreateActualites extends Migration
     {
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => true,
                 'auto_increment' => true
             ],
             'titre' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 150, // Plus long pour plus de flexibilité
+                'type' => 'VARCHAR',
+                'constraint' => 150,  // Plus long pour plus de flexibilité
             ],
             'slug' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => 150,
-                'unique'     => true, // Pour des URLs uniques
+                'unique' => true,  // Pour des URLs uniques
             ],
             'type' => [
-                'type'       => 'ENUM',
-                'constraint' => ['actualite'], // Propre et sans espaces
-                'default'    => 'actualite',
+                'type' => 'ENUM',
+                'constraint' => ['actualite'],  // Propre et sans espaces
+                'default' => 'actualite',
             ],
             'statut' => [
-                'type'       => 'ENUM',
+                'type' => 'ENUM',
                 'constraint' => ['brouillon', 'publie', 'archive'],
-                'default'    => 'brouillon',
+                'default' => 'brouillon',
             ],
             'description' => [
                 'type' => 'TEXT',
             ],
             'image' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null'       => true, // Optionnel
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true,
+                'unsigned' => true,
             ],
             'date_evenement' => [
                 'type' => 'DATE',
-                'null' => true, // Uniquement pour le type 'evenement'
+                'null' => true,  // Uniquement pour le type 'evenement'
             ],
             'id_auteur' => [
-                'type'       => 'INT',
+                'type' => 'INT',
                 'constraint' => 11,
-                'unsigned'   => true,
+                'unsigned' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -62,10 +63,11 @@ class CreateActualites extends Migration
         ]);
 
         $this->forge->addPrimaryKey('id');
-        
+        $this->forge->addForeignKey('image', 'images', 'id', 'CASCADE', 'CASCADE');
+
         // Clé étrangère vers la table membres
         $this->forge->addForeignKey('id_auteur', 'membres', 'id', 'CASCADE', 'CASCADE');
-        
+
         $this->forge->createTable('actualites');
     }
 

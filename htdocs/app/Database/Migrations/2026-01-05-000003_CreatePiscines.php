@@ -13,12 +13,17 @@ class CreatePiscines extends Migration
             'nom' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'adresse' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'type_bassin' => ['type' => 'ENUM', 'constraint' => ['25m', '50m'], 'null' => true],
-            'photo' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'photo' => [
+                'type' => 'INT',
+                'constraint' => 11,
+                'null' => true,
+                'unsigned' => true,
+            ],
         ]);
 
         // CORRECTION : Utilisez cette méthode au lieu de addKey
         $this->forge->addPrimaryKey('id');
-
+        $this->forge->addForeignKey('photo', 'images', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('piscines');
     }
 
