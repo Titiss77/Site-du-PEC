@@ -88,7 +88,7 @@ class Donnees extends Model
 			->table('plannings')
 			->select('categorie, date, image')
 			->where('categorie !=', 'competitions')
-			->orderBy('categorie', 'DESC')
+			->orderBy('categorie', 'ASC')
 			->get()
 			->getResultArray();
 	}

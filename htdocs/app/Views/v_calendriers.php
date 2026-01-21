@@ -19,23 +19,23 @@
 <?= $this->section('contenu') ?>
 
 <div class="site-container">
-    <h2 class="title-section">Calendriers & Horaires</h2>
+    <h2 class="title">Calendriers & Horaires</h2>
 
+
+    <h3 class="title title-section"><i class="bi bi-calendar3"></i> Planning des Entraînements</h3>
+    <p class="txt-muted">Périodes scolaires et vacances.</p>
     <section class="mb-5">
-        <h3><i class="bi bi-calendar3"></i> Planning des Entraînements</h3>
-        <p class="txt-muted">Périodes scolaires et vacances.</p>
+        <?php
+        if (!empty($plannings)):
+            // 1. On groupe les plannings par catégorie dans un nouveau tableau
+            $groupedPlannings = [];
+            foreach ($plannings as $planning) {
+                $groupedPlannings[$planning['categorie']][] = $planning;
+            }
 
-        <?php 
-    if (!empty($plannings)): 
-        // 1. On groupe les plannings par catégorie dans un nouveau tableau
-        $groupedPlannings = [];
-        foreach ($plannings as $planning) {
-            $groupedPlannings[$planning['categorie']][] = $planning;
-        }
-
-        // 2. On boucle sur chaque catégorie
-        foreach ($groupedPlannings as $categorie => $items): 
-    ?>
+            // 2. On boucle sur chaque catégorie
+            foreach ($groupedPlannings as $categorie => $items):
+                ?>
         <div class="category-block mb-4">
             <h4 class="text-secondary border-bottom pb-2 mb-3">
                 <?= esc(ucfirst($categorie)) ?>
@@ -44,20 +44,21 @@
             <div class="calendar-grid">
                 <?php foreach ($items as $item): ?>
                 <div class="calendar-img-box">
-                    <p class="label-cal">
-                        <strong><?= esc($item['date']) ?></strong>
-                    </p>
-
-                    <img src="<?= base_url('uploads/calendriers/' . $item['image']) ?>"
-                        alt="Planning <?= esc($categorie) ?>" class="img-fluid img-zoom" loading="lazy">
+                    <a href="<?= base_url('uploads/calendriers/' . $item['image']) ?>" target="_blank">
+                        <p class="label-cal">
+                            <strong><?= esc($item['date']) ?></strong>
+                        </p>
+                        <img src="<?= base_url('uploads/calendriers/' . $item['image']) ?>"
+                            alt="Planning <?= esc($categorie) ?>" class="img-fluid img-zoom" loading="lazy">
+                    </a>
                 </div>
                 <?php endforeach; ?>
             </div>
         </div>
-        <?php 
-        endforeach; 
-    else: 
-    ?>
+        <?php
+            endforeach;
+        else:
+            ?>
 
         <div class="alert-info-box">
             <i class="bi bi-info-circle"></i> Aucun planning disponible pour le moment.
@@ -66,13 +67,13 @@
         <?php endif; ?>
     </section>
 
+    <h3 class="title-section"><i class="bi bi-trophy"></i> Calendrier des compétitions</h3>
     <section class="mb-5">
-        <h3 class="title-section"><i class="bi bi-trophy"></i> Calendrier des compétitions</h3>
 
         <?php
-            // VÉRIFICATION : Y a-t-il un calendrier de compétition publié ?
-            if (!empty($calendrierCompet)):
-                ?>
+        // VÉRIFICATION : Y a-t-il un calendrier de compétition publié ?
+        if (!empty($calendrierCompet)):
+            ?>
 
         <?php foreach ($calendrierCompet as $item): ?>
         <div class="card-item stats-box download-card">
