@@ -15,12 +15,15 @@ FAIT :
 - Mettre un système de mot de passe pour gérer le listing
 - prendre photo fete du club 2025
 - Enlever logo principal + agrandir header
+- Logo de la fede pour le lien
+- Inverser les 2 calendriers
+- Master à la ligne description
 
 
 RESTE A FAIRE :
 - Qui sommes nous ??
 - sponsors
-- Master à la ligne description
-- Inverser les 2 calendriers
-- Logo de la fede pour le lien
+
+
+
 
