@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Controllers\Root;  // Note: Ensure this is intended to be used as a library object
+use App\Controllers\Root;
 use App\Models\Donnees;
 use App\Models\GroupeModel;
-use \App\Models\PartenaireModel;
+use App\Models\PartenaireModel;  // Correction : pas de \ devant si importé au dessus
 
 class Home extends BaseController
 {
@@ -23,19 +23,28 @@ class Home extends BaseController
         $this->root = new Root();
         $this->partenaireModel = new PartenaireModel();
 
-        $this->generalData = $this->donneesModel->getGeneral();
+        // --- CORRECTION ICI ---
+        // 1. Utilisation de $this->donneesModel (car $donneesModel n'existe pas localement)
+        // 2. On récupère les données une seule fois de manière sécurisée
+        $this->generalData = $this->donneesModel->first() ?? [];
+
+        // Si votre modèle Donnees a une méthode spécifique getGeneral(),
+        // assurez-vous qu'elle ne renvoie pas null.
+        // $this->generalData = $this->donneesModel->getGeneral() ?? [];
     }
-    
 
     /**
      * Helper to merge page-specific data with global data (Header, Footer, Styles)
      */
     private function _render(string $view, array $pageData = [])
     {
+        // Vérification de sécurité pour éviter l'erreur "offset on value of type null"
+        $nomClub = (isset($this->generalData['nomClub'])) ? $this->generalData['nomClub'] : 'Club de Natation';
+
         $globalData = [
             'root' => $this->root->getRootStyles(),
             'general' => $this->generalData,
-            'titrePage' => $pageData['titrePage'] ?? $this->generalData['nomClub'],  // Default to Club Name
+            'titrePage' => $pageData['titrePage'] ?? $nomClub,
         ];
 
         return view($view, array_merge($globalData, $pageData));
@@ -43,7 +52,6 @@ class Home extends BaseController
 
     public function index()
     {
-        
         $data = [
             'cssPage' => 'accueil.css',
             'disciplines' => $this->donneesModel->getDisciplines(),
@@ -53,7 +61,8 @@ class Home extends BaseController
             'actualites' => $this->donneesModel->getActualites('actualite'),
             'evenements' => $this->donneesModel->getActualites('evenement'),
             'groupes' => $this->groupeModel->getGroupes(),
-            'partenaires' => $this->partenaireModel->getPartenaires()
+            // Assurez-vous que cette méthode existe dans votre PartenaireModel
+            'partenaires' => $this->partenaireModel->findAll()
         ];
 
         return $this->_render('v_accueil', $data);

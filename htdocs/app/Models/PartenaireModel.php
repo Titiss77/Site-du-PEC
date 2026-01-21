@@ -45,7 +45,8 @@ class PartenaireModel extends Model
         return $this
             ->db
             ->table('partenaires')
-            ->select('nom, image_url, site_web, ordre')
+            ->select('nom, i.url as image, site_web, ordre')
+            ->join('images i', 'i.id = partenaires.image')
             ->orderBy('ordre', 'ASC')
             ->get()
             ->getResultArray();

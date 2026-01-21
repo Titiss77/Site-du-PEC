@@ -15,8 +15,8 @@ class InscriptionModel extends Model
         return $this
             ->db
             ->table('materiel m')
-            ->select('m.nom, m.description, m.idPret, m.image, p.nom as nomPret')
-            
+            ->select('m.nom, m.description, m.idPret, i.url as image, p.nom as nomPret')
+            ->join('images i', 'i.id = m.image')
             ->join('pret p', 'p.id = m.idPret', 'left')
             ->get()
             ->getResultArray();

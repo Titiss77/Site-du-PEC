@@ -6,20 +6,21 @@ use CodeIgniter\Model;
 
 class GroupeModel extends Model
 {
-    protected $table            = 'groupes';
-    protected $primaryKey       = 'id';
+    protected $table = 'groupes';
+    protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $protectFields    = true;
-    protected $allowedFields    = [
-        'nom', 'description', 'tranche_age', 'horaire_resume', 
+    protected $returnType = 'array';
+    protected $protectFields = true;
+
+    protected $allowedFields = [
+        'nom', 'description', 'tranche_age', 'horaire_resume',
         'prix', 'image', 'ordre', 'codeCouleur'
     ];
 
     // Dates
     protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
 
     /**
      * Récupère tous les groupes triés par ordre
@@ -27,9 +28,11 @@ class GroupeModel extends Model
      */
     public function getGroupes()
     {
-        return $this->select('nom, description, tranche_age, horaire_resume, prix, image, codeCouleur')
-                    ->orderBy('ordre', 'ASC')
-                    ->findAll();
+        return $this
+            ->select('nom, description, tranche_age, horaire_resume, prix, i.url as image, codeCouleur')
+            ->join('images i', 'i.id = groupes.image')
+            ->orderBy('ordre', 'ASC')
+            ->findAll();
     }
 
     /**
