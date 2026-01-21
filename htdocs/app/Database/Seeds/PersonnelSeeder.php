@@ -12,19 +12,19 @@ class PersonnelSeeder extends Seeder
 
         // 1. Insertion des membres uniques
         $membres = [
-            ['nom' => 'Yves PRIGENT', 'numTel' => '06 30 85 78 60', 'photo' => 'Yves_PRIGENT.jpg', 'mail' => 'yvesandra.prigent@gmail.com'],
-            ['nom' => 'Marie LANDOLSI', 'numTel' => '06 88 97 53 77', 'photo' => 'Marie_LANDOLSI.jpg', 'mail' => 'marie_le_moigne@yahoo.fr'],
-            ['nom' => 'Tifenn GAUDIN', 'numTel' => '06 95 30 29 09', 'photo' => 'Tifenn_GAUDIN.jpg', 'mail' => 'tifenngaudin@yahoo.fr'],
-            ['nom' => 'Anne Catherine CAPITAINE', 'numTel' => '06 48 70 38 45', 'photo' => 'Anne_Catherine_CAPITAINE.jpg', 'mail' => 'a.c.capitaine@gmail.com'],
-            ['nom' => 'Rodolphe LESPAGNOL', 'numTel' => '06 22 26 70 61', 'photo' => 'Rodolphe_LESPAGNOL.jpg', 'mail' => 'rodolespagnol@gmail.com'],
-            ['nom' => 'Thierry HENRI', 'numTel' => NULL, 'photo' => 'Thierry_HENRI.jpg', 'mail' => NULL],
-            ['nom' => 'Martin LESPAGNOL', 'numTel' => NULL, 'photo' => 'Martin_LESPAGNOL.jpg', 'mail' => NULL],
-            ['nom' => 'Zacharie LEDUC', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
-            ['nom' => 'Célian PRIGENT', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
-            ['nom' => 'Luca SOLLAZZO LE MOIGNE', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
-            ['nom' => 'Killian TORCH', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
-            ['nom' => 'Florie BOUTOUILLER', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
-            ['nom' => 'Eloise KERJEAN', 'numTel' => NULL, 'photo' => 'vide.jpg', 'mail' => NULL],
+            ['nom' => 'Yves PRIGENT', 'photo' => 'Yves_PRIGENT.jpg'],
+            ['nom' => 'Marie LANDOLSI', 'photo' => 'Marie_LANDOLSI.jpg'],
+            ['nom' => 'Tifenn GAUDIN', 'photo' => 'Tifenn_GAUDIN.jpg'],
+            ['nom' => 'Anne Catherine CAPITAINE', 'photo' => 'Anne_Catherine_CAPITAINE.jpg'],
+            ['nom' => 'Rodolphe LESPAGNOL', 'photo' => 'Rodolphe_LESPAGNOL.jpg'],
+            ['nom' => 'Thierry HENRI', 'photo' => 'Thierry_HENRI.jpg'],
+            ['nom' => 'Martin LESPAGNOL', 'photo' => 'Martin_LESPAGNOL.jpg'],
+            ['nom' => 'Zacharie LEDUC', 'photo' => 'Zacharie_LEDUC.jpg'],
+            ['nom' => 'Célian PRIGENT', 'photo' => 'Celian_PRIGENT.jpg'],
+            ['nom' => 'Luca SOLLAZZO LE MOIGNE', 'photo' => 'Luca_SOLLAZZO_LE_MOIGNE.jpg'],
+            ['nom' => 'Killian TORCH', 'photo' => 'Killian_TORCH.jpg'],
+            ['nom' => 'Florie BOUTOUILLER', 'photo' => 'vide.jpg'],
+            ['nom' => 'Eloise KERJEAN', 'photo' => 'Eloise_KERJEAN.jpg'],
             
         ];
         $db->table('membres')->insertBatch($membres);
