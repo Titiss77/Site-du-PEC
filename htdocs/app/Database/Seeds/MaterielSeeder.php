@@ -8,16 +8,14 @@ class MaterielSeeder extends Seeder
 {
     public function run()
     {
-
-    $pret = [
-            [
-                'nom' => "À acheter via le club",
-            ],
-            [
-                'nom' => 'À acheter en magasin',
-            ],
+        // Table PRET (pas d'image)
+        $pret = [
+            ['nom' => "À acheter via le club"],
+            ['nom' => 'À acheter en magasin'],
         ];
+        $this->db->table('pret')->insertBatch($pret);
         
+        // Table MATERIEL (avec image)
         $materiel = [
             [
                 'nom' => 'Palmes (Bi-palmes)',
@@ -42,7 +40,6 @@ class MaterielSeeder extends Seeder
                 'description' => 'La voile mythique pour la glisse pure.',
                 'idPret' => '1',
                 'image' => 'monopalmes.png',
-                
             ],
             [
                 'nom' => 'Maillot & Bonnet',
@@ -64,7 +61,23 @@ class MaterielSeeder extends Seeder
             ],
         ];
 
-        $this->db->table('pret')->insertBatch($pret);
-        $this->db->table('materiel')->insertBatch($materiel);
+        $newData = [];
+        foreach ($materiel as $row) {
+            $imagePath = $row['image'];
+            unset($row['image']);
+            $row['image_id'] = $this->getImageId($imagePath);
+            $newData[] = $row;
+        }
+
+        $this->db->table('materiel')->insertBatch($newData);
+    }
+
+    private function getImageId($path)
+    {
+        if (empty($path)) return null;
+        $existing = $this->db->table('images')->where('path', $path)->get()->getRow();
+        if ($existing) return $existing->id;
+        $this->db->table('images')->insert(['path' => $path, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]);
+        return $this->db->insertID();
     }
 }

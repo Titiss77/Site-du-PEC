@@ -8,24 +8,24 @@ class InscriptionModel extends Model
 {
     /**
      * Retourne la liste du matériel
-     * * @return array
      */
     public function getMateriel()
     {
         return $this
             ->db
             ->table('materiel m')
-            ->select('m.nom, m.description, m.idPret, m.image, p.nom as nomPret')
-            
+            // Jointure Image
+            ->join('images i', 'm.image_id = i.id', 'left')
+            // Jointure Pret
             ->join('pret p', 'p.id = m.idPret', 'left')
+            ->select('m.nom, m.description, m.idPret, i.path as image, p.nom as nomPret')
             ->get()
             ->getResultArray();
     }
 
     /**
      * Retourne l'adresse mail associée à un poste
-     * * @param string $poste
-     * @return string|null
+     * (Pas de changement ici, pas d'images)
      */
     public function getMail(string $poste)
     {
@@ -36,7 +36,7 @@ class InscriptionModel extends Model
             ->where('libelle', $poste)
             ->limit(1)
             ->get()
-            ->getRow();  // Retourne un objet ou null
+            ->getRow(); 
 
         return $result ? $result->mail : null;
     }

@@ -9,29 +9,28 @@ class PartenaireModel extends Model
     protected $table = 'partenaires';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType = 'array';  // Vous pouvez mettre 'object' si vous préférez manipuler des objets
-    protected $useSoftDeletes = false;  // Mettre à true si vous voulez une corbeille (champ deleted_at)
+    protected $returnType = 'array'; 
+    protected $useSoftDeletes = false;
     protected $protectFields = true;
 
-    // Les champs modifiables par le code
+    // Mise à jour des champs autorisés
     protected $allowedFields = [
         'nom',
-        'image_url',
+        'image_id', // Remplacé image_url par image_id
         'site_web',
         'ordre'
     ];
 
-    // Gestion automatique des dates
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
 
-    // Règles de validation (sécurité)
+    // Règles de validation mises à jour
     protected $validationRules = [
         'nom' => 'required|min_length[3]|max_length[100]',
-        'image_url' => 'required|max_length[255]',
+        'image_id' => 'required|integer', // Validation sur l'ID maintenant
         'site_web' => 'permit_empty|valid_url|max_length[255]',
         'ordre' => 'permit_empty|integer'
     ];
@@ -43,11 +42,11 @@ class PartenaireModel extends Model
     public function getPartenaires()
     {
         return $this
-            ->db
-            ->table('partenaires')
-            ->select('nom, image_url, ordre')
-            ->orderBy('ordre', 'ASC')
-            ->get()
-            ->getResultArray();
+            ->select('partenaires.nom, partenaires.ordre')
+            // Jointure et on garde le nom de clé 'image_url' pour ne pas casser la vue
+            ->select('images.path as image_url')
+            ->join('images', 'partenaires.image_id = images.id', 'left')
+            ->orderBy('partenaires.ordre', 'ASC')
+            ->findAll();
     }
 }

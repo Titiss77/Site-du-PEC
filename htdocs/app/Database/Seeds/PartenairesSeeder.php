@@ -56,6 +56,23 @@ class PartenairesSeeder extends Seeder
             ],
         ];
 
-        $this->db->table('partenaires')->insertBatch($partenaires);
+        $newData = [];
+        foreach ($partenaires as $row) {
+            $imagePath = $row['image_url']; // Attention: c'était 'image_url' ici
+            unset($row['image_url']);
+            $row['image_id'] = $this->getImageId($imagePath);
+            $newData[] = $row;
+        }
+
+        $this->db->table('partenaires')->insertBatch($newData);
+    }
+
+    private function getImageId($path)
+    {
+        if (empty($path)) return null;
+        $existing = $this->db->table('images')->where('path', $path)->get()->getRow();
+        if ($existing) return $existing->id;
+        $this->db->table('images')->insert(['path' => $path, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]);
+        return $this->db->insertID();
     }
 }

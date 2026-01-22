@@ -168,10 +168,8 @@
 
         <?php foreach ($partenaires as $partenaire): ?>
         <div class="partenaires-item text-center p-3">
-            <a href="<?= $partenaire['site_web'] ?>" target="_blank">
-                <img class="img-card" src="<?= base_url('uploads/partenaires/' . $partenaire['image_url']); ?>"
-                    alt="<?= esc($partenaire['nom']) ?>">
-            </a>
+            <img class="img-card" src="<?= base_url('uploads/partenaires/' . $partenaire['image_url']); ?>"
+                alt="<?= esc($partenaire['nom']) ?>">
         </div>
         <?php endforeach; ?>
     </div>
