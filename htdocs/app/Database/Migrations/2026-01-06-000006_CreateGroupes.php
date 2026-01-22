@@ -8,55 +8,20 @@ class CreateGroupes extends Migration
 {
     public function up()
     {
-        // On crée la structure de la table 'groupes'
         $this->forge->addField([
-            'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
-                'auto_increment' => true,
-            ],
-            'nom' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-            ],
-            'description' => [
-                'type' => 'TEXT',
-                'null' => true,
-            ],
-            'tranche_age' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50', // Ex: "6-10 ans", "Adultes", "Tout âge"
-                'null'       => true,
-            ],
-            'horaire_resume' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100', // Ex: "2x par semaine"
-                'null'       => true,
-            ],
-            'prix' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
-                'null'       => false,
-            ],
-            'image' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-                'null'       => true,
-            ],
-            'ordre' => [ // Pour gérer l'ordre d'affichage
-                'type'       => 'INT',
-                'constraint' => 2,
-                'default'    => 0,
-            ],
-            'codeCouleur' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'default'    => null,
-            ],
+            'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom' => ['type' => 'VARCHAR', 'constraint' => '100'],
+            'description' => ['type' => 'TEXT', 'null' => true],
+            'tranche_age' => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => true],
+            'horaire_resume' => ['type' => 'VARCHAR', 'constraint' => '100', 'null' => true],
+            'prix' => ['type' => 'VARCHAR', 'constraint' => '50', 'null' => false],
+            'image_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
+            'ordre' => ['type' => 'INT', 'constraint' => 2, 'default' => 0],
+            'codeCouleur' => ['type' => 'VARCHAR', 'constraint' => 255, 'default' => null],
         ]);
 
-        $this->forge->addKey('id', true);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('image_id', 'images', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('groupes');
     }
 

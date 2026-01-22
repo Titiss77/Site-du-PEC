@@ -10,11 +10,12 @@ class CreateBureau extends Migration
     {
         // 1. Table des Membres
         $this->forge->addField([
-            'id'     => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'nom'    => ['type' => 'VARCHAR', 'constraint' => 100],
-            'photo'  => ['type' => 'VARCHAR', 'constraint' => 255, 'default' => 'vide.jpg'],
+            'id'       => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'nom'      => ['type' => 'VARCHAR', 'constraint' => 100],
+            'image_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
         ]);
         $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('image_id', 'images', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('membres');
 
         // 2. Table des Fonctions
@@ -25,16 +26,14 @@ class CreateBureau extends Migration
         $this->forge->addPrimaryKey('id');
         $this->forge->createTable('fonctions');
 
-        // 3. Table de liaison (Pivot)
+        // 3. Table de liaison
         $this->forge->addField([
-            // ESSENTIEL : doit être 'unsigned' => true pour correspondre aux tables ci-dessus
             'membre_id'   => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
             'fonction_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true],
         ]);
         
         $this->forge->addForeignKey('membre_id', 'membres', 'id', 'CASCADE', 'CASCADE');
         $this->forge->addForeignKey('fonction_id', 'fonctions', 'id', 'CASCADE', 'CASCADE');
-        
         $this->forge->createTable('membre_fonction');
     }
 

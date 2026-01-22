@@ -9,21 +9,26 @@ class CreateGeneral extends Migration
     public function up()
     {
         $this->forge->addField([
-            'id'            => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'image'         => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'nomClub'       => ['type' => 'VARCHAR', 'constraint' => 100],
-            'description'   => ['type' => 'TEXT'],
-            'philosophie'   => ['type' => 'TEXT'],
-            'nombreNageurs' => ['type' => 'INT', 'constraint' => 11],
-            'nombreHommes'  => ['type' => 'INT', 'constraint' => 11],
-            'projetSportif' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
-            'lienFacebook'  => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
-            'lienInstagram' => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
-            'lienffessm'    => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
-            'logoffessm'    => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
-            'lienDrive'     => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'id'              => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
+            'image_id'        => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
+            'image_groupe_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
+            'nomClub'         => ['type' => 'VARCHAR', 'constraint' => 100],
+            'description'     => ['type' => 'TEXT'],
+            'philosophie'     => ['type' => 'TEXT'],
+            'nombreNageurs'   => ['type' => 'INT', 'constraint' => 11],
+            'nombreHommes'    => ['type' => 'INT', 'constraint' => 11],
+            'projetSportif'   => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'lienFacebook'    => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'lienInstagram'   => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'lienffessm'      => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'logoffessm_id'   => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
+            'lienDrive'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
-        $this->forge->addKey('id', true);
+
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('image_id', 'images', 'id', 'SET NULL', 'CASCADE');
+        $this->forge->addForeignKey('image_groupe_id', 'images', 'id', 'SET NULL', 'CASCADE');
+        $this->forge->addForeignKey('logoffessm_id', 'images', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('general');
     }
 

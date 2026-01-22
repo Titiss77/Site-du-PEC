@@ -12,9 +12,10 @@ class CreateDisciplines extends Migration
             'id'          => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'nom'         => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'description' => ['type' => 'TEXT', 'null' => true],
-            'image'       => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
+            'image_id'    => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
         ]);
-        $this->forge->addKey('id', true);
+        $this->forge->addPrimaryKey('id');
+        $this->forge->addForeignKey('image_id', 'images', 'id', 'SET NULL', 'CASCADE');
         $this->forge->createTable('disciplines');
     }
 

@@ -5,7 +5,7 @@
 <div class="site-container">
 
     <section class="hero-banner full-bleed">
-        <img src="<?= base_url('uploads/general/groupe.jpg') ?>" alt="Photo du club" loading="lazy" />
+        <img src="<?= base_url('' . $general['image_groupe']) ?>" alt="Photo du club" loading="lazy" />
 
         <div class="hero-overlay">
             <h1 class="hero-title"><?= esc($general['nomClub']); ?></h1>
@@ -41,8 +41,7 @@
         <div class="grid-responsive">
             <?php foreach ($groupes as $d): ?>
             <div class="card-item hover-effect" style="background:<?= esc($d['codeCouleur']) ?>;">
-                <img src="<?= base_url('uploads/groupes/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>"
-                    class="img-card" />
+                <img src="<?= base_url('' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>" class="img-card" />
                 <div class="p-3">
                     <h5><?= esc($d['nom']); ?></h5>
                     <p><?= esc($d['tranche_age']); ?></p>
@@ -66,7 +65,7 @@
                 <img src="<?= $item['image']; ?>" alt="<?= esc($item['titre']) ?>" class="img-card mb-3" />
 
                 <?php else: ?>
-                <img src="<?= base_url('uploads/actualites/' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
+                <img src="<?= base_url('' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
                     class="img-card mb-3" />
                 <?php endif; ?>
                 <?php endif; ?>

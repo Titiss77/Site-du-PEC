@@ -43,7 +43,7 @@ $menuItems = [
 
 <body>
     <nav>
-        <img src="<?= base_url('' . $general['image']); ?>" alt="logo du club" />
+        <img src="<?= base_url(''.$general['image']); ?>" alt="logo du club" />
         <h2><?= $general['nomClub']; ?></h2>
         <ul>
             <?php foreach ($menuItems as $url => $label): ?>
@@ -87,8 +87,8 @@ $menuItems = [
             </ul>
         </nav>
         <div class="bandeau-soutien-global">
-            <img src="<?= base_url('public/uploads/partenaires/mairie_quimper.jpg') ?>" alt="Mairie">
-            <img src="<?= base_url('public/uploads/partenaires/cd-finistère.jpg') ?>" alt="C.D. Finistère">
+            <img src="<?= base_url('uploads/partenaires/mairie_quimper.jpg') ?>" alt="Mairie">
+            <img src="<?= base_url('uploads/partenaires/cd-finistère.jpg') ?>" alt="C.D. Finistère">
         </div>
 
 
@@ -101,8 +101,7 @@ $menuItems = [
             </a>
             <a class="fede" href="<?= $general['lienffessm']; ?>" target="_blank" aria-label="FFESSM"
                 title="Site officiel de la FFESSM">
-                <img src="<?= base_url('uploads/general/' . $general['logoffessm']); ?>"
-                    alt="<?= $general['logoffessm']; ?>">
+                <img src="<?= base_url('' . $general['logoffessm']); ?>" alt="<?= $general['logoffessm']; ?>">
             </a>
         </div>
 
