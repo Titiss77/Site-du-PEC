@@ -78,8 +78,6 @@ $menuItems = [
     <?= $this->renderSection('contenu') ?>
 
     <footer id="piedBlog">
-
-
         <nav>
             <ul>
                 <?php foreach ($menuItems as $url => $label): ?>
@@ -89,11 +87,6 @@ $menuItems = [
                 <?php endforeach; ?>
             </ul>
         </nav>
-        <div class="bandeau-soutien-global">
-            <img src="<?= base_url('uploads/partenaires/mairie_quimper.jpg') ?>" alt="Mairie">
-            <img src="<?= base_url('uploads/partenaires/cd-finistère.jpg') ?>" alt="C.D. Finistère">
-        </div>
-
 
         <div class="social-links">
             <a href="<?= $general['lienFacebook']; ?>" target="_blank" aria-label="Facebook">

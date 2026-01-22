@@ -17,15 +17,12 @@ body {
 
 nav {
     background: var(--white);
-    padding: 10px 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
-    z-index: 1000;
-    height: 6rem;
 }
 
 .nav-brand {
@@ -148,7 +145,6 @@ footer p {
     font-size: 1.8rem;
     transition: var(--transition);
     display: flex;
-    border: 2px solid var(--secondary);
     border-radius: var(--radius);
     z-index: 1000;
 }
@@ -177,17 +173,4 @@ img {
     pointer-events: none;
     user-select: none;
     -webkit-user-drag: none;
-}
-
-.bandeau-soutien-global {
-    position: relative;
-    text-align: left;
-}
-
-.bandeau-soutien-global img {
-    width: var(--size-logo-top);
-
-    height: var(--size-logo-top);
-    border-radius: var(--radius);
-    border: 2px solid var(--secondary);
 }
