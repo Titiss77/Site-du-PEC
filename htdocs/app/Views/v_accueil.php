@@ -5,7 +5,7 @@
 <div class="site-container">
 
     <section class="hero-banner full-bleed">
-        <img src="<?= base_url('' . $general['image_groupe']) ?>" alt="Photo du club" loading="lazy" />
+        <img src="<?= base_url('uploads/' . $general['image_groupe']) ?>" alt="Photo du club" loading="lazy" />
 
         <div class="hero-overlay">
             <h1 class="hero-title"><?= esc($general['nomClub']); ?></h1>
@@ -41,7 +41,7 @@
         <div class="grid-responsive">
             <?php foreach ($groupes as $d): ?>
             <div class="card-item hover-effect" style="background:<?= esc($d['codeCouleur']) ?>;">
-                <img src="<?= base_url('' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>" class="img-card" />
+                <img src="<?= base_url('uploads/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>" class="img-card" />
                 <div class="p-3">
                     <h5><?= esc($d['nom']); ?></h5>
                     <p><?= esc($d['tranche_age']); ?></p>
@@ -65,7 +65,7 @@
                 <img src="<?= $item['image']; ?>" alt="<?= esc($item['titre']) ?>" class="img-card mb-3" />
 
                 <?php else: ?>
-                <img src="<?= base_url('' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
+                <img src="<?= base_url('uploads/' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
                     class="img-card mb-3" />
                 <?php endif; ?>
                 <?php endif; ?>
@@ -98,8 +98,7 @@
         <div class="grid-responsive">
             <?php foreach ($disciplines as $d): ?>
             <div class="card-item hover-effect">
-                <img src="<?= base_url('uploads/disciplines/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>"
-                    class="img-card" />
+                <img src="<?= base_url('uploads/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>" class="img-card" />
                 <div class="p-3">
                     <h5><?= esc($d['nom']); ?></h5>
                     <p><?= esc($d['description']); ?></p>
@@ -112,7 +111,7 @@
         <div class="grid-responsive">
             <?php foreach ($coaches as $c): ?>
             <div class="coach-item text-center p-3">
-                <img src="<?= base_url('uploads/personnel/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
+                <img src="<?= base_url('uploads/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
                     class="img-circle mb-3" />
                 <h4><?= esc($c['nom']); ?></h4>
             </div>
@@ -123,7 +122,7 @@
         <div class="grid-responsive">
             <?php foreach ($coachesForm as $c): ?>
             <div class="coach-item text-center p-3">
-                <img src="<?= base_url('uploads/personnel/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
+                <img src="<?= base_url('uploads/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
                     class="img-circle mb-3" />
                 <h4><?= esc($c['nom']); ?></h4>
             </div>
@@ -134,7 +133,7 @@
         <div class="grid-responsive">
             <?php foreach ($piscines as $p): ?>
             <div class="piscine-card card-item h-100 d-flex flex-column"> <img
-                    src="<?= base_url('uploads/piscines/' . ($p['photo'] ?? 'default_piscine.jpg')) ?>"
+                    src="<?= base_url('uploads/' . ($p['photo'] ?? 'piscines/default_piscine.jpg')) ?>"
                     alt="<?= esc($p['nom']) ?>" class="img-card" style="height: 200px; object-fit: cover;" />
 
                 <div class="piscine-info p-3 d-flex flex-column flex-grow-1">
@@ -167,7 +166,7 @@
 
         <?php foreach ($partenaires as $partenaire): ?>
         <div class="partenaires-item text-center p-3">
-            <img class="img-card" src="<?= base_url('uploads/partenaires/' . $partenaire['image_url']); ?>"
+            <img class="img-card" src="<?= base_url('uploads/' . $partenaire['image_url']); ?>"
                 alt="<?= esc($partenaire['nom']) ?>">
         </div>
         <?php endforeach; ?>

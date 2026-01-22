@@ -139,7 +139,7 @@ $destinataires = [
 
             <?php if (!empty($m['image'])): ?>
             <div class="materiel-photo-container">
-                <img src="<?= base_url('uploads/materiel/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
+                <img src="<?= base_url('uploads/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
                     class="materiel-img">
             </div>
             <?php endif; ?>
@@ -172,7 +172,7 @@ $destinataires = [
 
             <?php if (!empty($m['image'])): ?>
             <div class="materiel-photo-container">
-                <img src="<?= base_url('uploads/materiel/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
+                <img src="<?= base_url('uploads/' . esc($m['image'])); ?>" alt="<?= esc($m['nom']) ?>"
                     class="materiel-img">
             </div>
             <?php endif; ?>
@@ -205,7 +205,7 @@ $destinataires = [
             <?php foreach ($membres as $m): ?>
             <div class="trombi-card">
                 <div class="photo-container">
-                    <img src="<?= base_url('uploads/personnel/' . esc($m['photo'])); ?>" alt="<?= esc($m['nom']); ?>">
+                    <img src="<?= base_url('uploads/' . esc($m['photo'])); ?>" alt="<?= esc($m['nom']); ?>">
                 </div>
                 <div class="info">
                     <h3><?= esc($m['nom']); ?></h3>

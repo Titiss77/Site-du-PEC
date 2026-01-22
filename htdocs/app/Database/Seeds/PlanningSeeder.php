@@ -12,17 +12,17 @@ class PlanningSeeder extends Seeder
             [
                 'categorie' => 'scolaire',
                 'date'      =>  '2025 - 2026',    
-                'image'     => 'planning_scolaire.jpg',
+                'image'     => 'calendriers/planning_scolaire.jpg',
             ],
             [
                 'categorie' => 'vacances',
                 'date'      =>  'du 15/12 au 20/12',    
-                'image'     => 'planning_vacances.jpg',
+                'image'     => 'calendriers/planning_vacances.jpg',
             ],
             [
                 'categorie' => 'competitions',
                 'date'      =>  '2025 - 2026',    
-                'image'     => 'calendrier_competitions.pdf',
+                'image'     => 'calendriers/calendrier_competitions.pdf',
             ],
         ];
 

@@ -11,8 +11,7 @@
 
             <div class="group-img-header">
                 <?php if (!empty($d['image'])): ?>
-                <img src="<?= base_url('uploads/groupes/' . esc($d['image'])); ?>" alt="<?= esc($d['nom']) ?>"
-                    loading="lazy" />
+                <img src="<?= base_url('uploads/' . esc($d['image'])); ?>" alt="<?= esc($d['nom']) ?>" loading="lazy" />
                 <?php else: ?>
                 <div class="group-img-placeholder">
                     <i class="bi bi-image"></i>

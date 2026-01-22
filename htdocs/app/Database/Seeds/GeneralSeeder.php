@@ -11,7 +11,7 @@ class GeneralSeeder extends Seeder
         $data = [
             'nomClub' => 'Palmes en Cornouailles',
             'image_id' => $this->getImageId('favicon.ico'),
-            'image_groupe_id' => $this->getImageId('uploads/general/groupe.jpg'),
+            'image_groupe_id' => $this->getImageId('general/groupe.jpg'),
             'description' => "Nous sommes ravis de vous accueillir sur le site officiel de notre club de natation basé à Quimper. Que vous soyez un nageur débutant ou expérimenté, notre club offre une variété de disciplines et d'activités pour tous les âges et niveaux.",
             'philosophie' => 'La nage avec palmes apporte gainage et sensation de glisse incomparable.',
             'nombreNageurs' => 109,
@@ -20,7 +20,7 @@ class GeneralSeeder extends Seeder
             'lienFacebook' => 'https://www.facebook.com/palmesencornouaille',
             'lienInstagram' => 'https://www.instagram.com/palmesencornouaille/',
             'lienffessm' => 'https://ffessm.fr/',
-            'logoffessm_id' => $this->getImageId('uploads/general/logo_federation_ffessm.png'),
+            'logoffessm_id' => $this->getImageId('general/logo_federation_ffessm.png'),
             'lienDrive' => 'https://drive.google.com/drive/folders/18GiIlRzP7rdLiQx8dArAoSjK9WJZDo3z?usp=drive_link',
         ];
         $this->db->table('general')->insert($data);

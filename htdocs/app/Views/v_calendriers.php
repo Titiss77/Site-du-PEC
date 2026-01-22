@@ -44,12 +44,12 @@
             <div class="calendar-grid">
                 <?php foreach ($items as $item): ?>
                 <div class="calendar-img-box">
-                    <a href="<?= base_url('uploads/calendriers/' . $item['image']) ?>" target="_blank">
+                    <a href="<?= base_url('uploads/' . $item['image']) ?>" target="_blank">
                         <p class="label-cal">
                             <strong><?= esc($item['date']) ?></strong>
                         </p>
-                        <img src="<?= base_url('uploads/calendriers/' . $item['image']) ?>"
-                            alt="Planning <?= esc($categorie) ?>" class="img-fluid img-zoom" loading="lazy">
+                        <img src="<?= base_url('uploads/' . $item['image']) ?>" alt="Planning <?= esc($categorie) ?>"
+                            class="img-fluid img-zoom" loading="lazy">
                     </a>
                 </div>
                 <?php endforeach; ?>
@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            <a href="<?= base_url('uploads/calendriers/' . $item['image']) ?>" target="_blank"
+            <a href="<?= base_url('uploads/' . $item['image']) ?>" target="_blank"
                 class="btn-home d-inline-flex align-items-center gap-2 text-decoration-none">
                 <i class="bi bi-download"></i> Télécharger le calendrier
             </a>

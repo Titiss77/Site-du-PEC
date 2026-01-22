@@ -15,7 +15,7 @@ class GroupesSeeder extends Seeder
                 'tranche_age'    => '6 - 8 ans',
                 'horaire_resume' => 'Samedi',
                 'prix'           => '201.00',
-                'image'          => 'uploads/groupes/triton.jpg',
+                'image'          => 'groupes/triton.jpg',
                 'ordre'          => 1,
                 'codeCouleur'    => '#92C47D'
             ],
@@ -25,7 +25,7 @@ class GroupesSeeder extends Seeder
                 'tranche_age'    => '9 et +',
                 'horaire_resume' => '3x / semaine',
                 'prix'           => '282.00',
-                'image'          => 'uploads/groupes/debutant.jpg',
+                'image'          => 'groupes/debutant.jpg',
                 'ordre'          => 2,
                 'codeCouleur'    => '#9FC6E7'
             ],
@@ -35,7 +35,7 @@ class GroupesSeeder extends Seeder
                 'tranche_age'    => null,
                 'horaire_resume' => '4x / semaine',
                 'prix'           => '282.00',
-                'image'          => 'uploads/groupes/jeunes.jpg',
+                'image'          => 'groupes/jeunes.jpg',
                 'ordre'          => 3,
                 'codeCouleur'    => '#FED966'
             ],
@@ -45,7 +45,7 @@ class GroupesSeeder extends Seeder
                 'tranche_age'    => null,
                 'horaire_resume' => '1-2x / semaine',
                 'prix'           => '282.00 - 360.00',
-                'image'          => 'uploads/groupes/master.jpg',
+                'image'          => 'groupes/master.jpg',
                 'ordre'          => 5,
                 'codeCouleur'    => '#B4A7D5'
             ],

@@ -36,6 +36,9 @@ $menuItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <title><?= $titrePage; ?></title>
+    <?php if (!empty($general['image'])): ?>
+    <link rel="icon" type="image/png" href="<?= base_url($general['image']); ?>">
+    <?php endif; ?>
     <?= view('css/dynamic_root', ['root' => $root]); ?>
     <link rel="stylesheet" href="<?= base_url('assets/css/global.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/' . $cssPage); ?>">
@@ -101,7 +104,7 @@ $menuItems = [
             </a>
             <a class="fede" href="<?= $general['lienffessm']; ?>" target="_blank" aria-label="FFESSM"
                 title="Site officiel de la FFESSM">
-                <img src="<?= base_url('' . $general['logoffessm']); ?>" alt="<?= $general['logoffessm']; ?>">
+                <img src="<?= base_url('uploads/' . $general['logoffessm']); ?>" alt="<?= $general['logoffessm']; ?>">
             </a>
         </div>
 

@@ -13,19 +13,19 @@ class PiscineSeeder extends Seeder
                 'nom'         => 'Kerlan vian',
                 'adresse'     => '47 Av. des Oiseaux, 29000 Quimper, France',
                 'type_bassin' => '25m',
-                'photo'       => 'kerlan_vian.jpg'
+                'photo'       => 'piscines/kerlan_vian.jpg'
             ],
             [
                 'nom'         => 'Aquarive',
                 'adresse'     => "159 Bd de Créac'h Gwen, 29000 Quimper, France",
                 'type_bassin' => '25m',
-                'photo'       => 'aquarive.png'
+                'photo'       => 'piscines/aquarive.png'
             ],
             [
                 'nom'         => 'Aquaform',
                 'adresse'     => "Piscine aqua forme, Av. du Rouillen, 29500 Ergué-Gabéric, France",
                 'type_bassin' => '25m',
-                'photo'       => 'aquaform.jpg'
+                'photo'       => 'piscines/aquaform.jpg'
             ],
         ];
 
