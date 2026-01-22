@@ -15,32 +15,32 @@ class PartenairesSeeder extends Seeder
                 'ordre' => 1,
             ],
             [
-                'description' => 'Mr DA RU : Entreprise Guichard Briec ( partenaire de notre tenue club)',
+                'description' => 'Mr DA RU : Entreprise Guichard Briec (Partenaire de notre tenue club)',
                 'image_url' => 'partenaires/guichard.jpg',
                 'ordre' => 2,
             ],
             [
-                'description' => 'Mr Lespagnol : Entreprise Alizé Quimper (partenaire de notre tenue club)',
+                'description' => 'Mr Lespagnol : Entreprise Alizé Quimper (Partenaire de notre tenue club)',
                 'image_url' => 'partenaires/alize.jpg',
                 'ordre' => 3,
             ],
             [
-                'description' => 'Entreprise Dadypac Quimper (partenaire de fonctionnement club)',
+                'description' => 'Entreprise Dadypac Quimper (Partenaire de fonctionnement club)',
                 'image_url' => 'partenaires/dadypac.jpg',
                 'ordre' => 4,
             ],
             [
-                'description' => 'Entreprise Ysblue Douarnenez (partenaire Bonnet Club)',
+                'description' => 'Entreprise Ysblue Douarnenez (Partenaire Bonnet Club)',
                 'image_url' => 'partenaires/ysblue.jpg',
                 'ordre' => 5,
             ],
             [
-                'description' => 'Mr Hénaff: Entreprise Hénaff Pouldreuzic (partenaire stand restauration compétitions locales)',
+                'description' => 'Mr Hénaff: Entreprise Hénaff Pouldreuzic (Partenaire stand restauration compétitions locales)',
                 'image_url' => 'partenaires/henaff.jpg',
                 'ordre' => 6,
             ],
             [
-                'description' => 'Famille Planchet: Piscine Aquaform Ergué Gaberic (partenaire structure sportive)',
+                'description' => 'Famille Planchet: Piscine Aquaform Ergué Gaberic (Partenaire structure sportive)',
                 'image_url' => 'partenaires/aquaform.jpg',
                 'ordre' => 7,
             ],
@@ -50,7 +50,7 @@ class PartenairesSeeder extends Seeder
                 'ordre' => 8,
             ],
             [
-                'description' => 'Cross Fit Be Safe Quimper (partenaire prestation sportive)',
+                'description' => 'Cross Fit Be Safe Quimper (Partenaire prestation sportive)',
                 'image_url' => 'partenaires/crossfitbesafe.jpg',
                 'ordre' => 9,
             ],
