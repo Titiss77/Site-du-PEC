@@ -36,8 +36,7 @@ $routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Adm
     $routes->get('general', 'General::index');
     $routes->post('general/update', 'General::update');
 
-    // 3. Ressources CRUD (Create, Read, Update, Delete)
-    // CodeIgniter créera automatiquement les routes : index, new, create, show, edit, update, delete
+    $routes->get('actualites/(:num)/delete', 'Actualites::delete/$1');
     
     $routes->resource('actualites',  ['controller' => 'Actualites']);
     $routes->resource('boutique',    ['controller' => 'Boutique']);

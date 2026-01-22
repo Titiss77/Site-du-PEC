@@ -6,7 +6,7 @@
 <?= $this->include('admin/retour') ?>
 <?php else: ?>
 <div class="site-container mt-3">
-    <a href="<?= base_url('admin') ?>" class="btn-home btn-sm"><i class="bi bi-arrow-left"></i> Retour Dashboard</a>
+    <a href="<?= base_url('admin') ?>" class="btn-home btn-sm"><i class="bi bi-arrow-left"></i> Tableau de bord</a>
 </div>
 <?php endif; ?>
 
@@ -29,9 +29,8 @@
         <table class="table-admin" style="width: 100%; border-collapse: collapse;">
             <thead style="background-color: #f8f9fa; border-bottom: 2px solid #eee;">
                 <tr>
-                    <th style="padding: 15px;">Image</th>
-                    <th style="padding: 15px;">Titre</th>
-                    <th style="padding: 15px;">Date</th>
+                    <th style="padding: 15px;">Aperçu</th>
+                    <th style="padding: 15px;">Infos</th>
                     <th style="padding: 15px;">Statut</th>
                     <th style="padding: 15px; text-align: right;">Actions</th>
                 </tr>
@@ -40,37 +39,36 @@
                 <?php if (!empty($actualites)): ?>
                 <?php foreach ($actualites as $actu): ?>
                 <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 15px;">
-                        <?php if (!empty($actu['image'])): ?>
-                        <img src="<?= base_url($actu['image']) // Le modèle renvoie le path complet ?>" alt="Aperçu"
-                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;">
+                    <td style="padding: 15px; width: 80px;">
+                        <?php if (!empty($actu['image_path'])): ?>
+                        <img src="<?= base_url($actu['image_path']) ?>" alt="Img"
+                            style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px;">
                         <?php else: ?>
-                        <span class="text-muted"><i class="bi bi-image"></i></span>
+                        <div
+                            style="width: 60px; height: 60px; background: #eee; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                            <i class="bi bi-image text-muted"></i>
+                        </div>
                         <?php endif; ?>
                     </td>
                     <td style="padding: 15px;">
-                        <strong><?= esc($actu['titre']) ?></strong>
-                    </td>
-                    <td style="padding: 15px;">
-                        <?php if (!empty($actu['date_evenement'])): ?>
-                        <span class="badge-date"><i class="bi bi-calendar-event"></i>
-                            <?= date('d/m/Y', strtotime($actu['date_evenement'])) ?></span>
-                        <?php else: ?>
-                        <small class="text-muted">Créé le <?= date('d/m/Y', strtotime($actu['created_at'])) ?></small>
-                        <?php endif; ?>
+                        <strong style="font-size: 1.1em; display: block;"><?= esc($actu['titre']) ?></strong>
+                        <small class="text-muted">
+                            <?php if($actu['date_evenement']): ?>
+                            <i class="bi bi-calendar-event"></i> Événement :
+                            <?= date('d/m/Y', strtotime($actu['date_evenement'])) ?>
+                            <?php else: ?>
+                            <i class="bi bi-clock"></i> Créé le <?= date('d/m/Y', strtotime($actu['created_at'])) ?>
+                            <?php endif; ?>
+                        </small>
                     </td>
                     <td style="padding: 15px;">
                         <?php 
-                                    $statusColor = match($actu['statut'] ?? 'brouillon') {
-                                        'publie' => '#28a745',
-                                        'brouillon' => '#ffc107',
-                                        'archive' => '#6c757d',
-                                        default => '#ccc'
-                                    };
+                                    $colors = ['publie' => '#28a745', 'brouillon' => '#ffc107', 'archive' => '#6c757d'];
+                                    $color = $colors[$actu['statut']] ?? '#ccc';
                                 ?>
                         <span
-                            style="color: white; background-color: <?= $statusColor ?>; padding: 4px 8px; border-radius: 12px; font-size: 0.85em;">
-                            <?= ucfirst($actu['statut'] ?? 'brouillon') ?>
+                            style="color: white; background-color: <?= $color ?>; padding: 5px 10px; border-radius: 15px; font-size: 0.85em;">
+                            <?= ucfirst($actu['statut']) ?>
                         </span>
                     </td>
                     <td style="padding: 15px; text-align: right;">
@@ -89,7 +87,7 @@
                 <?php endforeach; ?>
                 <?php else: ?>
                 <tr>
-                    <td colspan="5" class="text-center p-4">Aucune actualité trouvée.</td>
+                    <td colspan="4" class="text-center p-5 text-muted">Aucune actualité pour le moment.</td>
                 </tr>
                 <?php endif; ?>
             </tbody>
