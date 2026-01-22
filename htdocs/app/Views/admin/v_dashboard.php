@@ -21,6 +21,8 @@
  * - Lisibilité : On sépare la logique (données) de l'affichage (HTML).
  * - Scalabilité : Facile à modifier si on veut ajouter des permissions par rôle plus tard.
  */
+$isLogged = session()->get('isLoggedIn');
+
 $sections = [
     // --- SECTION 1 : COMMUNICATION ---
     [
@@ -109,6 +111,19 @@ $sections = [
 ?>
 
 <div class="site-container">
+    <?php if ($isLogged): ?>
+
+    <div class="deconnexion-section">
+        <a href="<?= base_url('logout') ?>" class="admin-nav-link logout-btn"
+            onclick="return confirm('Voulez-vous vraiment vous déconnecter ?')">
+            <i class="bi bi-box-arrow-right"></i> <span>Déconnexion</span>
+        </a>
+    </div>
+
+    <div class="admin-header">
+        <h2 class="title-section" style="margin-top: 0;">Tableau de Bord : <?= session()->get('nom') ?></h2>
+    </div>
+    <?php endif; ?>
 
     <?php
     // BOUCLE PRINCIPALE : Parcourt chaque grande section (Communication, Sportif, etc.)

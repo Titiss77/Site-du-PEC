@@ -1,25 +1,6 @@
 <?php
-
-/**
- * ============================================================================
- * LAYOUT GLOBAL (Gabarit Principal)
- * ============================================================================
- * Ce fichier sert de structure de base pour toutes les pages du site.
- * Il contient l'en-tête (HTML Head), la navigation (Menu), le pied de page (Footer)
- * et définit la zone où le contenu spécifique de chaque page sera injecté.
- */
-
-// ----------------------------------------------------------------------------
-// 1. CONFIGURATION ET DONNÉES GLOBALES
-// ----------------------------------------------------------------------------
-
-// Récupération de l'état de connexion (Admin ou Visiteur)
-// Cette variable est utilisée plus bas pour modifier le comportement des liens.
 $isLogged = session()->get('isLoggedIn');
 
-// Définition centralisée du menu de navigation.
-// Format : 'URL' => 'Libellé affiché'.
-// AVANTAGE : Modifier le menu ici le met à jour automatiquement dans le Header ET le Footer.
 $menuItems = [
     '/' => 'Accueil',
     '/groupes' => 'Nos Groupes',
@@ -56,24 +37,6 @@ $menuItems = [
             <?php endforeach; ?>
         </ul>
     </nav>
-
-    <?php if ($isLogged): ?>
-
-    <div class="deconnexion-section">
-        <a href="<?= base_url('logout') ?>" class="admin-nav-link logout-btn"
-            onclick="return confirm('Voulez-vous vraiment vous déconnecter ?')">
-            <i class="bi bi-box-arrow-right"></i> <span>Déconnexion</span>
-        </a>
-    </div>
-
-    <div class="admin-header">
-        <h2 class="title-section" style="margin-top: 0;">Tableau de Bord : <?= session()->get('nom') ?></h2>
-        <div class="admin-user-pill">
-            <i class="bi bi-person-circle"></i>
-            <span>Administrateur</span>
-        </div>
-    </div>
-    <?php endif; ?>
 
     <?= $this->renderSection('contenu') ?>
 
