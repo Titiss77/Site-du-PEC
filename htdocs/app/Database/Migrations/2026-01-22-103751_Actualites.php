@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateActualites extends Migration
+class Actualites extends Migration
 {
     public function up()
     {

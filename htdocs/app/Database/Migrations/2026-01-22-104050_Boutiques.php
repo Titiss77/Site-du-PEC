@@ -4,10 +4,8 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateBoutique extends Migration
+class Boutiques extends Migration
 {
-    // app/Database/Migrations/2026-01-06-000007_CreatePendingContacts.php
-
     public function up()
     {
         $this->forge->addField([

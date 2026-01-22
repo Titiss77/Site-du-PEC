@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateGroupes extends Migration
+class Groupes extends Migration
 {
     public function up()
     {

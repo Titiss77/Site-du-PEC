@@ -4,23 +4,24 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreatePartenaires extends Migration
+class Calendriers extends Migration
 {
     public function up()
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'nom' => ['type' => 'VARCHAR', 'constraint' => 50, 'unique' => true],
+            'categorie' => ['type' => 'ENUM', 'constraint' => ['scolaire', 'vacances', 'competitions'], 'null' => true],
+            'date' => ['type' => 'VARCHAR', 'constraint' => 100, 'null' => true],
             'image_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
-            'ordre' => ['type' => 'INT', 'constraint' => 5, 'default' => '1'],
         ]);
+
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('image_id', 'images', 'id', 'SET NULL', 'CASCADE');
-        $this->forge->createTable('partenaires');
+        $this->forge->createTable('plannings');
     }
 
     public function down()
     {
-        $this->forge->dropTable('partenaires');
+        $this->forge->dropTable('plannings');
     }
 }

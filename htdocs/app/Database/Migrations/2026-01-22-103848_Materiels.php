@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateMateriel extends Migration
+class Materiels extends Migration
 {
     public function up()
     {

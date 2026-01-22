@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateRoot extends Migration
+class Roots extends Migration
 {
     public function up()
     {

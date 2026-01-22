@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateImages extends Migration
+class Images extends Migration
 {
     public function up()
     {
