@@ -4,7 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class PlanningSeeder extends Seeder
+class CalendrierSeeder extends Seeder
 {
     public function run()
     {
@@ -34,7 +34,7 @@ class PlanningSeeder extends Seeder
             $newData[] = $row;
         }
 
-        $this->db->table('plannings')->insertBatch($newData);
+        $this->db->table('calendriers')->insertBatch($newData);
     }
 
     private function getImageId($path)

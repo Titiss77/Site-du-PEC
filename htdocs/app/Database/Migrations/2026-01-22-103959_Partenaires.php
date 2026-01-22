@@ -10,7 +10,7 @@ class Partenaires extends Migration
     {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
-            'nom' => ['type' => 'VARCHAR', 'constraint' => 50, 'unique' => true],
+            'description' => ['type' => 'VARCHAR', 'constraint' => 255, 'unique' => true],
             'image_id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'ordre' => ['type' => 'INT', 'constraint' => 5, 'default' => '1'],
         ]);

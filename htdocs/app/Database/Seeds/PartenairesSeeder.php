@@ -10,47 +10,47 @@ class PartenairesSeeder extends Seeder
     {
         $partenaires = [
             [
-                'nom' => 'Mr et Mme Guillou Boulanger Quimper ( PARTENAIRE de notre tenue club et de l’opération de Noël Paquets cadeaux au profit du stage à Lanzarote)',
+                'description' => 'Mr et Mme Guillou Boulanger Quimper (Partenaire de notre tenue club et de l’opération de Noël Paquets cadeaux au profit du stage à Lanzarote)',
                 'image_url' => 'partenaires/boulanger.jpg',
                 'ordre' => 1,
             ],
             [
-                'nom' => 'Mr DA RU : Entreprise Guichard Briec ( partenaire de notre tenue club)',
+                'description' => 'Mr DA RU : Entreprise Guichard Briec ( partenaire de notre tenue club)',
                 'image_url' => 'partenaires/guichard.jpg',
                 'ordre' => 2,
             ],
             [
-                'nom' => 'Mr Lespagnol : Entreprise Alizé Quimper (partenaire de notre tenue club)',
+                'description' => 'Mr Lespagnol : Entreprise Alizé Quimper (partenaire de notre tenue club)',
                 'image_url' => 'partenaires/alize.jpg',
                 'ordre' => 3,
             ],
             [
-                'nom' => 'Entreprise Dadypac Quimper (partenaire de fonctionnement club)',
+                'description' => 'Entreprise Dadypac Quimper (partenaire de fonctionnement club)',
                 'image_url' => 'partenaires/dadypac.jpg',
                 'ordre' => 4,
             ],
             [
-                'nom' => 'Entreprise Ysblue Douarnenez (partenaire Bonnet Club)',
+                'description' => 'Entreprise Ysblue Douarnenez (partenaire Bonnet Club)',
                 'image_url' => 'partenaires/ysblue.jpg',
                 'ordre' => 5,
             ],
             [
-                'nom' => 'Mr Hénaff: Entreprise Hénaff Pouldreuzic (partenaire stand restauration compétitions locales)',
+                'description' => 'Mr Hénaff: Entreprise Hénaff Pouldreuzic (partenaire stand restauration compétitions locales)',
                 'image_url' => 'partenaires/henaff.jpg',
                 'ordre' => 6,
             ],
             [
-                'nom' => 'Famille Planchet: Piscine Aquaform Ergué Gaberic (partenaire structure sportive)',
+                'description' => 'Famille Planchet: Piscine Aquaform Ergué Gaberic (partenaire structure sportive)',
                 'image_url' => 'partenaires/aquaform.jpg',
                 'ordre' => 7,
             ],
             [
-                'nom' => 'Entreprise Leclerc Quimper ( partenaire Stand et restauration compétitions)',
+                'description' => 'Entreprise Leclerc Quimper ( partenaire Stand et restauration compétitions)',
                 'image_url' => 'partenaires/leclerc.jpg',
                 'ordre' => 8,
             ],
             [
-                'nom' => 'Cross Fit Be Safe Quimper (partenaire prestation sportive)',
+                'description' => 'Cross Fit Be Safe Quimper (partenaire prestation sportive)',
                 'image_url' => 'partenaires/crossfitbesafe.jpg',
                 'ordre' => 9,
             ],

@@ -49,22 +49,22 @@ class Donnees extends Model
             ->get()->getResultArray();
     }
 
-    public function getPlannings()
+    public function getCalendriers()
     {
-        return $this->db->table('plannings p')
-            ->join('images i', 'p.image_id = i.id', 'left')
-            ->select('p.categorie, p.date, i.path as image')
-            ->where('p.categorie !=', 'competitions')
-            ->orderBy('p.categorie', 'ASC')
+        return $this->db->table('calendriers c')
+            ->join('images i', 'c.image_id = i.id', 'left')
+            ->select('c.categorie, c.date, i.path as image')
+            ->where('c.categorie !=', 'competitions')
+            ->orderBy('c.categorie', 'ASC')
             ->get()->getResultArray();
     }
 
     public function getCalendrier()
     {
-        return $this->db->table('plannings p')
-            ->join('images i', 'p.image_id = i.id', 'left')
-            ->select('p.categorie, p.date, i.path as image')
-            ->where('p.categorie', 'competitions')
+        return $this->db->table('calendriers c')
+            ->join('images i', 'c.image_id = i.id', 'left')
+            ->select('c.categorie, c.date, i.path as image')
+            ->where('c.categorie', 'competitions')
             ->get()->getResultArray();
     }
 

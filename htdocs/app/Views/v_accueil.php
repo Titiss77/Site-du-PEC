@@ -161,13 +161,20 @@
     </div>
 
     <h3 class="title-section">Nos Partenaires</h3>
-    <div class="grid-responsive">
+    <div class="grid-responsive-2">
 
 
         <?php foreach ($partenaires as $partenaire): ?>
         <div class="partenaires-item text-center p-3">
-            <img class="img-card" src="<?= base_url('uploads/' . $partenaire['image_url']); ?>"
-                alt="<?= esc($partenaire['nom']) ?>">
+            <div class="contenu">
+                <img class="img-card-2" src="<?= base_url('uploads/' . $partenaire['image_url']); ?>"
+                    alt="<?= esc($partenaire['description']) ?>">
+                <i class="bi bi-arrow-right fleche"></i>
+            </div>
+            <div class="contenu">
+                <p><?= esc($partenaire['description']) ?></p>
+            </div>
+
         </div>
         <?php endforeach; ?>
     </div>

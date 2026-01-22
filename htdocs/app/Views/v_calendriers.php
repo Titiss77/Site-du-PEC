@@ -9,10 +9,10 @@
  * ============================================================================
  * Cette vue affiche les documents relatifs à l'organisation temporelle du club.
  * Elle se divise en deux sections distinctes :
- * 1. Les Plannings d'entraînements (images/jpg) : Vacances, Scolaire, etc.
+ * 1. Les calendriers d'entraînements (images/jpg) : Vacances, Scolaire, etc.
  * 2. Le Calendrier des compétitions (fichier/pdf) : Liste des rencontres à télécharger.
  *
- * Les données ($plannings, $calendrierCompet) sont injectées par le contrôleur 'Home'.
+ * Les données ($calendriers, $calendrierCompet) sont injectées par le contrôleur 'Home'.
  */
 ?>
 
@@ -26,15 +26,15 @@
     <p class="txt-muted">Périodes scolaires et vacances.</p>
     <section class="mb-5">
         <?php
-        if (!empty($plannings)):
-            // 1. On groupe les plannings par catégorie dans un nouveau tableau
-            $groupedPlannings = [];
-            foreach ($plannings as $planning) {
-                $groupedPlannings[$planning['categorie']][] = $planning;
+        if (!empty($calendriers)):
+            // 1. On groupe les calendriers par catégorie dans un nouveau tableau
+            $groupedCalendriers = [];
+            foreach ($calendriers as $planning) {
+                $groupedCalendriers[$planning['categorie']][] = $planning;
             }
 
             // 2. On boucle sur chaque catégorie
-            foreach ($groupedPlannings as $categorie => $items):
+            foreach ($groupedCalendriers as $categorie => $items):
                 ?>
         <div class="category-block mb-4">
             <h4 class="text-secondary border-bottom pb-2 mb-3">

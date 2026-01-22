@@ -17,11 +17,11 @@ class Calendriers extends Migration
 
         $this->forge->addPrimaryKey('id');
         $this->forge->addForeignKey('image_id', 'images', 'id', 'SET NULL', 'CASCADE');
-        $this->forge->createTable('plannings');
+        $this->forge->createTable('calendriers');
     }
 
     public function down()
     {
-        $this->forge->dropTable('plannings');
+        $this->forge->dropTable('calendriers');
     }
 }

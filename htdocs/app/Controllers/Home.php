@@ -74,7 +74,7 @@ class Home extends BaseController
         $data = [
             'cssPage' => 'calendrier.css',
             'titrePage' => 'Calendriers',
-            'plannings' => $this->donneesModel->getPlannings(),
+            'calendriers' => $this->donneesModel->getCalendriers(),
             'calendrierCompet' => $this->donneesModel->getCalendrier(),
         ];
 
