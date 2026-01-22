@@ -105,7 +105,7 @@ $menuItems = [
 
         <p>&copy; <?= date('Y'); ?> <?= esc($general['nomClub']); ?>. Tous droits réservés.</p>
 
-        <p class="admin-link"><?= anchor('/login', '(Administration)'); ?></p>
+
     </footer>
 
 </body>

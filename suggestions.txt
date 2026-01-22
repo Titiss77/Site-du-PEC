@@ -18,14 +18,14 @@ FAIT :
 - Logo de la fede pour le lien
 - Inverser les 2 calendriers
 - Master à la ligne description
+- Ajouter Maêlys
+- sponsors
 
 
 RESTE A FAIRE :
 - Qui sommes nous ??
-- sponsors
 
 - Ajouter coach en formation
-- Ajouter Maêlys
 
 
 
