@@ -25,6 +25,7 @@ class PersonnelSeeder extends Seeder
             ['nom' => 'Killian TORCH', 'photo' => 'Killian_TORCH.jpg'],
             ['nom' => 'Florie BOUTOUILLER', 'photo' => 'vide.jpg'],
             ['nom' => 'Eloise KERJEAN', 'photo' => 'Eloise_KERJEAN.jpg'],
+            ['nom' => 'Maëlys LE BIGOT', 'photo' => 'vide.jpg'],
             
         ];
         $db->table('membres')->insertBatch($membres);
@@ -64,6 +65,7 @@ class PersonnelSeeder extends Seeder
             ['membre_id' => 10, 'fonction_id' => 8],
             ['membre_id' => 11, 'fonction_id' => 8],
             ['membre_id' => 12, 'fonction_id' => 8],
+            ['membre_id' => 13, 'fonction_id' => 8],
             ['membre_id' => 13, 'fonction_id' => 8],
             
         ];

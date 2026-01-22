@@ -167,22 +167,12 @@
 
 
         <?php foreach ($partenaires as $partenaire): ?>
-        <?php if (str_starts_with($partenaire['image_url'], 'https://')): ?>
-        <div class="partenaires-item text-center p-3">
-            <a href="<?= $partenaire['site_web'] ?>" target="_blank">
-                <img src="<?= $partenaire['image_url']; ?>" alt="<?= esc($partenaire['nom']) ?>">
-            </a>
-        </div>
-
-        <?php else: ?>
         <div class="partenaires-item text-center p-3">
             <a href="<?= $partenaire['site_web'] ?>" target="_blank">
                 <img class="img-card" src="<?= base_url('uploads/partenaires/' . $partenaire['image_url']); ?>"
                     alt="<?= esc($partenaire['nom']) ?>">
             </a>
         </div>
-        <?php endif; ?>
-
         <?php endforeach; ?>
     </div>
 
