@@ -26,19 +26,27 @@ $routes->get('logout/liste', 'Liste::logout');
 
 // --- GROUPE ADMIN SÉCURISÉ ---
 // Le filtre 'auth' intercepte tout accès à /admin/*
-$routes->group('admin', ['filter' => 'auth'], function($routes) {
-    $routes->get('/', 'Admin\Dashboard::index');
+// Groupe d'administration sécurisé par le filtre 'auth'
+$routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Admin'], function($routes) {
     
-    // Ressources pour toutes les tables
-    $routes->resource('actualites', ['controller' => 'Admin\ActualiteAdmin']);
-    $routes->resource('boutique',   ['controller' => 'Admin\BoutiqueAdmin']);
-    $routes->resource('membres',    ['controller' => 'Admin\MembreAdmin']);
-    $routes->resource('plannings',  ['controller' => 'Admin\PlanningAdmin']);
-    $routes->resource('piscines',   ['controller' => 'Admin\PiscineAdmin']);
-    $routes->resource('tarifs',     ['controller' => 'Admin\TarifAdmin']);
-    $routes->resource('materiel',   ['controller' => 'Admin\MaterielAdmin']);
+    // 1. Tableau de bord
+    $routes->get('/', 'Dashboard::index');
+
+    // 2. Configuration Générale (Page unique)
+    $routes->get('general', 'General::index');
+    $routes->post('general/update', 'General::update');
+
+    // 3. Ressources CRUD (Create, Read, Update, Delete)
+    // CodeIgniter créera automatiquement les routes : index, new, create, show, edit, update, delete
     
-    // Pages de configuration unique
-    $routes->get('general', 'Admin\GeneralAdmin::index');
-    $routes->post('general/update', 'Admin\GeneralAdmin::update');
+    $routes->resource('actualites',  ['controller' => 'Actualites']);
+    $routes->resource('boutique',    ['controller' => 'Boutique']);
+    $routes->resource('calendriers', ['controller' => 'Calendriers']); // Remplace 'plannings' (selon votre migration)
+    $routes->resource('disciplines', ['controller' => 'Disciplines']); // Ajouté (manquant avant)
+    $routes->resource('groupes',     ['controller' => 'Groupes']);     // Correspond à "Tarifs"
+    $routes->resource('materiel',    ['controller' => 'Materiel']);
+    $routes->resource('membres',     ['controller' => 'Membres']);
+    $routes->resource('partenaires', ['controller' => 'Partenaires']); // Ajouté (manquant avant)
+    $routes->resource('piscines',    ['controller' => 'Piscines']);
+    $routes->resource('utilisateurs',['controller' => 'Utilisateurs']); // Pour gérer les admins/users
 });

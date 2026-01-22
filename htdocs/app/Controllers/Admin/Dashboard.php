@@ -2,37 +2,25 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\BaseController;
-use App\Models\Donnees;
-use App\Controllers\Root;    
-
-class Dashboard extends BaseController
+class Dashboard extends BaseAdminController
 {
-    protected $donneesModel;
-
-    public function __construct()
-    {
-        $this->donneesModel = new Donnees();
-        $this->root = new Root();
-    }
-
-    /**
-     * Affiche la page d'accueil de l'administration
-     */
     public function index()
     {
-        $data = [
-            'root' => $this->root->getRootStyles(),
-            'cssPage' => 'admin/dashboard.css',
-            'titrePage' => 'Dashboard - Admin',
-            'general' => $this->donneesModel->getGeneral(),
-            'count' => [
-                'actualites' => count($this->donneesModel->getActualites('actualite')),
-                'boutique' => count($this->donneesModel->getBoutique()),
-                'membres' => count($this->donneesModel->getBureau()),
-                // Ajoute ici d'autres comptages si nécessaire
-            ]
+        $data = $this->getCommonData('Dashboard - Admin', 'admin/dashboard.css');
+
+        // Récupération des compteurs via le modèle Donnees (ou des modèles spécifiques)
+        // Note: count($this->donneesModel->get...) n'est pas très optimisé mais fonctionne pour l'instant.
+        // Idéalement : $db->table('actualites')->countAll();
+        
+        $db = \Config\Database::connect();
+
+        $data['count'] = [
+            'actualites' => $db->table('actualites')->countAll(),
+            'boutique'   => $db->table('boutique')->countAll(),
+            'membres'    => $db->table('membres')->countAll(),
+            'groupes'    => $db->table('groupes')->countAll(),
         ];
+
         return view('admin/v_dashboard', $data);
     }
 }
