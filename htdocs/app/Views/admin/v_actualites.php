@@ -2,9 +2,8 @@
 
 <?= $this->section('contenu') ?>
 <div class="deconnexion-section">
-    <a href="<?= base_url('admin') ?>" class="admin-nav-link logout-btn"
-        onclick="return confirm('Voulez-vous vraiment vous déconnecter ?')">
-        <i class="bi bi-box-arrow-right"></i> <span>Déconnexion</span>
+    <a href="<?= base_url('admin') ?>" class="admin-nav-link logout-btn">
+        <i class="bi bi-box-arrow-right"></i> <span>Tableau de bord</span>
     </a>
 </div>
 <div class="site-container">

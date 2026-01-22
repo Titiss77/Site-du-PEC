@@ -206,6 +206,12 @@ img {
 }
 
 /* --- Bouton de Déconnexion --- */
+.deconnexion-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    text-align: center;
+}
+
 .logout-btn {
     display: flex;
     width: 10%;
