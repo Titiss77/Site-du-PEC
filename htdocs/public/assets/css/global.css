@@ -90,6 +90,33 @@ nav ul li a:hover {
     color: var(--secondary);
 }
 
+/* --- Typographie & Titres --- */
+.title-section {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 60px 0 30px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.title-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+h5 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: larger;
+}
+
 footer {
     background: var(--primary);
     color: var(--white);

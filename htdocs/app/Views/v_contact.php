@@ -198,7 +198,7 @@ $destinataires = [
     </div>
 
     <section class="trombi-container mt-5">
-        <h2 class="title-section text-center">L'équipe du Bureau</h2>
+        <h2 class="title-section">L'équipe du Bureau</h2>
         <div class="trombi-grid">
 
             <?php if (!empty($membres)): ?>
