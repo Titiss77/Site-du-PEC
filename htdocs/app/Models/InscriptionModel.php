@@ -17,7 +17,7 @@ class InscriptionModel extends Model
     
     public function getMail(string $poste)
     {
-        $result = $this->db->table('postes')->select('mail')->where('libelle', $poste)->limit(1)->get()->getRow();
+        $result = $this->db->table('general')->select('mailClub')->limit(1)->get()->getRow();
         return $result ? $result->mail : null;
     }
 }

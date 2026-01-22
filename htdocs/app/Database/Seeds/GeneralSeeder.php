@@ -22,6 +22,7 @@ class GeneralSeeder extends Seeder
             'lienffessm' => 'https://ffessm.fr/',
             'logoffessm_id' => $this->getImageId('general/logo_federation_ffessm.png'),
             'lienDrive' => 'https://drive.google.com/drive/folders/18GiIlRzP7rdLiQx8dArAoSjK9WJZDo3z?usp=drive_link',
+            'mailClub'=> 'mathisfrances11@gmail.com',
         ];
         $this->db->table('general')->insert($data);
     }

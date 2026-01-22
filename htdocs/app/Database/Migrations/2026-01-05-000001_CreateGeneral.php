@@ -23,6 +23,7 @@ class CreateGeneral extends Migration
             'lienffessm'      => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
             'logoffessm_id'   => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'null' => true],
             'lienDrive'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
+            'mailClub'       => ['type' => 'VARCHAR', 'constraint' => 255, 'null' => true],
         ]);
 
         $this->forge->addPrimaryKey('id');
