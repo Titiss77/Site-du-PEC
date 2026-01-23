@@ -81,56 +81,6 @@ $destinataires = [
         </section>
     </div>
 
-    <div class="grid-1 mb-5">
-        <section class="card-item highlight-section">
-            <h3 class="text-center"><i class="bi bi-envelope"></i> Une question ? Contactez-nous</h3>
-
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert-success-popup">
-                <i class="bi bi-check-all"></i> <?= session()->getFlashdata('success') ?>
-            </div>
-            <?php endif; ?>
-
-            <form action="<?= base_url('contact/envoyer') ?>" method="post" class="mt-3">
-
-                <?= csrf_field() ?>
-
-                <div style="display:none;">
-                    <input type="text" name="honeypot" value="" tabindex="-1" autocomplete="off">
-                </div>
-
-                <div class="grid-2">
-                    <div class="form-group">
-                        <label for="destinataire">Vous avez une question concernant :</label>
-                        <select name="destinataire" id="destinataire" class="form-input">
-                            <?php foreach ($destinataires as $value => $label): ?>
-                            <option value="<?= esc($value) ?>"><?= esc($label) ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Votre adresse email :</label>
-                        <input type="email" name="email" id="email" placeholder="exemple@mail.com" class="form-input"
-                            required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Votre message :</label>
-                    <textarea name="message" id="message" placeholder="Détaillez votre demande ici..." rows="4"
-                        class="form-input" required></textarea>
-                </div>
-
-                <div class="text-center">
-                    <button type="submit" class="btn-home" style="max-width: 300px; width:100%">
-                        Envoyer mon message
-                    </button>
-                </div>
-            </form>
-        </section>
-    </div>
-
     <h3 class="title-section">Matériel à avoir</h3>
     <div class="grid-responsive">
         <?php foreach ($materiel as $m): ?>
@@ -220,6 +170,56 @@ $destinataires = [
 
         </div>
     </section>
+
+    <div class="grid-1 mb-5">
+        <section class="card-item highlight-section">
+            <h3 class="text-center"><i class="bi bi-envelope"></i> Une question ? Contactez-nous</h3>
+
+            <?php if (session()->getFlashdata('success')): ?>
+            <div class="alert-success-popup">
+                <i class="bi bi-check-all"></i> <?= session()->getFlashdata('success') ?>
+            </div>
+            <?php endif; ?>
+
+            <form action="<?= base_url('contact/envoyer') ?>" method="post" class="mt-3">
+
+                <?= csrf_field() ?>
+
+                <div style="display:none;">
+                    <input type="text" name="honeypot" value="" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="destinataire">Vous avez une question concernant :</label>
+                        <select name="destinataire" id="destinataire" class="form-input">
+                            <?php foreach ($destinataires as $value => $label): ?>
+                            <option value="<?= esc($value) ?>"><?= esc($label) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Votre adresse email :</label>
+                        <input type="email" name="email" id="email" placeholder="exemple@mail.com" class="form-input"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Votre message :</label>
+                    <textarea name="message" id="message" placeholder="Détaillez votre demande ici..." rows="4"
+                        class="form-input" required></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn-home" style="max-width: 300px; width:100%">
+                        Envoyer mon message
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
 </div>
 
 <?= $this->endSection() ?>
