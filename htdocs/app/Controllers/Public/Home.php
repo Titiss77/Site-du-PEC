@@ -90,4 +90,17 @@ class Home extends BaseController
 
         return $this->_render('Public/v_boutique', $data);
     }
+
+    public function actu($slug)
+    {
+        
+        $data = [
+            'cssPage' => 'Public/accueil.css',
+            'titrePage' => 'actu',
+            'actualites' => $this->donneesModel->getUneActualites($slug),
+            
+        ];
+
+        return $this->_render('Public/v_actu', $data);
+    }
 }

@@ -57,41 +57,28 @@
         <div class="card-item news-card">
             <?php foreach ($actualites as $item): ?>
 
-            <div class="news-item mb-4 border-bottom pb-3">
-
-                <?php if (!empty($item['image'])): ?>
-
-                <?php if (str_starts_with($item['image'], 'https://')): ?>
-                <img src="<?= $item['image']; ?>" alt="<?= esc($item['alt']) ?>" class="img-card mb-3" />
-
-                <?php else: ?>
-                <img src="<?= base_url('uploads/' . $item['image']); ?>" alt="<?= esc($item['alt']) ?>"
-                    class="img-card mb-3" />
-                <?php endif; ?>
-                <?php endif; ?>
-
+            <div class="news-item mb-3 border-bottom pb-3">
                 <div class="news-content">
-                    <h5><?= esc($item['titre']); ?></h5>
+                    <h5 class="mb-1" style="font-size: 1.1rem; color: var(--primary);">
+                        <?= esc($item['titre']); ?>
+                    </h5>
 
                     <?php
-                    $dateRef = $item['date_evenement'] ?? $item['created_at'];
-                    $dateLabel = $item['date_evenement'] ? 'Le' : 'Publié le';
-                    ?>
-
-                    <p class="small text-muted">
+            $dateRef = $item['date_evenement'] ?? $item['created_at'];
+            $dateLabel = $item['date_evenement'] ? 'Le' : 'Publié le';
+            ?>
+                    <p class="small text-muted mb-2">
                         <i class="bi bi-calendar3"></i> <?= $dateLabel ?> <?= date('d/m/Y', strtotime($dateRef)); ?>
                     </p>
 
-                    <?php if ($item['type'] === 'evenement' && !empty($item['date_evenement'])): ?>
-                    <p class="event-date text-primary">
-                        <strong><i class="bi bi-geo-alt"></i> Événement à venir</strong>
-                    </p>
-                    <?php endif; ?>
-
-                    <p><?= esc($item['description']); ?></p>
+                    <a href="<?= base_url('actu/' . $item['slug']) ?>" class="text-decoration-none small fw-bold"
+                        style="color: var(--secondary);">
+                        Plus de détails <i class="bi bi-arrow-right-short"></i>
+                    </a>
                 </div>
             </div>
             <?php endforeach; ?>
+
         </div>
 
         <h3 class="title-section">Nos Disciplines</h3>

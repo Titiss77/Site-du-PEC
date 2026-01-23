@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 // --- ROUTES PUBLIQUES ---
 $routes->get('/', 'Public\Home::index');
 $routes->get('groupes', 'Public\Home::groupes');
+$routes->get('actu/(:segment)', 'Public\Home::actu/$1');
 $routes->get('calendriers', 'Public\Home::calendriers');
 $routes->get('boutique', 'Public\Home::boutique');
 $routes->get('contact', 'Public\Contact::index');

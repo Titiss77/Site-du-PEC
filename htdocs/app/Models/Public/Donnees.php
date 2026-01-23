@@ -96,4 +96,14 @@ class Donnees extends Model
             ->orderBy('a.created_at', 'DESC')
             ->get()->getResultArray();
     }
+
+    public function getUneActualites($slug)
+    {
+        return $this->db->table('actualites a')
+            ->join('images i', 'a.image_id = i.id', 'left')
+            ->select('a.titre, a.slug, a.type, a.description, i.path as image, i.alt, a.date_evenement, a.created_at, m.nom as auteur')
+            ->join('membres m', 'a.id_auteur = m.id')
+            ->where(['a.statut' => 'publie', 'a.slug' => $slug])
+            ->get()->getResultArray();
+    }
 }
