@@ -1,17 +1,18 @@
 <?= $this->extend('Layout/l_global') ?>
 
 <?= $this->section('contenu') ?>
+<?= $this->include('Admin/retour') ?>
 
 <div class="site-container">
     <div class="d-flex align-items-center mb-4">
         <a href="<?= base_url('admin/actualites') ?>" class="text-decoration-none me-3 text-dark">
-            <i class="bi bi-arrow-left-circle" style="font-size: 1.5rem;"></i>
+            <i class="bi bi-arrow-left-circle"></i>
         </a>
         <h3 class="title-section mb-0">Modifier : <?= esc($item['titre']) ?></h3>
     </div>
 
     <?php if (session()->getFlashdata('errors')): ?>
-    <div class="alert alert-danger mb-4 p-3" style="background: #f8d7da; border-radius: 5px;">
+    <div class="alert alert-danger mb-4 p-3">
         <ul class="mb-0 ps-3">
             <?php foreach (session()->getFlashdata('errors') as $error): ?>
             <li><?= esc($error) ?></li>
@@ -60,7 +61,7 @@
 
                 <?php if (!empty($item['image_path'])): ?>
                 <div class="d-flex align-items-center gap-3 p-2 border rounded bg-light mb-2">
-                    <img src="<?= base_url($item['image_path']) ?>" style="height: 50px; border-radius: 4px;">
+                    <img src="<?= base_url($item['image_path']) ?>">
                     <span class="text-muted small">Actuelle</span>
                 </div>
                 <?php endif; ?>
