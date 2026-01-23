@@ -21,8 +21,8 @@ $menuItems = [
     <link rel="icon" type="image/png" href="<?= base_url($general['image']); ?>">
     <?php endif; ?>
     <?= view('css/dynamic_root', ['root' => $root]); ?>
-    <link rel="stylesheet" href="<?= base_url('assets/css/global.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/' . $cssPage); ?>">
+    <link rel="stylesheet" href="<?= base_url('Assets/css/Public/global.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('Assets/css/' . $cssPage); ?>">
 </head>
 
 <body>

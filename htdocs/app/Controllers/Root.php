@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Donnees;
-use App\Models\InscriptionModel;
+use App\Models\Public\Donnees;
+use App\Models\Public\InscriptionModel;
 
 class Root extends BaseController
 {

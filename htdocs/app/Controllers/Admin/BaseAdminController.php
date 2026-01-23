@@ -4,7 +4,7 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Controllers\Root;
-use App\Models\Donnees;
+use App\Models\Public\Donnees;
 
 class BaseAdminController extends BaseController
 {

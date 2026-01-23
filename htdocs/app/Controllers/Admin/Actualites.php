@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\ActualiteModel;
+use App\Models\Admin\ActualiteModel;
 
 class Actualites extends BaseAdminController
 {
@@ -17,19 +17,19 @@ class Actualites extends BaseAdminController
     // 1. LISTE DES ACTUALITÉS
     public function index()
     {
-        $data = $this->getCommonData('Gestion Actualités', 'admin/actualite.css');
+        $data = $this->getCommonData('Gestion Actualités', 'Admin/actualite.css');
         
         // Récupération via le modèle
         $data['actualites'] = $this->actuModel->getActualitesWithRelations();
 
-        return view('admin/actualites/index', $data);
+        return view('Admin/actualites/index', $data);
     }
 
     // 2. FORMULAIRE DE CRÉATION
     public function new()
     {
-        $data = $this->getCommonData('Nouvelle Actualité', 'admin/form.css');
-        return view('admin/actualites/create', $data);
+        $data = $this->getCommonData('Nouvelle Actualité', 'Admin/form.css');
+        return view('Admin/actualites/create', $data);
     }
 
     // 3. TRAITEMENT DE CRÉATION

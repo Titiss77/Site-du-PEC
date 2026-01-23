@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Public;
 
 use App\Controllers\BaseController;
-use App\Models\Donnees;
-use App\Models\UtilisateurModel; // Ajout du modèle utilisateur
+use App\Models\Public\Donnees;
+use App\Models\Public\UtilisateurModel; // Ajout du modèle utilisateur
 use App\Controllers\Root;
 
 class Liste extends BaseController
@@ -33,11 +33,11 @@ class Liste extends BaseController
         $data = [
             'root'      => $this->root->getRootStyles(),
             'titrePage' => 'Connexion Licenciés',
-            'cssPage'   => 'contact.css',
+            'cssPage'   => 'Public/contact.css',
             'general'   => $this->donneesModel->getGeneral(),
         ];
 
-        return view('v_listeLogin', $data);
+        return view('Public/v_listeLogin', $data);
     }
 
     /**

@@ -6,7 +6,7 @@ class Dashboard extends BaseAdminController
 {
     public function index()
     {
-        $data = $this->getCommonData('Dashboard - Admin', 'admin/dashboard.css');
+        $data = $this->getCommonData('Dashboard - Admin', 'Admin/dashboard.css');
 
         // Récupération des compteurs via le modèle Donnees (ou des modèles spécifiques)
         // Note: count($this->donneesModel->get...) n'est pas très optimisé mais fonctionne pour l'instant.
@@ -21,6 +21,6 @@ class Dashboard extends BaseAdminController
             'groupes'    => $db->table('groupes')->countAll(),
         ];
 
-        return view('admin/v_dashboard', $data);
+        return view('Admin/v_dashboard', $data);
     }
 }

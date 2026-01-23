@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Public;
 
 use App\Controllers\BaseController;
 use App\Controllers\Root;
-use App\Models\Donnees;
-use App\Models\GroupeModel;
-use App\Models\InscriptionModel;
+use App\Models\Public\Donnees;
+use App\Models\Public\GroupeModel;
+use App\Models\Public\InscriptionModel;
 
 class Contact extends BaseController
 {
@@ -39,13 +39,13 @@ class Contact extends BaseController
     {
         $data = [
             'titrePage' => 'Inscriptions & Contact',
-            'cssPage' => 'contact.css',
+            'cssPage' => 'Public/contact.css',
             'materiel' => $this->inscrModel->getMateriel(),
             'membres' => $this->donneesModel->getBureau(),
             'groupes' => $this->groupeModel->getGroupes(),
         ];
 
-        return $this->_render('v_contact', $data);
+        return $this->_render('Public/v_contact', $data);
     }
 
     public function envoyer()

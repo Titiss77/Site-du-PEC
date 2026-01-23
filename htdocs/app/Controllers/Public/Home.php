@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Public;
 
 use App\Controllers\BaseController;
 use App\Controllers\Root;  // Note: Ensure this is intended to be used as a library object
-use App\Models\Donnees;
-use App\Models\GroupeModel;
-use \App\Models\PartenaireModel;
+use App\Models\Public\Donnees;
+use App\Models\Public\GroupeModel;
+use \App\Models\Public\PartenaireModel;
 
 class Home extends BaseController
 {
@@ -45,7 +45,7 @@ class Home extends BaseController
     {
         
         $data = [
-            'cssPage' => 'accueil.css',
+            'cssPage' => 'Public/accueil.css',
             'disciplines' => $this->donneesModel->getDisciplines(),
             'coaches' => $this->donneesModel->getCoachs(),
             'coachesForm' => $this->donneesModel->getCoachsFormation(),
@@ -56,39 +56,39 @@ class Home extends BaseController
             'partenaires' => $this->partenaireModel->getPartenaires()
         ];
 
-        return $this->_render('v_accueil', $data);
+        return $this->_render('Public/v_accueil', $data);
     }
 
     public function groupes()
     {
         $data = [
-            'cssPage' => 'groupes.css',
+            'cssPage' => 'Public/groupes.css',
             'groupes' => $this->groupeModel->getGroupes(),
         ];
 
-        return $this->_render('v_groupes', $data);
+        return $this->_render('Public/v_groupes', $data);
     }
 
     public function calendriers()
     {
         $data = [
-            'cssPage' => 'calendrier.css',
+            'cssPage' => 'Public/calendrier.css',
             'titrePage' => 'Calendriers',
             'calendriers' => $this->donneesModel->getCalendriers(),
             'calendrierCompet' => $this->donneesModel->getCalendrier(),
         ];
 
-        return $this->_render('v_calendriers', $data);
+        return $this->_render('Public/v_calendriers', $data);
     }
 
     public function boutique()
     {
         $data = [
-            'cssPage' => 'boutique.css',
+            'cssPage' => 'Public/boutique.css',
             'titrePage' => 'Boutique du PEC',
             'boutique' => $this->donneesModel->getBoutique(),
         ];
 
-        return $this->_render('v_boutique', $data);
+        return $this->_render('Public/v_boutique', $data);
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Models\Donnees;
-use App\Models\UtilisateurModel; // Ajout du modèle utilisateur
+use App\Models\Public\Donnees;
+use App\Models\Public\UtilisateurModel; // Ajout du modèle utilisateur
 use App\Controllers\Root;
 
 class Login extends BaseController
@@ -27,17 +27,17 @@ class Login extends BaseController
     {
         // Si l'admin est déjà connecté, on le redirige directement vers le dashboard
         if (session()->get('isLoggedIn') && session()->get('role') === 'admin') {
-            return redirect()->to(base_url('admin/dashboard'));
+            return redirect()->to(base_url('Admin/dashboard'));
         }
 
         $data = [
             'root'      => $this->root->getRootStyles(),
             'titrePage' => 'Connexion Administration',
-            'cssPage'   => 'contact.css',
+            'cssPage'   => 'Public/contact.css',
             'general'   => $this->donneesModel->getGeneral(),
         ];
 
-        return view('admin/v_login', $data);
+        return view('Admin/v_login', $data);
     }
 
     /**

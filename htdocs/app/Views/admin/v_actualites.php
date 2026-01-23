@@ -1,4 +1,4 @@
-<?= $this->extend('l_global') ?>
+<?= $this->extend('Layout/l_global') ?>
 
 <?= $this->section('contenu') ?>
 <?= $this->include('admin/retour') ?>
