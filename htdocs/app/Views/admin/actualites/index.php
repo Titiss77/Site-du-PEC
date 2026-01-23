@@ -36,7 +36,8 @@
                     <tr>
                         <td>
                             <?php if (!empty($actu['image_path'])): ?>
-                            <img src="<?= base_url($actu['image_path']) ?>" alt="Aperçu" class="actu-thumb">
+                            <img src="<?= base_url('uploads/'.$actu['image_path']) ?>" alt="<?= $actu['alt'] ?>"
+                                class="actu-thumb">
                             <?php else: ?>
                             <div class="actu-placeholder">
                                 <i class="bi bi-image text-muted"></i>

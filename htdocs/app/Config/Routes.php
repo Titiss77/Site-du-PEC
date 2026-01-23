@@ -34,6 +34,7 @@ $routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Adm
     $routes->post('general/update', 'General::update');
 
     $routes->get('actualites/(:num)/delete', 'Actualites::delete/$1');
+    $routes->get('actualites/(:num)/deleteImage', 'Actualites::deleteImage/$1');
     
     $routes->resource('actualites',  ['controller' => 'Actualites']);
     $routes->resource('boutique',    ['controller' => 'Boutique']);

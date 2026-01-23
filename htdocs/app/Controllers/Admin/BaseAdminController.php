@@ -31,15 +31,15 @@ class BaseAdminController extends BaseController
 
         if ($file && $file->isValid() && !$file->hasMoved()) {
             // 1. Déplacer le fichier
-            $newName = $file->getRandomName(); // Ou $file->getName() si vous voulez garder le nom
-            $pathStr = 'uploads/' . $subfolder . '/';
+            $newName = $file->getName(); // Ou $file->getName() si vous voulez garder le nom
+            $pathStr = $subfolder . '/';
             
             // Créer le dossier s'il n'existe pas
-            if (!is_dir(FCPATH . $pathStr)) {
-                mkdir(FCPATH . $pathStr, 0777, true);
+            if (!is_dir(FCPATH . 'uploads/'.$pathStr)) {
+                mkdir(FCPATH . 'uploads/'.$pathStr, 0777, true);
             }
 
-            $file->move(FCPATH . $pathStr, $newName);
+            $file->move(FCPATH . 'uploads/'.$pathStr, $newName);
             $fullPath = $pathStr . $newName;
 
             // 2. Insérer dans la table images

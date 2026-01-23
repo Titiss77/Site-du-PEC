@@ -29,7 +29,7 @@ class ActualiteModel extends Model
      */
     public function getActualitesWithRelations($id = null)
     {
-        $builder = $this->select('actualites.*, images.path as image_path, membres.nom as auteur_nom')
+        $builder = $this->select('actualites.*, images.path as image_path, images.alt, membres.nom as auteur_nom')
                         ->join('images', 'actualites.image_id = images.id', 'left')
                         ->join('membres', 'actualites.id_auteur = membres.id', 'left');
 

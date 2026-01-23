@@ -62,10 +62,10 @@
                 <?php if (!empty($item['image'])): ?>
 
                 <?php if (str_starts_with($item['image'], 'https://')): ?>
-                <img src="<?= $item['image']; ?>" alt="<?= esc($item['titre']) ?>" class="img-card mb-3" />
+                <img src="<?= $item['image']; ?>" alt="<?= esc($item['alt']) ?>" class="img-card mb-3" />
 
                 <?php else: ?>
-                <img src="<?= base_url('uploads/' . $item['image']); ?>" alt="<?= esc($item['titre']) ?>"
+                <img src="<?= base_url('uploads/' . $item['image']); ?>" alt="<?= esc($item['alt']) ?>"
                     class="img-card mb-3" />
                 <?php endif; ?>
                 <?php endif; ?>

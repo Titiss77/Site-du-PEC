@@ -56,18 +56,25 @@
                     required><?= old('description', $item['description']) ?></textarea>
             </div>
 
-            <div class="form-group mb-4">
-                <label class="fw-bold mb-1">Image</label>
+            <label class="fw-bold mb-1">Image</label>
 
-                <?php if (!empty($item['image_path'])): ?>
-                <div class="d-flex align-items-center gap-3 p-2 border rounded bg-light mb-2">
-                    <img src="<?= base_url($item['image_path']) ?>">
-                    <span class="text-muted small">Actuelle</span>
+            <?php if (!empty($item['image_path'])): ?>
+            <div class="d-flex align-items-center justify-content-between p-2 border rounded bg-light mb-2">
+
+                <div class="d-flex align-items-center gap-3">
+                    <img src="<?= base_url('uploads/'.$item['image_path']) ?>">
                 </div>
-                <?php endif; ?>
 
-                <input type="file" name="image" class="form-input w-100 p-2" accept="image/*">
+                <a href="<?= base_url('admin/actualites/' . $item['id'] . '/deleteImage') ?>"
+                    class="text-danger text-decoration-none small fw-bold px-2"
+                    onclick="return confirm('Voulez-vous vraiment supprimer définitivement cette image ?');">
+                    <i class="bi bi-trash"></i> Supprimer
+                </a>
+
             </div>
+            <?php endif; ?>
+
+            <input type="file" name="image" class="form-input w-100 p-2" accept="image/*">
 
             <div class="text-end">
                 <button type="submit" class="btn-home">
