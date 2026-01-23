@@ -50,7 +50,7 @@ class Home extends BaseController
             'coaches' => $this->donneesModel->getCoachs(),
             'coachesForm' => $this->donneesModel->getCoachsFormation(),
             'piscines' => $this->donneesModel->getPiscines(),
-            'actualites' => $this->donneesModel->getActualites('actualite'),
+            'actualites' => $this->donneesModel->getActualites(),
             'groupes' => $this->groupeModel->getGroupes(),
             'partenaires' => $this->partenaireModel->getPartenaires()
         ];
