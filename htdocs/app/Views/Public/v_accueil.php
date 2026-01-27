@@ -5,7 +5,8 @@
 <div class="site-container">
 
     <section class="hero-banner full-bleed">
-        <img src="<?= base_url('uploads/' . $general['image_groupe']) ?>" alt="Photo du club" loading="lazy" />
+        <img src="<?= esc(base_url('uploads/' . $general['image_groupe']), 'attr') ?>" alt="Photo du club"
+            loading="lazy" />
 
         <div class="hero-overlay">
             <h1 class="hero-title"><?= esc($general['nomClub']); ?></h1>
@@ -40,8 +41,9 @@
         <h3 class="title-section">Nos Groupes</h3>
         <div class="grid-responsive">
             <?php foreach ($groupes as $d): ?>
-            <div class="card-item hover-effect" style="background:<?= esc($d['codeCouleur']) ?>;">
-                <img src="<?= base_url('uploads/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>" class="img-card" />
+            <div class="card-item hover-effect" style="background:<?= esc($d['codeCouleur'], 'attr') ?>;">
+                <img src="<?= esc(base_url('uploads/' . $d['image']), 'attr'); ?>" alt="<?= esc($d['nom'], 'attr') ?>"
+                    class="img-card" />
                 <div class="p-3">
                     <h5><?= esc($d['nom']); ?></h5>
                     <p><?= esc($d['tranche_age']); ?></p>
@@ -55,6 +57,7 @@
 
         <h3 class="title-section">Actualités</h3>
         <div class="card-item news-card">
+            <?php if (!empty($actualites)): ?>
             <?php foreach ($actualites as $item): ?>
 
             <div class="news-item mb-3 border-bottom pb-3">
@@ -64,20 +67,24 @@
                     </h5>
 
                     <?php
-            $dateRef = $item['date_evenement'] ?? $item['created_at'];
-            $dateLabel = $item['date_evenement'] ? 'Le' : 'Publié le';
-            ?>
+                    // Pas besoin d'esc ici car ce sont des dates générées par PHP, mais bonne pratique de vérifier si null
+                    $dateRef = $item['date_evenement'] ?? $item['created_at'];
+                    $dateLabel = !empty($item['date_evenement']) ? 'Le' : 'Publié le';
+                    ?>
                     <p class="small text-muted mb-2">
                         <i class="bi bi-calendar3"></i> <?= $dateLabel ?> <?= date('d/m/Y', strtotime($dateRef)); ?>
                     </p>
 
-                    <a href="<?= base_url('actu/' . $item['slug']) ?>" class="text-decoration-none small fw-bold"
-                        style="color: var(--secondary);">
+                    <a href="<?= base_url('actu/' . esc($item['slug'], 'url')) ?>"
+                        class="text-decoration-none small fw-bold" style="color: var(--secondary);">
                         Plus de détails <i class="bi bi-arrow-right-short"></i>
                     </a>
                 </div>
             </div>
             <?php endforeach; ?>
+            <?php else: ?>
+            <p>Aucune actualité pour le moment. Revenez bientôt !</p>
+            <?php endif; ?>
 
         </div>
 
@@ -85,7 +92,8 @@
         <div class="grid-responsive">
             <?php foreach ($disciplines as $d): ?>
             <div class="card-item hover-effect">
-                <img src="<?= base_url('uploads/' . $d['image']); ?>" alt="<?= esc($d['nom']) ?>" class="img-card" />
+                <img src="<?= esc(base_url('uploads/' . $d['image']), 'attr'); ?>" alt="<?= esc($d['nom'], 'attr') ?>"
+                    class="img-card" />
                 <div class="p-3">
                     <h5><?= esc($d['nom']); ?></h5>
                     <p><?= esc($d['description']); ?></p>
@@ -98,7 +106,7 @@
         <div class="grid-responsive">
             <?php foreach ($coaches as $c): ?>
             <div class="coach-item text-center p-3">
-                <img src="<?= base_url('uploads/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
+                <img src="<?= esc(base_url('uploads/' . $c['photo']), 'attr'); ?>" alt="<?= esc($c['nom'], 'attr'); ?>"
                     class="img-circle mb-3" />
                 <h4><?= esc($c['nom']); ?></h4>
             </div>
@@ -109,7 +117,7 @@
         <div class="grid-responsive">
             <?php foreach ($coachesForm as $c): ?>
             <div class="coach-item text-center p-3">
-                <img src="<?= base_url('uploads/' . $c['photo']); ?>" alt="<?= esc($c['nom']); ?>"
+                <img src="<?= esc(base_url('uploads/' . $c['photo']), 'attr'); ?>" alt="<?= esc($c['nom'], 'attr'); ?>"
                     class="img-circle mb-3" />
                 <h4><?= esc($c['nom']); ?></h4>
             </div>
@@ -119,20 +127,23 @@
         <h3 class="title-section">Lieux d'entraînement</h3>
         <div class="grid-responsive">
             <?php foreach ($piscines as $p): ?>
-            <div class="piscine-card card-item h-100 d-flex flex-column"> <img
-                    src="<?= base_url('uploads/' . ($p['photo'] ?? 'piscines/default_piscine.jpg')) ?>"
-                    alt="<?= esc($p['nom']) ?>" class="img-card" style="height: 200px; object-fit: cover;" />
+            <div class="piscine-card card-item h-100 d-flex flex-column">
+                <img src="<?= esc(base_url('uploads/' . ($p['photo'] ?? 'piscines/default_piscine.jpg')), 'attr') ?>"
+                    alt="<?= esc($p['nom'], 'attr') ?>" class="img-card" style="height: 200px; object-fit: cover;" />
 
                 <div class="piscine-info p-3 d-flex flex-column flex-grow-1">
                     <h5><?= esc($p['nom']); ?></h5>
 
                     <?php
-                    $adresseUrl = urlencode($p['adresse']);
-                    $lienMaps = "https://www.google.com/maps/search/?api=1&query={$adresseUrl}";
+                    // Utilisation de rawurlencode pour être conforme aux standards URL
+                    // Utilisation du lien HTTPS standard de Google Maps Search
+                    $adresseEncoded = rawurlencode($p['adresse']);
+                    $lienMaps = "https://www.google.com/maps/search/?api=1&query={$adresseEncoded}";
                     ?>
 
                     <p class="mb-3">
-                        <a href="<?= $lienMaps ?>" target="_blank" class="maps-link" title="Ouvrir dans Google Maps">
+                        <a href="<?= $lienMaps ?>" target="_blank" rel="noopener noreferrer" class="maps-link"
+                            title="Ouvrir dans Google Maps">
                             <i class="bi bi-geo-alt-fill"></i> <?= esc($p['adresse']); ?>
                         </a>
                     </p>
@@ -149,19 +160,16 @@
 
     <h3 class="title-section">Nos Partenaires</h3>
     <div class="grid-responsive-2">
-
-
         <?php foreach ($partenaires as $partenaire): ?>
         <div class="partenaires-item text-center p-3">
             <div class="contenu">
-                <img class="img-card-2" src="<?= base_url('uploads/' . $partenaire['image_url']); ?>"
-                    alt="<?= esc($partenaire['description']) ?>">
+                <img class="img-card-2" src="<?= esc(base_url('uploads/' . $partenaire['image_url']), 'attr'); ?>"
+                    alt="<?= esc($partenaire['description'], 'attr') ?>">
                 <i class="bi bi-arrow-right fleche"></i>
             </div>
             <div class="contenu">
                 <p><?= esc($partenaire['description']) ?></p>
             </div>
-
         </div>
         <?php endforeach; ?>
     </div>
