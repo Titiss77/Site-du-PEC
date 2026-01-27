@@ -64,6 +64,14 @@ $sections = [
             ],
             [
                 // Note : Pas de clé 'count' ici, car ce n'est pas nécessaire pour les calendriers.
+                'label' => 'Groupes',
+                'desc' => 'Groupes d\'entraînement & Niveaux',
+                'icon' => 'bi-people',
+                'url' => 'admin/plannings',
+                'btn' => 'Modifier horaires'
+            ],
+            [
+                // Note : Pas de clé 'count' ici, car ce n'est pas nécessaire pour les calendriers.
                 'label' => 'Calendriers',
                 'desc' => 'Entraînements & Compétitions',
                 'icon' => 'bi-calendar-range',

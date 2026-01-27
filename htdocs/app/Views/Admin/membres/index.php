@@ -31,42 +31,40 @@
                     <tr>
                         <td>
                             <?php if (!empty($m['image_path'])): ?>
-                            <img src="<?= base_url('uploads/'.$m['image_path']) ?>" class="rounded-circle"
-                                style="width:50px; height:50px; object-fit:cover;">
+                            <img src="<?= base_url('uploads/'.$m['image_path']) ?>" class="rounded-circle" ">
                             <?php else: ?>
-                            <div class="rounded-circle bg-light d-flex align-items-center justify-content-center"
+                            <div class=" rounded-circle bg-light d-flex align-items-center justify-content-center"
                                 style="width:50px; height:50px;">
-                                <i class="bi bi-person text-muted"></i>
-                            </div>
-                            <?php endif; ?>
-                        </td>
-                        <td class="fw-bold"><?= esc($m['nom']) ?></td>
-                        <td>
-                            <?php if(!empty($m['roles_string'])): ?>
-                            <?php foreach(explode(', ', $m['roles_string']) as $role): ?>
-                            <span class="badge bg-info text-dark me-1"><?= esc($role) ?></span>
-                            <?php endforeach; ?>
-                            <?php else: ?>
-                            <span class="text-muted small">Aucun rôle</span>
-                            <?php endif; ?>
-                        </td>
-                        <td class="text-end">
-                            <a href="<?= base_url('admin/membres/' . $m['id'] . '/edit') ?>"
-                                class="btn-icon text-primary me-1"><i class="bi bi-pencil-square"></i></a>
-                            <a href="<?= base_url('admin/membres/' . $m['id'] . '/delete') ?>"
-                                class="btn-icon text-danger" onclick="return confirm('Supprimer ce membre ?');"><i
-                                    class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    <?php else: ?>
-                    <tr>
-                        <td colspan="4" class="text-center p-4">Aucun membre enregistré.</td>
-                    </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+                            <i class="bi bi-person text-muted"></i>
         </div>
+        <?php endif; ?>
+        </td>
+        <td class="fw-bold"><?= esc($m['nom']) ?></td>
+        <td>
+            <?php if(!empty($m['roles_string'])): ?>
+            <?php foreach(explode(', ', $m['roles_string']) as $role): ?>
+            <span class="badge bg-info text-dark me-1"><?= esc($role) ?></span>
+            <?php endforeach; ?>
+            <?php else: ?>
+            <span class="text-muted small">Aucun rôle</span>
+            <?php endif; ?>
+        </td>
+        <td class="text-end">
+            <a href="<?= base_url('admin/membres/' . $m['id'] . '/edit') ?>" class="btn-icon text-primary me-1"><i
+                    class="bi bi-pencil-square"></i></a>
+            <a href="<?= base_url('admin/membres/' . $m['id'] . '/delete') ?>" class="btn-icon text-danger"
+                onclick="return confirm('Supprimer ce membre ?');"><i class="bi bi-trash"></i></a>
+        </td>
+        </tr>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <tr>
+            <td colspan="4" class="text-center p-4">Aucun membre enregistré.</td>
+        </tr>
+        <?php endif; ?>
+        </tbody>
+        </table>
     </div>
+</div>
 </div>
 <?= $this->endSection() ?>
