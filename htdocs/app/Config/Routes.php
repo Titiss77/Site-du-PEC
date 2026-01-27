@@ -38,7 +38,7 @@ $routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Adm
     $routes->get('actualites/(:num)/deleteImage', 'Actualites::deleteImage/$1');
     
     $routes->resource('actualites',  ['controller' => 'Actualites']);
-    $routes->resource('boutique',    ['controller' => 'Boutique']);
+    $routes->resource('boutique',   ['controller' => 'Boutiques']);
     $routes->resource('calendriers', ['controller' => 'Calendriers']); // Remplace 'plannings' (selon votre migration)
     $routes->resource('disciplines', ['controller' => 'Disciplines']); // Ajouté (manquant avant)
     $routes->resource('groupes',     ['controller' => 'Groupes']);     // Correspond à "Tarifs"
