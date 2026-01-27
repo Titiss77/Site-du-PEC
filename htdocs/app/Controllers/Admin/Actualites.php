@@ -25,10 +25,10 @@ class Actualites extends BaseAdminController
         return view('Admin/actualites/index', $data);
     }
 
-    // 2. FORMULAIRE DE CRÉATION
+    // 2. pageULAIRE DE CRÉATION
     public function new()
     {
-        $data = $this->getCommonData('Nouvelle Actualité', 'Admin/form.css');
+        $data = $this->getCommonData('Nouvelle Actualité', 'Admin/page.css');
         return view('Admin/actualites/create', $data);
     }
 
@@ -62,10 +62,10 @@ class Actualites extends BaseAdminController
         return redirect()->to('/admin/actualites')->with('success', 'Actualité créée avec succès.');
     }
 
-    // 4. FORMULAIRE D'ÉDITION
+    // 4. pageULAIRE D'ÉDITION
     public function edit($id = null)
     {
-        $data = $this->getCommonData('Modifier Actualité', 'admin/form.css');
+        $data = $this->getCommonData('Modifier Actualité', 'admin/page.css');
 
         $item = $this->actuModel->getActualitesWithRelations($id);
 

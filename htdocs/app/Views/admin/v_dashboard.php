@@ -56,7 +56,7 @@ $sections = [
         'cards' => [
             [
                 'count' => $count['membres'],
-                'label' => 'Personnel',
+                'label' => 'Membres',
                 'desc' => 'Bureau, Coachs & Fonctions',
                 'icon' => 'bi-people',
                 'url' => 'admin/membres',

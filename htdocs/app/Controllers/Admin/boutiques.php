@@ -25,10 +25,10 @@ class Boutiques extends BaseAdminController
         return view('Admin/boutiques/index', $data);
     }
 
-    // 2. FORMULAIRE DE CRÉATION
+    // 2. pageULAIRE DE CRÉATION
     public function new()
     {
-        $data = $this->getCommonData('Nouvel Article', 'Admin/form.css');
+        $data = $this->getCommonData('Nouvel Article', 'Admin/page.css');
         return view('Admin/boutiques/create', $data);
     }
 
@@ -58,10 +58,10 @@ class Boutiques extends BaseAdminController
         return redirect()->to('/admin/boutiques')->with('success', 'Article créé avec succès.');
     }
 
-    // 4. FORMULAIRE D'ÉDITION
+    // 4. pageULAIRE D'ÉDITION
     public function edit($id = null)
     {
-        $data = $this->getCommonData('Modifier Article', 'admin/form.css');
+        $data = $this->getCommonData('Modifier Article', 'admin/page.css');
 
         // Récupération de l'article
         $item = $this->boutiquesModel->getBoutiquesWithRelations($id);

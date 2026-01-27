@@ -47,10 +47,16 @@
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
     color: var(--primary);
     font-weight: 600;
     font-size: 0.95rem;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 /* Inputs gris comme sur la page Contact */
@@ -295,4 +301,9 @@ input[type="file"]::file-selector-button:hover {
     width: 50px;
     object-fit: cover;
     border-radius: 6px;
+}
+
+img {
+    aspect-ratio: var(--aspect-ratio);
+    max-width: 40%;
 }

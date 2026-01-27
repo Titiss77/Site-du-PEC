@@ -2,9 +2,7 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
- * @var RouteCollection $routes
- */
+/** @var RouteCollection $routes */
 
 // --- ROUTES PUBLIQUES ---
 $routes->get('/', 'Public\Home::index');
@@ -19,14 +17,12 @@ $routes->get('liste', 'Public\Liste::index');
 $routes->post('login/auth/liste', 'Public\Liste::authenticate');
 $routes->get('logout/liste', 'Public\Liste::logout');
 
-
-$routes->get('login', 'Admin\Login::index'); 
+$routes->get('login', 'Admin\Login::index');
 $routes->post('login/auth', 'Admin\Login::authenticate');
 $routes->get('logout', 'Admin\Login::logout');
 
 // --- GROUPE ADMIN SÉCURISÉ ---
-$routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Admin'], function($routes) {
-    
+$routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
     // 1. Tableau de bord
     $routes->get('/', 'Dashboard::index');
 
@@ -38,16 +34,19 @@ $routes->group('admin', ['filter' => 'auth', 'namespace' => 'App\Controllers\Adm
     $routes->get('actualites/(:num)/deleteImage', 'Actualites::deleteImage/$1');
 
     $routes->get('boutiques/(:num)/delete', 'Boutiques::delete/$1');
-    $routes->resource('boutiques',   ['controller' => 'Boutiques', 'except' => 'show']);
-    
-    $routes->resource('actualites',  ['controller' => 'Actualites']);
-    $routes->resource('boutiques',   ['controller' => 'Boutiques']);
-    $routes->resource('calendriers', ['controller' => 'Calendriers']); // Remplace 'plannings' (selon votre migration)
-    $routes->resource('disciplines', ['controller' => 'Disciplines']); // Ajouté (manquant avant)
-    $routes->resource('groupes',     ['controller' => 'Groupes']);     // Correspond à "Tarifs"
-    $routes->resource('materiel',    ['controller' => 'Materiel']);
-    $routes->resource('membres',     ['controller' => 'Membres']);
-    $routes->resource('partenaires', ['controller' => 'Partenaires']); // Ajouté (manquant avant)
-    $routes->resource('piscines',    ['controller' => 'Piscines']);
-    $routes->resource('utilisateurs',['controller' => 'Utilisateurs']); // Pour gérer les admins/users
+    $routes->resource('boutiques', ['controller' => 'Boutiques', 'except' => 'show']);
+
+    $routes->get('membres/(:num)/delete', 'Membres::delete/$1');
+    $routes->get('membres/(:num)/deleteImage', 'Membres::deleteImage/$1');
+
+    $routes->resource('actualites', ['controller' => 'Actualites']);
+    $routes->resource('boutiques', ['controller' => 'Boutiques']);
+    $routes->resource('calendriers', ['controller' => 'Calendriers']);  // Remplace 'plannings' (selon votre migration)
+    $routes->resource('disciplines', ['controller' => 'Disciplines']);  // Ajouté (manquant avant)
+    $routes->resource('groupes', ['controller' => 'Groupes']);  // Correspond à "Tarifs"
+    $routes->resource('materiel', ['controller' => 'Materiel']);
+    $routes->resource('membres', ['controller' => 'Membres']);
+    $routes->resource('partenaires', ['controller' => 'Partenaires']);  // Ajouté (manquant avant)
+    $routes->resource('piscines', ['controller' => 'Piscines']);
+    $routes->resource('utilisateurs', ['controller' => 'Utilisateurs']);  // Pour gérer les admins/users
 });
