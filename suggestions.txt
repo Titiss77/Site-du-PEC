@@ -23,7 +23,8 @@ FAIT :
 
 
 RESTE A FAIRE :
-- 
+- Faire afficher seulement les articles avec une date dans le futur
+- Utiliser le header pour trouver efficacement les blocs d'admin
 
 
 
