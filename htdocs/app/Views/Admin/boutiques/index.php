@@ -1,15 +1,13 @@
 <?= $this->extend('Layout/l_global') ?>
 
 <?= $this->section('contenu') ?>
-
 <?= $this->include('Admin/retour') ?>
-
 
 <div class="site-container">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="title-section mb-0">Gestion des Boutiques</h3>
+        <h3 class="title-section mb-0">Gestion de la Boutique</h3>
         <a href="<?= base_url('admin/boutiques/new') ?>" class="btn-home">
-            <i class="bi bi-plus-circle"></i> Créer une boutique
+            <i class="bi bi-plus-circle"></i> Ajouter un article
         </a>
     </div>
 
@@ -24,64 +22,50 @@
             <table class="table-admin">
                 <thead>
                     <tr>
-                        <th width="10%">Aperçu</th>
-                        <th width="45%">Infos</th>
-                        <th width="20%">Statut</th>
-                        <th width="25%" class="text-end">Actions</th>
+                        <th width="40%">Article</th>
+                        <th width="30%">Description</th>
+                        <th width="15%">Prix</th>
+                        <th width="15%" class="text-end">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($actualites)): ?>
-                    <?php foreach ($actualites as $actu): ?>
+                    <?php if (!empty($boutiques)): ?>
+                    <?php foreach ($boutiques as $item): ?>
                     <tr>
                         <td>
-                            <?php if (!empty($actu['image_path'])): ?>
-                            <img src="<?= base_url('uploads/'.$actu['image_path']) ?>" alt="<?= $actu['alt'] ?>"
-                                class="actu-thumb">
-                            <?php else: ?>
-                            <div class="actu-placeholder">
-                                <i class="bi bi-image text-muted"></i>
-                            </div>
-                            <?php endif; ?>
-                        </td>
-
-                        <td>
-                            <div class="actu-info">
-                                <strong class="actu-title"><?= esc($actu['titre']) ?></strong>
-                                <small class="actu-meta">
-                                    <?php if ($actu['date_evenement']): ?>
-                                    <i class="bi bi-calendar-event"></i>
-                                    Événement : <?= date('d/m/Y', strtotime($actu['date_evenement'])) ?>
-                                    <?php else: ?>
-                                    <i class="bi bi-clock"></i>
-                                    Créé le <?= date('d/m/Y', strtotime($actu['created_at'])) ?>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center"
+                                    style="width: 40px; height: 40px;">
+                                    <i class="bi bi-bag-fill text-secondary"></i>
+                                </div>
+                                <div>
+                                    <strong class="d-block text-dark"><?= esc($item['nom']) ?></strong>
+                                    <?php if(!empty($item['url'])): ?>
+                                    <a href="<?= esc($item['url']) ?>" target="_blank"
+                                        class="small text-primary text-decoration-none">
+                                        <i class="bi bi-link-45deg"></i> Voir le lien
+                                    </a>
                                     <?php endif; ?>
-                                </small>
+                                </div>
                             </div>
                         </td>
 
                         <td>
-                            <?php
-                            // Définition des couleurs spécifiques au statut
-                            $colors = [
-                                'publie' => '#28a745',
-                                'brouillon' => '#ffc107',
-                                'archive' => '#6c757d'
-                            ];
-                            // Fallback sur la variable secondary du seed si statut inconnu, ou gris
-                            $bgStatus = $colors[$actu['statut']] ?? '#ccc';
-                            ?>
-                            <span class="status-badge" style="background-color: <?= $bgStatus ?>;">
-                                <?= ucfirst($actu['statut']) ?>
-                            </span>
+                            <small class="text-muted">
+                                <?= strip_tags($item['description']) ?>
+                            </small>
+                        </td>
+
+                        <td>
+                            <span class="badge bg-secondary"><?= esc($item['tranchePrix']) ?></span>
                         </td>
 
                         <td class="text-end">
-                            <a href="<?= base_url('admin/actualites/' . $actu['id'] . '/edit') ?>"
+                            <a href="<?= base_url('admin/boutiques/' . $item['id'] . '/edit') ?>"
                                 class="btn-icon text-primary me-1" title="Modifier">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a href="<?= base_url('admin/actualites/' . $actu['id'] . '/delete') ?>"
+                            <a href="<?= base_url('admin/boutiques/' . $item['id'] . '/delete') ?>"
                                 class="btn-icon text-danger"
                                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');"
                                 title="Supprimer">
@@ -93,8 +77,8 @@
                     <?php else: ?>
                     <tr>
                         <td colspan="4" class="text-center p-5 text-muted">
-                            <i class="bi bi-inbox fs-1 d-block mb-3"></i>
-                            Aucune boutique pour le moment.
+                            <i class="bi bi-shop fs-1 d-block mb-3"></i>
+                            La boutique est vide pour le moment.
                         </td>
                     </tr>
                     <?php endif; ?>

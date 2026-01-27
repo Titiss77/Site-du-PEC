@@ -44,7 +44,7 @@ $sections = [
                 'label' => 'Boutique',
                 'desc' => 'Articles & Commandes HelloAsso',
                 'icon' => 'bi-cart4',
-                'url' => 'admin/boutique',
+                'url' => 'admin/boutiques',
                 'btn' => 'Gérer la boutique'
             ]
         ]

@@ -5,10 +5,10 @@
 
 <div class="site-container">
     <div class="d-flex align-items-center mb-4">
-        <a href="<?= base_url('admin/actualites') ?>" class="text-decoration-none me-3 text-dark">
+        <a href="<?= base_url('admin/boutiques') ?>" class="text-decoration-none me-3 text-dark">
             <i class="bi bi-arrow-left-circle"></i>
         </a>
-        <h3 class="title-section mb-0">Nouvelle Actualité</h3>
+        <h3 class="title-section mb-0">Nouvel Article</h3>
     </div>
 
     <?php if (session()->getFlashdata('errors')): ?>
@@ -22,41 +22,33 @@
     <?php endif; ?>
 
     <div class="card-item p-4">
-        <form action="<?= base_url('admin/actualites') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('admin/boutiques') ?>" method="post">
             <?= csrf_field() ?>
 
             <div class="form-group mb-3">
-                <label class="fw-bold mb-1">Titre de l'article *</label>
-                <input type="text" name="titre" class="form-input w-100 p-2" value="<?= old('titre') ?>" required>
+                <label class="fw-bold mb-1">Nom de l'article *</label>
+                <input type="text" name="nom" class="form-input w-100 p-2" value="<?= old('nom') ?>" required
+                    maxlength="50">
             </div>
 
             <div class="grid-2 gap-4">
                 <div class="form-group mb-3">
-                    <label class="fw-bold mb-1">Date de l'événement (Optionnel)</label>
-                    <input type="date" name="date_evenement" class="form-input w-100 p-2"
-                        value="<?= old('date_evenement') ?>">
-                    <small class="text-muted">Laisser vide si c'est une info générale.</small>
+                    <label class="fw-bold mb-1">Prix / Tranche de prix *</label>
+                    <input type="text" name="tranchePrix" class="form-input w-100 p-2"
+                        placeholder="Ex: 15€ ou 10€ - 20€" value="<?= old('tranchePrix') ?>" required maxlength="50">
                 </div>
 
                 <div class="form-group mb-3">
-                    <label class="fw-bold mb-1">Statut de publication</label>
-                    <select name="statut" class="form-input w-100 p-2">
-                        <option value="brouillon" selected>Brouillon (Invisible)</option>
-                        <option value="publie">Publié (Visible)</option>
-                        <option value="archive">Archivé</option>
-                    </select>
+                    <label class="fw-bold mb-1">Lien externe (HelloAsso...) </label>
+                    <input type="url" name="url" class="form-input w-100 p-2" placeholder="https://..."
+                        value="<?= old('url') ?>" maxlength="255">
                 </div>
             </div>
 
-            <div class="form-group mb-3">
-                <label class="fw-bold mb-1">Contenu *</label>
-                <textarea name="description" rows="6" class="form-input w-100 p-2"
-                    required><?= old('description') ?></textarea>
-            </div>
-
             <div class="form-group mb-4">
-                <label class="fw-bold mb-1">Image d'illustration</label>
-                <input type="file" name="image" class="form-input w-100 p-2" accept="image/*">
+                <label class="fw-bold mb-1">Description *</label>
+                <textarea name="description" rows="5" class="form-input w-100 p-2"
+                    required><?= old('description') ?></textarea>
             </div>
 
             <div class="text-end">

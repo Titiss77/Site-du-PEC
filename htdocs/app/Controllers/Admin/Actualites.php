@@ -17,7 +17,7 @@ class Actualites extends BaseAdminController
     // 1. LISTE DES ACTUALITÉS
     public function index()
     {
-        $data = $this->getCommonData('Gestion Actualités', 'Admin/actualite.css');
+        $data = $this->getCommonData('Gestion Actualités', 'Admin/page.css');
 
         // Récupération via le modèle
         $data['actualites'] = $this->actuModel->getActualitesWithRelations();
